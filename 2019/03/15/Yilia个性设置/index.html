@@ -22,7 +22,9 @@
 <meta property="og:image" content="https://i.loli.net/2019/03/15/5c8b6784c0b57.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/15/5c8b6967ac216.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/15/5c8b82c40b1da.png">
-<meta property="og:updated_time" content="2019-03-15T12:29:04.014Z">
+<meta property="og:image" content="https://i.loli.net/2019/03/15/5c8bc0b63a8ce.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/15/5c8bc4d25f5b0.png">
+<meta property="og:updated_time" content="2019-03-15T15:32:54.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yilia个性设置">
 <meta name="twitter:description" content="​    City—羽肿​       Your browser does not support this audio format.​       ####1、yilia更改头部图片 ​    在yilia的根目录下，我这里是E:\my_personnel_blog_hexo\themes\yilia下的_config.yml 找到如下配置： 1234# Miscellaneousbaid">
@@ -230,6 +232,31 @@
 <p>继续修改文件，找到<strong>E:\my_personnel_blog_hexo\themes\yilia\source\main.0cf68a.css</strong>，打开编辑，添加如下代码：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.article-inner</span> <span class="selector-tag">h1</span><span class="selector-class">.article-title_code_ant</span>, <span class="selector-class">.article-title_code_ant</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#000000</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">font-weight</span>: <span class="number">300</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">35px</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">32px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: color .<span class="number">3s</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>保存修改，大功告成。</p>
+<h4 id="5、引入Gitment评论"><a href="#5、引入Gitment评论" class="headerlink" title="5、引入Gitment评论"></a>5、引入Gitment评论</h4><p>1：<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">注册OAuth Application</a></p>
+<p><img src="https://i.loli.net/2019/03/15/5c8bc0b63a8ce.png" alt="1-6.png"></p>
+<ul>
+<li>Application name:博客名字</li>
+<li>Homepage URL; 网站主页地址(这里我填写的是域名/index.html大部分的默认网页都是index.html)</li>
+<li>Application description:描述，选填</li>
+<li>Authorization callback URL: 填写域名就行了</li>
+</ul>
+<p>2：修改yilia的_config.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gitment_owner:</span> <span class="string">github名</span>        </span><br><span class="line"></span><br><span class="line"><span class="attr">gitment_repo:</span> <span class="string">'github名.github.io'</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">gitment_oauth:</span>         </span><br><span class="line"></span><br><span class="line"><span class="attr">  client_id:</span> <span class="string">'5ad7ec70a25067e86139'</span>        </span><br><span class="line"></span><br><span class="line"><span class="attr">  client_secret:</span> <span class="string">'21a8b9052808acddd0734e828103e88beabd97c5'</span></span><br></pre></td></tr></table></figure>
+<p><strong>这里就配置好了，开始入坑，会发现有一系列的错误。</strong></p>
+<p>(1)    [object ProgressEvent]</p>
+<p>因为服务器证书过期的原因，无法登录。这里有两个解决方案：</p>
+<ul>
+<li>用别人的服务器，打开themes\yilia\layout_partial\post\gitment.ejs将</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--找到下两列--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css"&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;script src="//imsun.github.io/gitment/dist/gitment.browser.js"&gt;&lt;/script&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--替换成下两列--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://jjeejj.github.io/css/gitment.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://jjeejj.github.io/js/gitment.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--或者替换成下两列--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://jjeejj.github.io/css/gitment.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://www.wenjunjiang.win/js/gitment.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/imsun/gitment/issues/170" target="_blank" rel="noopener">自己搭建服务器</a></li>
+</ul>
+<p>(2)    Error: Validation Failed</p>
+<p>原因：issue的标签label有长度限制！labels的最大长度限制是50个字符。 </p>
+<p>解决：打开themes\yilia\layout_partial\post\gitment.ejs，将id那一行替换成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id: &apos;&lt;%= page.title %&gt;&apos;</span><br><span class="line">或者</span><br><span class="line">id: &apos;&lt;%= page.date %&gt;&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/03/15/5c8bc4d25f5b0.png" alt="1-7.png"></p>
 <hr>
 <center><strong>感谢有你，伴我成长。</strong></center>
 
@@ -399,7 +426,7 @@
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "https://lijinhongpassion.github.io/2019/03/15/Yilia个性设置/",
+  id: 'Fri Mar 15 2019 09:41:38 GMT+0800',
   owner: 'LiJinHongPassion',
   repo: 'LiJinHongPassion.github.io',
   oauth: {
