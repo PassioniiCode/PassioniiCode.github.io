@@ -2035,8 +2035,17 @@ pre .css~* .id,pre .id {
 	max-width: 100%
 }
 
-.article-inner h1.article-title,.article-title, .article-title_code_ant {
+.article-inner h1.article-title,.article-title {
 	color: #696969;
+	margin-left: 0;
+	font-weight: 300;
+	line-height: 35px;
+	margin-bottom: 20px;
+	font-size: 26px;
+	transition: color .3s
+}
+.article-title_code_ant {
+	color: #000000;
 	margin-left: 0;
 	font-weight: 300;
 	line-height: 35px;
