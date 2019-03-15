@@ -2048,7 +2048,7 @@ pre .css~* .id,pre .id {
 .article-inner h1.article-title_code_ant, .article-title_code_ant {
 	color: #000000;
 	margin-left: 0;
-	font-weight: 300;
+	font-weight: 600;
 	line-height: 35px;
 	margin-bottom: 20px;
 	font-size: 32px;
@@ -2890,7 +2890,7 @@ pre .css~* .id,pre .id {
 }
 
 .tooltip-top .tooltip-inner {
-	background: rgba(36,193,246,.9);
+	background: rgba(77,77,77,.9);
 	padding: 40px;
 	-webkit-transform: translate3d(0,100%,0);
 	transform: translate3d(0,100%,0);
