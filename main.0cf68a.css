@@ -2035,7 +2035,7 @@ pre .css~* .id,pre .id {
 	max-width: 100%
 }
 
-.article-inner h1.article-title,.article-title {
+.article-inner h1.article-title,.article-title, .article-title_code_ant {
 	color: #696969;
 	margin-left: 0;
 	font-weight: 300;
@@ -2044,7 +2044,8 @@ pre .css~* .id,pre .id {
 	font-size: 26px;
 	transition: color .3s
 }
-.article-title_code_ant {
+
+.article-inner h1.article-title_code_ant, .article-title_code_ant {
 	color: #000000;
 	margin-left: 0;
 	font-weight: 300;
