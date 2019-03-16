@@ -28,7 +28,8 @@
 <meta property="og:image" content="https://i.loli.net/2019/03/15/5c8bc0b63a8ce.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/15/5c8bc4d25f5b0.png">
 <meta property="og:image" content="https://i.loli.net/2019/03/17/5c8d1f7803c57.png">
-<meta property="og:updated_time" content="2019-03-16T16:14:44.857Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/3286386-a0db3fd3d1a817a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/533/format/webp">
+<meta property="og:updated_time" content="2019-03-16T17:03:59.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yilia个性设置">
 <meta name="twitter:description" content="​    City—羽肿​       Your browser does not support this audio format.​       ####1、yilia更改头部图片 ​    在yilia的根目录下，我这里是E:\my_personnel_blog_hexo\themes\yilia下的_config.yml 找到如下配置： 1234# Miscellaneousbaid">
@@ -218,11 +219,11 @@ var _hmt = _hmt || [];
 		
 		<center><p>
   
-    </p><h1 class="article-title_code_ant" itemprop="name">
+    <h1 class="article-title_code_ant" itemprop="name">
       Yilia个性设置
     </h1>
   
-<p></p></center>
+</p></center>
 	
       
         <hr>
@@ -306,6 +307,68 @@ var _hmt = _hmt || [];
 <p>话不多说，上代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//找到themes\yilia\layout\_partial\tools.ejs，打开编辑找到如下代码块</span><br><span class="line">&lt;%if(theme.aboutme)&#123;%&gt;</span><br><span class="line">  	  		&lt;div class=&quot;aboutme-wrap&quot; id=&quot;js-aboutme&quot;&gt;</span><br><span class="line">					&lt;%=theme.aboutme%&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">&lt;%&#125;%&gt;</span><br><span class="line"></span><br><span class="line">//用下面的代码替换掉</span><br><span class="line">&lt;%if(theme.aboutme)&#123;%&gt;</span><br><span class="line">  	  		&lt;div class=&quot;aboutme-wrap&quot;&gt;</span><br><span class="line">				&lt;div style=&quot;display:;&quot;&gt;</span><br><span class="line">					&lt;script type=&quot;text/javascript&quot; src=&quot;https://api.lwl12.com/hitokoto/v1?encode=js&amp;charset=utf-8&quot;&gt;&lt;/script&gt;</span><br><span class="line">					&lt;p style=&quot;margin:0 20px 0 20px;&quot;&gt;</span><br><span class="line">						&lt;span id=&quot;lwlhitokoto&quot;&gt;</span><br><span class="line">							&lt;script&gt;</span><br><span class="line">								lwlhitokoto();</span><br><span class="line">							&lt;/script&gt;</span><br><span class="line">						&lt;/span&gt;</span><br><span class="line">					&lt;/p&gt;</span><br><span class="line">					&lt;p id=&quot;js-aboutme&quot; style=&quot;margin:0 20px 0 20px;&quot;&gt;&lt;%=theme.aboutme%&gt;&lt;/P&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">  	  	&lt;%&#125;%&gt;</span><br></pre></td></tr></table></figure>
 <p>保存就ok！</p>
+<hr>
+<p>####8、Github提交到百度搜素</p>
+<ol>
+<li><p><a href="https://ziyuan.baidu.com/dashboard/index?site=https://lijinhongpassion.github.io/" target="_blank" rel="noopener">百度搜索资源平台注册，访问站点信息。</a>添加站点，也就是你的{github名字}.github.io。</p>
+</li>
+<li><p>接下来就是验证。</p>
+<p>百度站长平台为未使用百度统计的站点提供三种验证方式：文件验证、html标签验证、CNAME验证，应该说文件和CNAME验证较为简单，我这里统一使用CNAME验证。</p>
+<ul>
+<li>文件验证：您需要下载验证文件，将文件上传至您的服务器，放置于域名根目录下。</li>
+<li>html标签验证：将html标签添加至网站首页html代码的<head><meta name="generator" content="Hexo 3.8.0">标签与</head>标签之间。</li>
+<li>CNAME验证：您需要登录域名提供商或托管服务提供商的网站，添加新的DNS记录。</li>
+</ul>
+<p>我用的是html标签验证，打开<strong>\themes\yilia\layout_partial\head.ejs</strong>，按照操作添加标签。然后就是等待验证，我这里要等一天再看验证结果。 </p>
+</li>
+<li><p>站点地图</p>
+<p>站点地图是一种文件，您可以通过该文件列出您网站上的网页，从而将您网站内容的组织架构告知Google和其他搜索引擎。Googlebot等搜索引擎网页抓取工具会读取此文件，以便更加智能地抓取您的网站。</p>
+<p>首先在hexo根目录分别安装百度谷歌的站点地图文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install hexo-generator-sitemap --save</span><br><span class="line">cnpm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<p>在博客目录的_config.yml中添加路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//自动生成sitemap</span><br><span class="line">sitemap:</span><br><span class="line">path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
+<p>接下来编译：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>此时会发现在public下面发现生成了sitemap.xml以及baidusitemap.xml文件，可以看一下这两个文件，大致就是你的域名下的几篇文章的链接，如果不是以你的域名（github），github禁止了百度爬虫，提交了百度也是不会访问的，所以需要改为你自己的域名，我这里自动生成的是我自己的，接下来部署：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>部署成功后分别访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://lijinhongpassion.github.io/sitemap.xml</span><br><span class="line">https://lijinhongpassion.github.io/baidusitemap.xml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>百度收录</p>
+<p>百度稍微麻烦一点，分为四种方式来提交你的链接，</p>
+<ul>
+<li>主动推送：最为快速的提交方式，推荐您将站点当天新产出链接立即通过此方式推送给百度，以保证新链接可以及时被百度收录。</li>
+<li>自动推送：最为便捷的提交方式，请将自动推送的JS代码部署在站点的每一个页面源代码中，部署代码的页面在每次被浏览时，链接会被自动推送给百度。可以与主动推送配合使用。</li>
+<li>sitemap：您可以定期将网站链接放到sitemap中，然后将sitemap提交给百度。百度会周期性的抓取检查您提交的sitemap，对其中的链接进行处理，但收录速度慢于主动推送。</li>
+<li>手动提交：一次性提交链接给百度，可以使用此种方式。<br> 比较推荐前三种提交方式，从效率上来说，接下来依次讲解：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">主动推送&gt;自动推送&gt;sitemap</span><br></pre></td></tr></table></figure>
+<h3 id="主动推送"><a href="#主动推送" class="headerlink" title="主动推送"></a>主动推送</h3><p>主动推送官网上也有说明，不过需要一定的代码功底，我这里通过第三方写好的一个插件来做说明，首先，在Hexo根目录下，安装插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-baidu-url-submit --save</span><br></pre></td></tr></table></figure>
+<p>然后，同样在根目录下，把以下内容配置到_config.yml文件中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">baidu_url_submit:</span><br><span class="line">count: 3 ## 比如3，代表提交最新的三个链接</span><br><span class="line">host: www.henvyluk.com ## 在百度站长平台中注册的域名</span><br><span class="line">token: your_token ## 请注意这是您的秘钥， 请不要发布在公众仓库里!</span><br><span class="line">path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里</span><br></pre></td></tr></table></figure>
+<p>其次，记得查看_config.ym文件中url的值， 必须包含是百度站长平台注册的域名（一般有www）， 比如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">url: http://www.henvyluk.com</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br></pre></td></tr></table></figure>
+<p>接下来添加一个新的deploy 的类型，用减号区分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- type: git</span><br><span class="line">repository: https://github.com/henvyluk/henvyluk.github.io</span><br><span class="line">branch: master</span><br><span class="line">- type: baidu_url_submitter</span><br></pre></td></tr></table></figure>
+<p>执行hexo deploy的时候，新的连接就会被推送了。这里讲一下原理：</p>
+<ul>
+<li>新链接的产生， hexo generate 会产生一个文本文件，里面包含最新的链接</li>
+<li>新链接的提交， hexo deploy 会从上述文件中读取链接，提交至百度搜索引擎</li>
+</ul>
+<h3 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h3><p>如果是next主题，next主题配置文件中的baidu_push设置为true，就可以了。我的并不是next主题，我用的是icarus，这就要想办法塞进以下的全站点js代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">(function()&#123;</span><br><span class="line">var bp = document.createElement(&apos;script&apos;);</span><br><span class="line">var curProtocol = window.location.protocol.split(&apos;:&apos;)[0];</span><br><span class="line">if (curProtocol === &apos;https&apos;) &#123;</span><br><span class="line">    bp.src = &apos;https://zz.bdstatic.com/linksubmit/push.js&apos;;        </span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">    bp.src = &apos;http://push.zhanzhang.baidu.com/push.js&apos;;</span><br><span class="line">&#125;</span><br><span class="line">var s = document.getElementsByTagName(&quot;script&quot;)[0];</span><br><span class="line">s.parentNode.insertBefore(bp, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>一般在以下目录加入中加入即可，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blog\themes\xxxx\layout\_partial\head.ejs</span><br></pre></td></tr></table></figure>
+<p>我的是在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blog\themes\icarus\layout\common\head.ejs</span><br></pre></td></tr></table></figure>
+<h3 id="sitemap"><a href="#sitemap" class="headerlink" title="sitemap"></a>sitemap</h3><p>sitemap很简单直接提交<a href="https://link.jianshu.com/?t=http://henvyluk.com/baidusitemap.xml" target="_blank" rel="noopener">http://henvyluk.com/baidusitemap.xml</a>就可以了</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/3286386-a0db3fd3d1a817a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/533/format/webp" alt="img"></p>
+<p>sitemap</p>
+</li>
+<li><p>##<strong>未完待续……….</strong></p>
+</li>
+</ol>
 <hr>
 <center><strong>感谢有你，伴我成长。</strong></center>
 
