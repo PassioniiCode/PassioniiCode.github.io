@@ -433,6 +433,7 @@ var _hmt = _hmt || [];
 <p>继续修改文件，找到<strong>E:\my_personnel_blog_hexo\themes\yilia\source\main.0cf68a.css</strong>，打开编辑，添加如下代码：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.article-inner</span> <span class="selector-tag">h1</span><span class="selector-class">.article-title_code_ant</span>, <span class="selector-class">.article-title_code_ant</span> &#123;</span><br><span class="line">	<span class="attribute">color</span>: <span class="number">#000000</span>;</span><br><span class="line">	<span class="attribute">margin-left</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">font-weight</span>: <span class="number">300</span>;</span><br><span class="line">	<span class="attribute">line-height</span>: <span class="number">35px</span>;</span><br><span class="line">	<span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">	<span class="attribute">font-size</span>: <span class="number">32px</span>;</span><br><span class="line">	<span class="attribute">transition</span>: color .<span class="number">3s</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>保存修改，大功告成。</p>
+<hr>
 <h4 id="5、引入Gitment评论"><a href="#5、引入Gitment评论" class="headerlink" title="5、引入Gitment评论"></a>5、引入Gitment评论</h4><p>1：<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">注册OAuth Application</a></p>
 <p><img src="https://i.loli.net/2019/03/15/5c8bc0b63a8ce.png" alt="1-6.png"></p>
 <ul>
@@ -458,9 +459,18 @@ var _hmt = _hmt || [];
 <p>解决：打开themes\yilia\layout_partial\post\gitment.ejs，将id那一行替换成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id: &apos;&lt;%= page.title %&gt;&apos;</span><br><span class="line">或者</span><br><span class="line">id: &apos;&lt;%= page.date %&gt;&apos;</span><br></pre></td></tr></table></figure>
 <p><img src="https://i.loli.net/2019/03/15/5c8bc4d25f5b0.png" alt="1-7.png"></p>
+<hr>
 <p>####6、删除博客底部Hexo Theme Yilia by Litten </p>
-<p>打开themes\yilia\layout_partial\footer.ejs,修改如下：</p>
+<p>​    打开themes\yilia\layout_partial\footer.ejs,修改如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer-right"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="7、在关于我页面添加每日一言功能"><a href="#7、在关于我页面添加每日一言功能" class="headerlink" title="7、在关于我页面添加每日一言功能"></a>7、在关于我页面添加每日一言功能</h4><p>​    这里我用的是<a href="https://blog.lwl12.com/read/hitokoto-api.html" target="_blank" rel="noopener">每日一言</a>的链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//每日一言的链接</span><br><span class="line">https://api.lwl12.com/hitokoto/v1?encode=js&amp;charset=utf-8</span><br><span class="line">//返回的数据格式</span><br><span class="line">function lwlhitokoto()&#123;document.write(&quot;判断一个诉有不是看他的等在你内在，而是看他的行为。&quot;);&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里我调了很久，因为对前端知识不是特别了解，但是最后还是把我想要的样式调出来了，看一下效果图：</p>
+<p><img src="https://i.loli.net/2019/03/17/5c8d1f7803c57.png" alt="1-8.png"></p>
+<p>话不多说，上代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//找到themes\yilia\layout\_partial\tools.ejs，打开编辑找到如下代码块</span><br><span class="line">&lt;%if(theme.aboutme)&#123;%&gt;</span><br><span class="line">  	  		&lt;div class=&quot;aboutme-wrap&quot; id=&quot;js-aboutme&quot;&gt;</span><br><span class="line">					&lt;%=theme.aboutme%&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">&lt;%&#125;%&gt;</span><br><span class="line"></span><br><span class="line">//用下面的代码替换掉</span><br><span class="line">&lt;%if(theme.aboutme)&#123;%&gt;</span><br><span class="line">  	  		&lt;div class=&quot;aboutme-wrap&quot;&gt;</span><br><span class="line">				&lt;div style=&quot;display:;&quot;&gt;</span><br><span class="line">					&lt;script type=&quot;text/javascript&quot; src=&quot;https://api.lwl12.com/hitokoto/v1?encode=js&amp;charset=utf-8&quot;&gt;&lt;/script&gt;</span><br><span class="line">					&lt;p style=&quot;margin:0 20px 0 20px;&quot;&gt;</span><br><span class="line">						&lt;span id=&quot;lwlhitokoto&quot;&gt;</span><br><span class="line">							&lt;script&gt;</span><br><span class="line">								lwlhitokoto();</span><br><span class="line">							&lt;/script&gt;</span><br><span class="line">						&lt;/span&gt;</span><br><span class="line">					&lt;/p&gt;</span><br><span class="line">					&lt;p id=&quot;js-aboutme&quot; style=&quot;margin:0 20px 0 20px;&quot;&gt;&lt;%=theme.aboutme%&gt;&lt;/P&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">  	  	&lt;%&#125;%&gt;</span><br></pre></td></tr></table></figure>
+<p>保存就ok！</p>
 <hr>
 <center><strong>感谢有你，伴我成长。</strong></center>
 
@@ -820,8 +830,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 							</script>
 						</span>
 					</p>
-
-					
 					<p id="js-aboutme" style="margin:0 20px 0 20px;">&lt;br /&gt;&lt;br /&gt;生活应该充满激情&lt;br /&gt;&lt;br /&gt;QQ：1755497577&lt;br&gt;&lt;br&gt;欢迎交流&lt;br&gt;&lt;br&gt;</p>
 				</div>
 			</div>
