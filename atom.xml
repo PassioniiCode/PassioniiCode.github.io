@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lijinhongpassion.github.io/"/>
-  <updated>2019-03-18T02:10:09.534Z</updated>
+  <updated>2019-03-18T06:14:48.751Z</updated>
   <id>https://lijinhongpassion.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://lijinhongpassion.github.io/codeant/2511.html"/>
     <id>https://lijinhongpassion.github.io/codeant/2511.html</id>
     <published>2019-12-31T05:02:43.000Z</published>
-    <updated>2019-03-18T02:10:09.534Z</updated>
+    <updated>2019-03-18T06:14:48.751Z</updated>
     
     <content type="html"><![CDATA[<hr><p><blockquote><strong>2019上半年规划</strong></blockquote></p><img src="/codeant/2511/2019年度计划.png" title="2019上半年规划"><hr>]]></content>
     
@@ -44,13 +44,36 @@
   </entry>
   
   <entry>
+    <title>Yilia添加分类</title>
+    <link href="https://lijinhongpassion.github.io/codeant/1db7.html"/>
+    <id>https://lijinhongpassion.github.io/codeant/1db7.html</id>
+    <published>2019-03-18T06:12:38.000Z</published>
+    <updated>2019-03-18T06:13:33.979Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p><img src="https://images.unsplash.com/photo-1552598538-3720085bb8d5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80" alt></p><a id="more"></a><center><br><br>​    <span>City—羽肿</span><br><br>​    <audio controls> <source src="http://music.163.com/song/media/outer/url?id=451319227.mp3" type="audio/mpeg"> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center><hr><ol><li><p>新建一个页面，命名为 <code>categories</code> 。命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure></li><li><p>编辑刚新建的页面，将页面的类型设置为 <code>categories</code> ，主题将自动为这个页面显示所有分类。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 分类</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure><p>注意：如果有启用多说 或者 Disqus 评论，默认页面也会带有评论。需要关闭的话，请添加字段 <code>comments</code> 并将值设置为 <code>false</code>，如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 分类</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li><li><p>在菜单中添加链接。编辑主题的 <code>_config.yml</code> ，将 <code>menu</code> 中的 <code>categories: /categories</code> 注释去掉，如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1552598538-3720085bb8d5?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1500&amp;amp;q=80&quot; alt&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="yilia" scheme="https://lijinhongpassion.github.io/tags/yilia/"/>
+    
+      <category term="hexo" scheme="https://lijinhongpassion.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo设置短地址</title>
     <link href="https://lijinhongpassion.github.io/codeant/61549.html"/>
     <id>https://lijinhongpassion.github.io/codeant/61549.html</id>
     <published>2019-03-18T05:26:41.000Z</published>
-    <updated>2019-03-18T05:29:56.778Z</updated>
+    <updated>2019-03-18T05:54:51.595Z</updated>
     
-    <content type="html"><![CDATA[<hr><p><img src="https://images.unsplash.com/photo-1552591662-b1bfe0d7d1f7?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p><a id="more"></a><center><br><br>​    <span>City—羽肿</span><br><br>​    <audio controls> <source src="http://music.163.com/song/media/outer/url?id=451319227.mp3" type="audio/mpeg"> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center><hr><p>每次从博客分享文章给别人都很苦恼，Hexo 默认生成的链接太长了，而且一旦文章名字改变，链接也跟着改变。有没有什么方法让地址尽量短小精悍，同时永久化呢？</p><p>感谢 <a href="https://github.com/rozbo/hexo-abbrlink" target="_blank" rel="noopener">rozbo/hexo-abbrlink</a>，完美解决此痛点。</p><p>使用方法也很简单：</p><ol><li>在 Hexo 博客根目录，执行 <code>npm install hexo-abbrlink --save</code> </li><li>在 yilia主题的<code>_config.yml</code> 配置文件写入</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># abbrlink config</span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc16 #support crc16(default) and crc32</span><br><span class="line">  rep: hex    #support dec(default) and hex</span><br><span class="line"></span><br><span class="line"># 更改 permalink 值</span><br><span class="line">permalink: codeant/:abbrlink.html</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<hr><p><img src="https://images.unsplash.com/photo-1552591662-b1bfe0d7d1f7?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p><a id="more"></a><center><br><br>​    <span>City—羽肿</span><br><br>​    <audio controls> <source src="http://music.163.com/song/media/outer/url?id=451319227.mp3" type="audio/mpeg"> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center><hr><p>每次从博客分享文章给别人都很苦恼，Hexo 默认生成的链接太长了，而且一旦文章名字改变，链接也跟着改变。有没有什么方法让地址尽量短小精悍，同时永久化呢？</p><p>感谢 <a href="https://github.com/rozbo/hexo-abbrlink" target="_blank" rel="noopener">rozbo/hexo-abbrlink</a>，完美解决此痛点。</p><p>使用方法也很简单：</p><ol><li>在 Hexo 博客根目录，执行 <code>npm install hexo-abbrlink --save</code> </li><li>在 <code>_config.yml</code> 配置文件写入</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># abbrlink config</span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc16 #support crc16(default) and crc32</span><br><span class="line">  rep: hex    #support dec(default) and hex</span><br><span class="line"></span><br><span class="line"># 更改 permalink 值（这个属性已存在，不需另写）</span><br><span class="line">permalink: codeant/:abbrlink.html</span><br></pre></td></tr></table></figure><hr>]]></content>
     
     <summary type="html">
     
@@ -121,7 +144,7 @@
     <published>2019-03-18T02:11:49.000Z</published>
     <updated>2019-03-18T04:39:14.426Z</updated>
     
-    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="通行证(密码是123，输入后按回车)" />    <label for="pass">通行证(密码是123，输入后按回车)</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX1/MrOnbQJ/AI7QfRuRUdykuGSqP6d4D6coDU41I15n/UjeR+HV53LWVAB1OUH5mFTyPdxmVLg/9pHXOGVVdQv3clFvmdV9dJna84BucFROkCpTxosJSCWpxaWhny8rFP85OVmS+6IImEr0VL0L7lsxGsfjz51FpIGpxt0sjLm8OWYnqWoW/CeO1twnbaqvywiilWXSRsIX5rkqmxNj2bT4wVjH0ZfsPOBPQLMTo4EcDcu2bqtTgYMmMlFW8HbPINjOX8F+Ta3R90jRtkkbNGo0fmk8jG8d4p0nD4LAUm5PyymaT2DvtFywe5WUZS7xQNdAd+5bgUFHirkMO/u1HwVavxbPjCkjY8TTp+KrEnSgDxazqXlafIC+KqXx46TaIW3TYJiSsL8AKkGuDb2T7WGctA/v3iqfcqk2k0rAtCe5cSUzwhcm/OrBqRtrJlRyo8El36qwIWabooRUYB76DvzW06WYYoaKPlE2m1Bpxj+ULw4pkvtKbnnzvhyJP9eIAUFEOzjGvu+z8PuOluCrdHkGdoqDmOD15hEuB+ntgbu0Bsyvep/G6h70gGRuTx/mvo4FQCY1IlkUWsi12Egy13crqqYLETj74IWceOUegRe9nFcqChb62edipv3ns1Mk7OBoSV/vjzLzYJzvmdbQS73V0R7DCzodK6kn8nbq2E6rUQBt4hQMnCOOo3FudEJT/CsOUpQfeCdrPjA7AlVaYr8QvQJtprFJLx6My1kFPvxJcdIhQm/IHTeypjF6EHV1YjuU5S/80eFCv2mFIyjPlpbaVMAPpPCxZ3y7X5LawzOHcdbOIMzhXIwwg2ixuUgKFOsfVy5RSVAc1M/V3wUTfz37m6IsfexsPyFT/SYJW/bSSJpas3Pabsz+xi8u5zsvmeo6rFOku8BW9iHhZyKv8Gvw3Ipyp+LVsdw3qi8TORUQTs305LcQr9XgVGpjQnywEHzq5s8H36OgrQI9642lbQoR76F+WJyQPzJ/q4HrIxj2U0Y2U+II+mZU6PflROjEebWR6U98M+lAlXr1PCuW91hzIQtlA/wd5wN0N7XpKvcEix1olCHH2DGf4</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="通行证(密码是123，输入后按回车)" />    <label for="pass">通行证(密码是123，输入后按回车)</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">U2FsdGVkX18zPrv9YMHFBc99KAEunkzol3WBcylRrkHnCwGbI6O4mvpzI8zohSafowuoIN/YGP8Ce7/JcP24TZJKSUR+SLAGAHs5nLcYH81PHJFZBoaN4AumBBn0Pyy30mJvd4BrzKrxY0cycR86OAz85ZQdtd98n3E9qlFemHK6U4xXQkOOi5jhpsCu+k2V4PK4z2fEJT+Kv99EazMxOq/aTT8vu5xsKOp3zp82Ud/l41F3kVg+xihwSntK0QODkfXR9kSPN0FfXy5EinPS7RtjTeD9wp+wpy82MPS/Ouan8Z33nX9VvgabrkzfJ66/jyESv8kFQVaRZVKuT9bYU7gr0Cp3s226qdrGPa6tLRy0iMUn/sIxQU+0w0mlBtS5qbYJwdsyQLYhHeaM6ps0EoFG1j1PJ5qhf1gcP43zdRYLix4EhHDD4vbN3NlUEhUSbk/cCfbWVgjy4XoGgG+Sk1rC1gPsL7/SbDlNQkE5gJMPFcCRVrPdOox6ZlDOK/c7PixdKRwBc/bqWGuIKxoL2vs3+ON0dxt/D91N+pva8B0b0G4ICjAuP9vfLIWHS3fgolBBKZsLYsqcAA87H6ZpgQKugTaxozGRXoxu8F/T1iKno/zBZk2qrYIpmCmtDZty5Df9OgZhlqFM+VIMdhsbhf4eftSvoS5CQSdC1O9qyBUg8AZcYlXrMS5QJCCDv76DnMlL3PDkciDZDejJ0xbbMnn3jImHZiy8M34nrN0uAtewnPgbDEMHy4BGTRdB/Oncd7EnjXdzTZugWQJ7C5XDfgYorazJgpfh8uke7zC2bPLilX4fzr07fPf3TXemgSFMd673cH95Vrd28I4Kog5P2i/aLr7WDhvFfytA7Un79PK016w0DY/ThzgXxqNRA9LPrSO3aqRYEviBUsvXJP1jItYC4ej9M/F2Z7lgQ8FAzhFCVBk7azMvPL06uK8Z5sY2fcwBtSR5UBWkU49c2xMj5orWmZHkCbh/Q1NheAhWfrbMDUwG7dLeQEovhcGdzUZV+MaBj4zsYIRrCcu/7Y0GuUpYk+ME0wxT0tLAM3fWLBTtHVEmbqNv6bXhkkO+mrgf</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     <summary type="html">
     
