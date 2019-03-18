@@ -9,18 +9,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>Archives: 2018/3 | Code Ant&#39;s Blog</title>
+  <title>Java-java基础知识--面试 | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="千里之堤，溃于蚁穴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Code Ant&#39;s Blog">
-<meta property="og:url" content="https://lijinhongpassion.github.io/archives/2018/03/index.html">
+  <meta name="description" content="[TOC]">
+<meta name="keywords" content="java,java面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-java基础知识--面试">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/e524.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
-<meta property="og:description" content="千里之堤，溃于蚁穴">
+<meta property="og:description" content="[TOC]">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-18T09:36:49.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code Ant&#39;s Blog">
-<meta name="twitter:description" content="千里之堤，溃于蚁穴">
+<meta name="twitter:title" content="Java-java基础知识--面试">
+<meta name="twitter:description" content="[TOC]">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -188,49 +190,338 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java-java基础知识-面试" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/209.html" class="archive-article-date">
-  	<time datetime="2018-03-17T04:19:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-17</time>
+      <header class="article-header">
+	  
+        
+		
+        
+        <a href="/codeant/e524.html" class="archive-article-date">
+  	<time datetime="2019-03-18T08:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
 </a>
-        </div>
-    	 
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+		
+		<center><p>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/209.html">this is a test</a>
+    </p><h1 class="article-title_code_ant" itemprop="name">
+      Java-java基础知识--面试
     </h1>
   
+<p></p></center>
+	
+      
+        <hr>
+<p>[TOC]</p>
+<a id="more"></a>
+<center><br><br>​    <span>City—羽肿</span><br><br>​    <audio controls> <source src="http://music.163.com/song/media/outer/url?id=451319227.mp3" type="audio/mpeg"> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>
 
-        <div class="article-info info-on-right">
-          
-          
+<hr>
+<h2 id="一、java中-和equals和hashCode的区别"><a href="#一、java中-和equals和hashCode的区别" class="headerlink" title="一、java中==和equals和hashCode的区别"></a>一、java中==和equals和hashCode的区别</h2><p>###1、==</p>
+<p>java中的数据类型，可分为两类：</p>
+<ul>
+<li><p>基本数据类型，也称原始数据类型</p>
+<p>​    byte,short,char,int,long,float,double,boolean（全部是小写） 他们之间的比较，应用双等号（==）,<strong>比较是他们的值</strong>。 </p>
+<hr>
+</li>
+</ul>
+<ul>
+<li><p>引用类型(类、接口、数组)   </p>
+<p>​    当他们用（==）进行比较的时候，<strong>比较的是他们在内存中的存放地址</strong>，所以，除非是同一个new出来的对象，他们的比较后的结果为true，否则比较后结果为false。</p>
+<p><strong>对象是放在堆中的，栈中存放的是对象的引用（地址）</strong>。由此可见’==’<strong>是对栈中的值进行比较的</strong>。如果要比较堆中对象的内容是否相同，那么就要重写equals方法了。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">int</span> int1 = <span class="number">12</span>;  </span><br><span class="line">        <span class="keyword">int</span> int2 = <span class="number">12</span>;  </span><br><span class="line">        Integer Integer1 = <span class="keyword">new</span> Integer(<span class="number">12</span>);  </span><br><span class="line">        Integer Integer2 = <span class="keyword">new</span> Integer(<span class="number">12</span>);  </span><br><span class="line">        Integer Integer3 = <span class="keyword">new</span> Integer(<span class="number">127</span>);  </span><br><span class="line">  </span><br><span class="line">        Integer a1 = <span class="number">127</span>;  </span><br><span class="line">        Integer b1 = <span class="number">127</span>;  </span><br><span class="line">  </span><br><span class="line">        Integer a = <span class="number">128</span>;  </span><br><span class="line">        Integer b = <span class="number">128</span>;  </span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"int1==int2:"</span> + (int1 == int2));  </span><br><span class="line">        System.out.println(<span class="string">"int1==Integer1:"</span> + (int1 == Integer1));  </span><br><span class="line">        System.out.println(<span class="string">"Integer1==Integer2:"</span> + (Integer1 == Integer2));  </span><br><span class="line">        System.out.println(<span class="string">"Integer3==b1:"</span> + (Integer3 == b1));  </span><br><span class="line">        System.out.println(<span class="string">"a1==b1:"</span> + (a1 == b1));  </span><br><span class="line">        System.out.println(<span class="string">"a==b:"</span> + (a == b));  </span><br><span class="line">  </span><br><span class="line">        String s1 = <span class="string">"str"</span>;  </span><br><span class="line">        String s2 = <span class="string">"str"</span>;  </span><br><span class="line">        String str1 = <span class="keyword">new</span> String(<span class="string">"str"</span>);  </span><br><span class="line">        String str2 = <span class="keyword">new</span> String(<span class="string">"str"</span>);  </span><br><span class="line">  </span><br><span class="line">        System.out.println(<span class="string">"s1==s2:"</span> + (s1 == s2));  </span><br><span class="line">        System.out.println(<span class="string">"s1==str1:"</span> + (s1 == str1));  </span><br><span class="line">        System.out.println(<span class="string">"str1==str2:"</span> + (str1 == str2));  </span><br><span class="line">  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>结果为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int1==int2:<span class="keyword">true</span></span><br><span class="line">int1==Integer1:<span class="keyword">true</span> <span class="comment">//Integer会自动拆箱为int，所以为true</span></span><br><span class="line">Integer1==Integer2:<span class="keyword">false</span><span class="comment">//不同对象，在内存存放地址不同，所以为false</span></span><br><span class="line">Integer3==b1:<span class="keyword">false</span><span class="comment">//Integer3指向new的对象地址，b1指向缓存中127地址，地址不同，所以为false</span></span><br><span class="line"></span><br><span class="line">a1==b1:<span class="keyword">true</span></span><br><span class="line">a==b:<span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">s1==s2:<span class="keyword">true</span></span><br><span class="line">s1==str1:<span class="keyword">false</span></span><br><span class="line">str1==str2:<span class="keyword">false</span></span><br><span class="line"></span><br><span class="line">Integer b1 = <span class="number">127</span>;java在编译的时候,被翻译成-&gt; Integer b1 = Integer.valueOf(<span class="number">127</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<p>###2、equals</p>
+<ul>
+<li><p>默认情况（没有覆盖equals方法）</p>
+<p>​    equals方法都是调用Object类的equals方法，而Object的equals方法主要用于判断对象的内存地址引用是不是同一个地址（是不是同一个对象）。也就是说，<strong>没有重写的equals方法跟“==”是等效的。</strong>下面是Object类中equals方法： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">    return (this == obj);  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em>特别指出利用equals比较八大包装对象（如int，float等）和String类（因为该类已重写了equals和hashcode方法）对象时，默认比较的是值，在比较其它自定义对象时都是比较的引用地址。</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object anObject)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == anObject) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span> (anObject <span class="keyword">instanceof</span> String) &#123;  </span><br><span class="line">        String anotherString = (String)anObject;  </span><br><span class="line">        <span class="keyword">int</span> n = count;  </span><br><span class="line">        <span class="keyword">if</span> (n == anotherString.count) &#123;  </span><br><span class="line">        <span class="keyword">char</span> v1[] = value;  </span><br><span class="line">        <span class="keyword">char</span> v2[] = anotherString.value;  </span><br><span class="line">        <span class="keyword">int</span> i = offset;  </span><br><span class="line">        <span class="keyword">int</span> j = anotherString.offset;  </span><br><span class="line">        <span class="keyword">while</span> (n-- != <span class="number">0</span>) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (v1[i++] != v2[j++])  </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>即String中equals方法判断相等的步骤是：</p>
+<p>1.若A==B 即是同一个String对象 返回true</p>
+<p>2.若对比对象是String类型则继续，否则返回false</p>
+<p>3.判断A、B长度是否一样，不一样的话返回false</p>
+<p>4。逐个字符比较，若有不相等字符，返回false</p>
+<hr>
+</li>
+</ul>
+<ul>
+<li><p>重写equals方法</p>
+<p>重写equals方法的目的是判断两个对象的内容(内容可以有很多，比如同时比较姓名和年龄，同时相同的才是用一个对象)是否相同 </p>
+</li>
+</ul>
+<hr>
+<h3 id="3、hashCode"><a href="#3、hashCode" class="headerlink" title="3、hashCode"></a>3、hashCode</h3><p>​    hashCode()方法返回的就是一个数值，从方法的名称上就可以看出，其目的是生成一个hash码。hash码的主要用途就是在对对象进行散列的时候作为key输入，据此很容易推断出，我们需要每个对象的hash码尽可能不同，这样才能保证散列的存取性能。事实上，Object类提供的默认实现确实保证每个对象的hash码不同（在对象的内存地址基础上经过特定算法返回一个hash码）。Java采用了哈希表的原理。哈希（Hash）实际上是个人名，由于他提出一哈希算法的概念，所以就以他的名字命名了。 哈希算法也称为散列算法，是将数据依特定算法直接指定到一个地址上。初学者可以这样理解，hashCode方法实际上返回的就是对象存储的物理地址（实际可能并不是）。   </p>
+<ul>
+<li><p>3.1 hashCode的作用</p>
+<p>​    想要明白，必须要先知道Java中的集合。　　 </p>
+<pre><code>总的来说，Java中的集合（Collection）有两类，一类是List，再有一类是Set。前者集合内的元素是有序的，元素可以重复；后者元素无序，但元素不可重复。那么这里就有一个比较严重的问题了：
+</code></pre><p><strong>要想保证元素不重复，可两个元素是否重复应该依据什么来判断呢？</strong> </p>
+<p>​    <strong>这就是Object.equals方法了。但是，如果每增加一个元素就检查一次，那么当元素很多时，后添加到集合中的元素比较的次数就非常多了。也就是说，如果集合中现在已经有1000个元素，那么第1001个元素加入集合时，它就要调用1000次equals方法。这显然会大大降低效率。   于是，Java采用了哈希表的原理。</strong>  </p>
+<p>​    这样一来，当集合要添加新的元素时，先调用这个元素的hashCode方法，就一下子能定位到它应该放置的物理位置上。 如果这个位置上没有元素，它就可以直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了，就调用它的equals方法与新元素进行比较，相同的话就不存，不相同就散列其它的地址。所以这里存在一个冲突解决的问题。这样一来实际调用equals方法的次数就大大降低了，几乎只需要一两次。</p>
+</li>
+</ul>
+<hr>
+<h3 id="4、equal-和hashCode-关系"><a href="#4、equal-和hashCode-关系" class="headerlink" title="4、equal()和hashCode()关系"></a>4、equal()和hashCode()关系</h3><p>Java对于eqauls方法和hashCode方法是这样规定的： </p>
+<p>​    (1)同一对象上多次调用hashCode()方法，总是返回相同的整型值。</p>
+<p>​    (2)如果a.equals(b)，则一定有a.hashCode() 一定等于 b.hashCode()。 </p>
+<p>​    (3)如果!a.equals(b)，则a.hashCode() 不一定等于 b.hashCode()。此时如果a.hashCode() 总是不等于 b.hashCode()，会提高hashtables的性能。</p>
+<p>​    (4)a.hashCode()==b.hashCode() 则 a.equals(b)可真可假</p>
+<p>​    (5)a.hashCode()！= b.hashCode() 则 a.equals(b)为假。 </p>
+<p>上面结论简记：</p>
+<p>1、如果两个对象equals，Java运行时环境会认为他们的hashcode一定相等。<br>2、如果两个对象不equals，他们的hashcode有可能相等。<br>3、如果两个对象hashcode相等，他们不一定equals。<br>4、如果两个对象hashcode不相等，他们一定不equals。 </p>
+<p>关于这两个方法的重要规范： </p>
+<p>规范1：若重写equals(Object obj)方法，有必要重写hashcode()方法，确保通过equals(Object obj)方法判断结果为true的两个对象具备相等的hashcode()返回值。说得简单点就是：“如果两个对象相同，那么他们的hashcode应该相等”。不过请注意：这个只是规范，如果你非要写一个类让equals(Object obj)返回true而hashcode()返回两个不相等的值，编译和运行都是不会报错的。不过这样违反了Java规范，程序也就埋下了BUG。 </p>
+<p>规范2：如果equals(Object obj)返回false，即两个对象“不相同”，并不要求对这两个对象调用hashcode()方法得到两个不相同的数。说的简单点就是：“如果两个对象不相同，他们的hashcode可能相同”。 </p>
+<hr>
+<h3 id="5、为什么覆盖equals时总要覆盖hashCode"><a href="#5、为什么覆盖equals时总要覆盖hashCode" class="headerlink" title="5、为什么覆盖equals时总要覆盖hashCode"></a>5、为什么覆盖equals时总要覆盖hashCode</h3><p>​    一个很常见的错误根源在于没有覆盖hashCode方法。在每个覆盖了equals方法的类中，也必须覆盖hashCode方法。如果不这样做的话，就会违反Object.hashCode的通用约定，从而导致该类无法结合所有基于散列的集合一起正常运作，这样的集合包括HashMap、HashSet和Hashtable。</p>
+<p>​    1.在应用程序的执行期间，只要对象的equals方法的比较操作所用到的信息没有被修改，那么对这同一个对象调用多次，hashCode方法都必须始终如一地返回同一个整数。在同一个应用程序的多次执行过程中，每次执行所返回的整数可以不一致。</p>
+<p>​    2.如果两个对象根据equals()方法比较是相等的，那么调用这两个对象中任意一个对象的hashCode方法都必须产生同样的整数结果。</p>
+<p>​    3.如果两个对象根据equals()方法比较是不相等的，那么调用这两个对象中任意一个对象的hashCode方法，则不一定要产生相同的整数结果。但是程序员应该知道，给不相等的对象产生截然不同的整数结果，有可能提高散列表的性能。</p>
+<h3 id="6、总结："><a href="#6、总结：" class="headerlink" title="6、总结："></a>6、总结：</h3><pre><code>1、equals方法用于比较对象的内容是否相等（覆盖以后）
+</code></pre><p>​    2、hashcode方法只有在集合中用到  </p>
+<p>​    3、当覆盖了equals方法时，比较对象是否相等将通过覆盖后的equals方法进行比较（判断对象的内容是否相等）。  </p>
+<p>​    4、将对象放入到集合中时，首先判断要放入对象的hashcode值与集合中的任意一个元素的hashcode值是否相等，如果不相等直接将该对象放入集合中。如果hashcode值相等，然后再通过equals方法判断要放入对象与集合中的任意一个对象是否相等，如果equals判断不相等，直接将该元素放入到集合中，否则不放入。 </p>
+<hr>
 
+      
+		
+		
+		
+		
+		  <div>
+			<blockquote>
+				<strong>本文作者：</strong>
+				
+				  Code Ant
+				
+				<br>
+				<strong>本文链接：</strong>
+				https://lijinhongpassion.github.io/codeant/e524.html
+				<br>
+				<strong>版权声明：</strong>
+				本作品采用
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+				进行许可。转载请注明出处！
+				
+				  <br>
+				  <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+				
+			</blockquote>
+			
+			
+			<hr>
+				<center><strong>感谢有你，伴我成长。</strong></center>
+			<hr>
+		  </div>
+		
+		
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>山高路不平，给一块钱行不行。哈哈<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java面试//" class="article-tag-list-link color2">java面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lijinhongpassion.github.io/codeant/e524.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2019年计划
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/codeant/5752.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo添加分类</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、java中-和equals和hashCode的区别"><span class="toc-number">1.</span> <span class="toc-text">一、java中==和equals和hashCode的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3、hashCode"><span class="toc-number">1.1.</span> <span class="toc-text">3、hashCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、equal-和hashCode-关系"><span class="toc-number">1.2.</span> <span class="toc-text">4、equal()和hashCode()关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、为什么覆盖equals时总要覆盖hashCode"><span class="toc-number">1.3.</span> <span class="toc-text">5、为什么覆盖equals时总要覆盖hashCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、总结："><span class="toc-number">1.4.</span> <span class="toc-text">6、总结：</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<!--<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">-->
+<!--<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Mon Mar 18 2019 16:32:37 GMT+0800',
+  owner: 'LiJinHongPassion',
+  repo: 'LiJinHongPassion.github.io',
+  oauth: {
+    client_id: '5ad7ec70a25067e86139',
+    client_secret: '21a8b9052808acddd0734e828103e88beabd97c5',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -263,8 +554,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
