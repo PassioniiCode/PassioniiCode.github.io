@@ -9,18 +9,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>Archives | Code Ant&#39;s Blog</title>
+  <title>Java-spring-初始ioc | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="千里之堤，溃于蚁穴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Code Ant&#39;s Blog">
-<meta property="og:url" content="https://lijinhongpassion.github.io/archives/page/2/index.html">
+  <meta name="keywords" content="spring,ioc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-spring-初始ioc">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/21a0.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
-<meta property="og:description" content="千里之堤，溃于蚁穴">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.unsplash.com/photo-1553643708-aec66e92104b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/6.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/7.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/8.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/9.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/10.png">
+<meta property="og:updated_time" content="2019-03-27T13:33:47.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code Ant&#39;s Blog">
-<meta name="twitter:description" content="千里之堤，溃于蚁穴">
+<meta name="twitter:title" content="Java-spring-初始ioc">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1553643708-aec66e92104b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -207,447 +218,318 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java-spring-初始ioc" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+	  
+        
+		
+        
+        <a href="/codeant/21a0.html" class="archive-article-date">
+  	<time datetime="2019-03-27T10:36:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+		
+		<center><p>
+  
+    </p><h1 class="article-title_code_ant" itemprop="name">
+      Java-spring-初始ioc
+    </h1>
+  
+<p></p></center>
+	
+      
+        <hr>
+<p><img src="https://images.unsplash.com/photo-1553643708-aec66e92104b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt></p>
+<a id="more"></a>
+<center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
+
+<hr>
+<h1 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h1><p><strong>控制反转</strong>（Inversion of Control，缩写为<strong>IoC</strong>），是<a href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B" target="_blank" rel="noopener">面向对象编程</a>中的一种设计原则，可以用来减低计算机代码之间的<a href="https://baike.baidu.com/item/%E8%80%A6%E5%90%88%E5%BA%A6" target="_blank" rel="noopener">耦合度</a>。其中最常见的方式叫做<strong>依赖注入</strong>（Dependency Injection，简称<strong>DI</strong>），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。也可以说，依赖被注入到对象中。 </p>
+<h1 id="技术描述"><a href="#技术描述" class="headerlink" title="技术描述"></a>技术描述</h1><p>Class A中用到了Class B的对象b，一般情况下，需要在A的代码中显式的new一个B的对象。</p>
+<p>采用依赖注入技术之后，A的代码只需要定义一个私有的B对象，不需要直接new来获得这个对象，而是通过相关的容器控制程序来将B对象在外部new出来并注入到A类里的引用中。而具体获取的方法、对象被获取时的状态由配置文件（如XML）来指定。</p>
+<p>我从github上找到Spring的精简版，根据这个精简版慢慢深入了解spring的ioc，末尾我会给出github地址。</p>
+<h1 id="step-1"><a href="#step-1" class="headerlink" title="step-1"></a>step-1</h1><p><strong>BeanFactory.java</strong></p>
+<p>bean工厂,里面包含了bean容器(Map&lt;String, <strong>BeanDefinition</strong>&gt; beanDefinitionMap)以及注册定义bean的操作(getBean、registerBeanDefinition)</p>
+<img src="/codeant/undefined/1.png" title="1.png">
+<p><strong>BeanDefinition.java</strong></p>
+<p>定义bean,是对bean的再一次包装，这列我称BeanDefinition.java为<strong>定义bean</strong>,与bean区分开，以免混淆；定义bean里面封装了bean的一些属性和<strong>属性名为bean的Object对象</strong>，<strong>强调这个Object对象，在后面依赖注入的时候会将bean的实例化对象（这里的实例化对象不是通过new出来的，是通过反射的方法得到的）存储在这个Obejct对象里；</strong></p>
+<p>为了更好的理解定义bean的作用，我举个例子，在BeanFactory.java中我提到beanDefinitionMap（类型是Map&lt;String, <strong>BeanDefinition</strong>&gt;）为一个容器，BeanDefinition可以看作是一个容器里面的小格子，这个小格子里面装的是关于bean的众多信息。</p>
+<img src="/codeant/undefined/2.png" title="2.png">
+<hr>
+<p><strong>测试</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.初始化beanfactory</span><br><span class="line">2.注入bean</span><br><span class="line">3.获取bean</span><br><span class="line">这里不贴代码，只贴思路</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="step-2"><a href="#step-2" class="headerlink" title="step-2"></a>step-2</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在step-1的基础上</span><br><span class="line">1. 抽象beanfactory</span><br><span class="line">2. 将bean初始化放入beanfactory</span><br></pre></td></tr></table></figure>
+<p>抽象后的结构</p>
+<img src="/codeant/undefined/3.png" title="3.png">
+<img src="/codeant/undefined/4.png" title="4.png">
+<hr>
+<h1 id="step-3"><a href="#step-3" class="headerlink" title="step-3"></a>step-3</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在step-2的基础上在BeanDefinition里添加PropertyValues.java</span><br><span class="line">PropertyValue.java： 类似于键值对，存储name：value</span><br><span class="line">PropertyValues.java：内部有一个list集合，list&lt;PropertyValue&gt;,为什么这里单独拿一个类封装而不是直接用List?因为可以封装一些操作。可以对于重复Name进行判断，直接用list没法做到</span><br></pre></td></tr></table></figure>
+<img src="/codeant/undefined/5.png" title="5.png">
+<hr>
+<p><strong>测试</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.初始化beanfactory</span><br><span class="line">2.bean定义</span><br><span class="line">3.设置属性</span><br><span class="line">4.生成bean</span><br><span class="line">5.获取bean</span><br><span class="line">这里不贴代码，只贴思路</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="step-4"><a href="#step-4" class="headerlink" title="step-4"></a>step-4</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">联想：</span><br><span class="line">只要使用过spring的人都是到spring的bean是由xml文件配置的，在这里我们现在就能够猜想下一步操作，是不是可以把定义bean中的属性都填写到一个xml文件里面，然后通过io来筛选出我们想要的结果</span><br><span class="line">实现：</span><br><span class="line">在step-3的基础上增加了io板块（也就是spring内部定位资源的方法），定位到了资源我们还要筛选文件里面的内容，由XmlBeanDefinitionReader.java实现</span><br></pre></td></tr></table></figure>
+<img src="/codeant/undefined/6.png" title="6.png">
+<img src="/codeant/undefined/7.png" title="7.png">
+<p><strong>注意：</strong>你会发现抽象类AbstractBeanFactory.java里有一构造方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 抽象类的构造方法不能直接调用 因为抽象类不能实现实例</span><br><span class="line">* 但是一旦一个普通类继承了抽象类 便也可以在构造函数中调用其抽象类的构造函数</span><br><span class="line">* 也可以使用其方法</span><br><span class="line">* 可以这么理解吧 抽象类就是一个不能实例化的不同类</span><br><span class="line">* 不过如果方法加了abstract那么就必须在子类里面重写了</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>测试</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.读取xml配置文件</span><br><span class="line">2.初始化BeanFactory并注册bean</span><br><span class="line">3.获取bean</span><br><span class="line">这里不贴代码，只贴思路</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="step-5"><a href="#step-5" class="headerlink" title="step-5"></a>step-5</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">联想：</span><br><span class="line">这里我们能够从配置文件里面读取bean了，我们还能添加 &lt;property&gt;标签</span><br><span class="line">&lt;bean name=&quot;helloWorldService&quot; class=&quot;us.codecraft.tinyioc.HelloWorldService&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;text&quot; value=&quot;Hello World!&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">但是当outputService是一个java类时候，简单的key：value，xml是可扩展标记语言，能够输入字符串，但是不能存储实例化对象，所以我们要解决这个问题。</span><br><span class="line">&lt;bean name=&quot;helloWorldService&quot; class=&quot;us.codecraft.tinyioc.HelloWorldService&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;text&quot; value=&quot;Hello World!&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;outputService&quot; ref=&quot;outputService&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>已有条件：</strong></p>
+<img src="/codeant/undefined/8.png" title="8.png">    <img src="/codeant/undefined/9.png" title="9.png">
+<p><strong>新建条件：</strong></p>
+<img src="/codeant/undefined/10.png" title="10.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">思路：</span><br><span class="line">通过不同的标签来辨别是字符串还是对象</span><br><span class="line">1.如果是value，就直接存储到PropertyValue</span><br><span class="line">2.如果是ref，则按以下代码执行，其中的XmlBeanDefinitionReader.java-&gt;processProperty方法-&gt;beanReference的bean属性为null，以及XmlBeanDefinitionReader.java-&gt;processBeanDefinition方法-&gt;beanDefinition的bean属性也为null</span><br><span class="line">3.自动装配，解决bean属性为unll</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BeanReference beanReference = <span class="keyword">new</span> BeanReference(ref);</span><br><span class="line">beanDefinition.getPropertyValues().addPropertyValue(<span class="keyword">new</span> PropertyValue(name, beanReference));</span><br></pre></td></tr></table></figure>
+<p><strong>实现自动装配（</strong>AbstractBeanFactory.java实现）</p>
+<p>step-4中（没有实现自动装配）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getBean</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> beanDefinitionMap.get(name).getBean();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinition</span><span class="params">(String name, BeanDefinition beanDefinition)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Object bean = doCreateBean(beanDefinition);</span><br><span class="line">        beanDefinition.setBean(bean);</span><br><span class="line">        beanDefinitionMap.put(name, beanDefinition);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// 1.读取配置</span></span><br><span class="line">		XmlBeanDefinitionReader xmlBeanDefinitionReader = <span class="keyword">new</span> XmlBeanDefinitionReader(<span class="keyword">new</span> ResourceLoader());</span><br><span class="line">		xmlBeanDefinitionReader.loadBeanDefinitions(<span class="string">"tinyioc.xml"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 2.初始化BeanFactory并注册bean</span></span><br><span class="line">		BeanFactory beanFactory = <span class="keyword">new</span> AutowireCapableBeanFactory();</span><br><span class="line">		<span class="keyword">for</span> (Map.Entry&lt;String, BeanDefinition&gt; beanDefinitionEntry :</span><br><span class="line">				xmlBeanDefinitionReader.getRegistry().entrySet()) &#123;</span><br><span class="line">			<span class="comment">//循环将xml方式读取出来的BeanDefinition注册到AbstractBeanFactory-&gt;beanDefinitionMap容器里</span></span><br><span class="line">			beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 3.获取bean</span></span><br><span class="line">		HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean(<span class="string">"helloWorldService"</span>);</span><br><span class="line">		helloWorldService.helloWorld();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>step-5中（实现自动装配）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment">	 * 该方法在原有的基础上更改了对索获取的name的验证，在beanDefinitionMap中查找name是否存在，不存在</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getBean</span><span class="params">(String name)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		BeanDefinition beanDefinition = beanDefinitionMap.get(name);</span><br><span class="line">		<span class="keyword">if</span> (beanDefinition == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No bean named "</span> + name + <span class="string">" is defined"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		Object bean = beanDefinition.getBean();</span><br><span class="line">		<span class="keyword">if</span> (bean == <span class="keyword">null</span>) &#123;</span><br><span class="line">			bean = doCreateBean(beanDefinition);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> bean;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinition</span><span class="params">(String name, BeanDefinition beanDefinition)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		beanDefinitionMap.put(name, beanDefinition);</span><br><span class="line">		beanDefinitionNames.add(name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preInstantiateSingletons</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (Iterator it = <span class="keyword">this</span>.beanDefinitionNames.iterator(); it.hasNext();) &#123;</span><br><span class="line">			String beanName = (String) it.next();</span><br><span class="line">			getBean(beanName);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 懒加载，需要初始化bean的时候，才对这个需要操作的对象进行初始化</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLazy</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 1.读取配置</span></span><br><span class="line">        XmlBeanDefinitionReader xmlBeanDefinitionReader = <span class="keyword">new</span> XmlBeanDefinitionReader(<span class="keyword">new</span> ResourceLoader());</span><br><span class="line">        xmlBeanDefinitionReader.loadBeanDefinitions(<span class="string">"tinyioc.xml"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.初始化BeanFactory并注册bean，但是还没有实例化。就是说BeanDefinition里面的bean属性为null，也就是说这里还没有注入bean的实例</span></span><br><span class="line">        AbstractBeanFactory beanFactory = <span class="keyword">new</span> AutowireCapableBeanFactory();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, BeanDefinition&gt; beanDefinitionEntry : xmlBeanDefinitionReader.getRegistry().entrySet()) &#123;</span><br><span class="line">            beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.获取bean</span></span><br><span class="line">        HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean(<span class="string">"helloWorldService"</span>);</span><br><span class="line">        helloWorldService.helloWorld();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * beanFactory.preInstantiateSingletons()用到了beanDefinitionNames（存储已经在容器注册的所有bean的name）</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPreInstantiate</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// 1.读取配置</span></span><br><span class="line">		XmlBeanDefinitionReader xmlBeanDefinitionReader = <span class="keyword">new</span> XmlBeanDefinitionReader(<span class="keyword">new</span> ResourceLoader());</span><br><span class="line">		xmlBeanDefinitionReader.loadBeanDefinitions(<span class="string">"tinyioc.xml"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 2.初始化BeanFactory并注册bean</span></span><br><span class="line">		AbstractBeanFactory beanFactory = <span class="keyword">new</span> AutowireCapableBeanFactory();</span><br><span class="line">		<span class="keyword">for</span> (Map.Entry&lt;String, BeanDefinition&gt; beanDefinitionEntry : xmlBeanDefinitionReader.getRegistry().entrySet()) &#123;</span><br><span class="line">			beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.初始化用到了beanDefinitionNames中的所有bean</span></span><br><span class="line">        beanFactory.preInstantiateSingletons();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 4.获取bean</span></span><br><span class="line">		HelloWorldService helloWorldService = (HelloWorldService) beanFactory.getBean(<span class="string">"helloWorldService"</span>);</span><br><span class="line">		helloWorldService.helloWorld();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://github.com/code4craft/tiny-spring/releases" target="_blank" rel="noopener">tiny-spring中step1-step5</a></p>
+
+      
+		
+		
+		
+		
+		  <div>
+			<blockquote>
+				<strong>本文作者：</strong>
+				
+				  Code Ant
+				
+				<br>
+				<strong>本文链接：</strong>
+				https://lijinhongpassion.github.io/codeant/21a0.html
+				<br>
+				<strong>版权声明：</strong>
+				本作品采用
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+				进行许可。转载请注明出处！
+				
+				  <br>
+				  <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>
+				
+			</blockquote>
+			
+			
+			<hr>
+				<center><strong>感谢有你，伴我成长。</strong></center>
+			<hr>
+		  </div>
+		
+		
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>山高路不平，给一块钱行不行。哈哈<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/61549.html" class="archive-article-date">
-  	<time datetime="2019-03-18T05:26:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/61549.html">hexo设置短地址</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/34400.html" class="archive-article-date">
-  	<time datetime="2019-03-18T04:44:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/34400.html">Yilia加密文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/59360.html" class="archive-article-date">
-  	<time datetime="2019-03-18T03:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/59360.html">hexo添加RSS订阅功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rss</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/4312.html" class="archive-article-date">
-  	<time datetime="2019-03-18T02:11:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/4312.html">example-this-is-a-password-example</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">example</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/31561.html" class="archive-article-date">
-  	<time datetime="2019-03-17T13:19:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/31561.html">Java-ssm静态资源无法访问的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ssm框架//" class="article-tag-list-link color1">ssm框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/1766.html" class="archive-article-date">
-  	<time datetime="2019-03-17T12:14:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/1766.html">Java-mybatis集成redis二级缓存方法+原理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ssm框架//" class="article-tag-list-link color1">ssm框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/48469.html" class="archive-article-date">
-  	<time datetime="2019-03-17T10:04:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/48469.html">Java-解析spring、springmvc、mybatis整合过程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssm</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ioc</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/ssm框架//" class="article-tag-list-link color1">ssm框架</a>
+        			<a href="/categories/spring//" class="article-tag-list-link color2">spring</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lijinhongpassion.github.io/codeant/21a0.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/9189.html" class="archive-article-date">
-  	<time datetime="2019-03-17T04:50:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2019年计划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/codeant/c4ec.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java-ssm聚合工程搭建教程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/9189.html">Yilia个人博客添加版权声明</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#官方解释"><span class="toc-number">1.</span> <span class="toc-text">官方解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#技术描述"><span class="toc-number">2.</span> <span class="toc-text">技术描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#step-1"><span class="toc-number">3.</span> <span class="toc-text">step-1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#step-2"><span class="toc-number">4.</span> <span class="toc-text">step-2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#step-3"><span class="toc-number">5.</span> <span class="toc-text">step-3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#step-4"><span class="toc-number">6.</span> <span class="toc-text">step-4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#step-5"><span class="toc-number">7.</span> <span class="toc-text">step-5</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<!--<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">-->
+<!--<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Wed Mar 27 2019 18:36:39 GMT+0800',
+  owner: 'LiJinHongPassion',
+  repo: 'LiJinHongPassion.github.io',
+  oauth: {
+    client_id: '5ad7ec70a25067e86139',
+    client_secret: '21a8b9052808acddd0734e828103e88beabd97c5',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -681,8 +563,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
