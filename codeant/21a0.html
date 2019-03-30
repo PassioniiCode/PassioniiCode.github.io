@@ -9,28 +9,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>Java-spring-初始ioc | Code Ant&#39;s Blog</title>
+  <title>Java-spring-初识ioc | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="spring,ioc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java-spring-初始ioc">
+<meta property="og:title" content="Java-spring-初识ioc">
 <meta property="og:url" content="https://lijinhongpassion.github.io/codeant/21a0.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1553643708-aec66e92104b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/6.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/7.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/8.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/9.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/10.png">
-<meta property="og:updated_time" content="2019-03-27T13:33:47.459Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/6.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/7.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/8.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/9.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/21a0/10.png">
+<meta property="og:updated_time" content="2019-03-30T07:04:53.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java-spring-初始ioc">
+<meta name="twitter:title" content="Java-spring-初识ioc">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1553643708-aec66e92104b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
@@ -237,7 +237,7 @@ var _hmt = _hmt || [];
 		<center><p>
   
     </p><h1 class="article-title_code_ant" itemprop="name">
-      Java-spring-初始ioc
+      Java-spring-初识ioc
     </h1>
   
 <p></p></center>
@@ -255,29 +255,29 @@ var _hmt = _hmt || [];
 <p>我从github上找到Spring的精简版，根据这个精简版慢慢深入了解spring的ioc，末尾我会给出github地址。</p>
 <h1 id="step-1"><a href="#step-1" class="headerlink" title="step-1"></a>step-1</h1><p><strong>BeanFactory.java</strong></p>
 <p>bean工厂,里面包含了bean容器(Map&lt;String, <strong>BeanDefinition</strong>&gt; beanDefinitionMap)以及注册定义bean的操作(getBean、registerBeanDefinition)</p>
-<img src="/codeant/undefined/1.png" title="1.png">
+<img src="/codeant/21a0/1.png" title="1.png">
 <p><strong>BeanDefinition.java</strong></p>
 <p>定义bean,是对bean的再一次包装，这列我称BeanDefinition.java为<strong>定义bean</strong>,与bean区分开，以免混淆；定义bean里面封装了bean的一些属性和<strong>属性名为bean的Object对象</strong>，<strong>强调这个Object对象，在后面依赖注入的时候会将bean的实例化对象（这里的实例化对象不是通过new出来的，是通过反射的方法得到的）存储在这个Obejct对象里；</strong></p>
 <p>为了更好的理解定义bean的作用，我举个例子，在BeanFactory.java中我提到beanDefinitionMap（类型是Map&lt;String, <strong>BeanDefinition</strong>&gt;）为一个容器，BeanDefinition可以看作是一个容器里面的小格子，这个小格子里面装的是关于bean的众多信息。</p>
-<img src="/codeant/undefined/2.png" title="2.png">
+<img src="/codeant/21a0/2.png" title="2.png">
 <hr>
 <p><strong>测试</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.初始化beanfactory</span><br><span class="line">2.注入bean</span><br><span class="line">3.获取bean</span><br><span class="line">这里不贴代码，只贴思路</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="step-2"><a href="#step-2" class="headerlink" title="step-2"></a>step-2</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在step-1的基础上</span><br><span class="line">1. 抽象beanfactory</span><br><span class="line">2. 将bean初始化放入beanfactory</span><br></pre></td></tr></table></figure>
 <p>抽象后的结构</p>
-<img src="/codeant/undefined/3.png" title="3.png">
-<img src="/codeant/undefined/4.png" title="4.png">
+<img src="/codeant/21a0/3.png" title="3.png">
+<img src="/codeant/21a0/4.png" title="4.png">
 <hr>
 <h1 id="step-3"><a href="#step-3" class="headerlink" title="step-3"></a>step-3</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在step-2的基础上在BeanDefinition里添加PropertyValues.java</span><br><span class="line">PropertyValue.java： 类似于键值对，存储name：value</span><br><span class="line">PropertyValues.java：内部有一个list集合，list&lt;PropertyValue&gt;,为什么这里单独拿一个类封装而不是直接用List?因为可以封装一些操作。可以对于重复Name进行判断，直接用list没法做到</span><br></pre></td></tr></table></figure>
-<img src="/codeant/undefined/5.png" title="5.png">
+<img src="/codeant/21a0/5.png" title="5.png">
 <hr>
 <p><strong>测试</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.初始化beanfactory</span><br><span class="line">2.bean定义</span><br><span class="line">3.设置属性</span><br><span class="line">4.生成bean</span><br><span class="line">5.获取bean</span><br><span class="line">这里不贴代码，只贴思路</span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="step-4"><a href="#step-4" class="headerlink" title="step-4"></a>step-4</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">联想：</span><br><span class="line">只要使用过spring的人都是到spring的bean是由xml文件配置的，在这里我们现在就能够猜想下一步操作，是不是可以把定义bean中的属性都填写到一个xml文件里面，然后通过io来筛选出我们想要的结果</span><br><span class="line">实现：</span><br><span class="line">在step-3的基础上增加了io板块（也就是spring内部定位资源的方法），定位到了资源我们还要筛选文件里面的内容，由XmlBeanDefinitionReader.java实现</span><br></pre></td></tr></table></figure>
-<img src="/codeant/undefined/6.png" title="6.png">
-<img src="/codeant/undefined/7.png" title="7.png">
+<img src="/codeant/21a0/6.png" title="6.png">
+<img src="/codeant/21a0/7.png" title="7.png">
 <p><strong>注意：</strong>你会发现抽象类AbstractBeanFactory.java里有一构造方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* 抽象类的构造方法不能直接调用 因为抽象类不能实现实例</span><br><span class="line">* 但是一旦一个普通类继承了抽象类 便也可以在构造函数中调用其抽象类的构造函数</span><br><span class="line">* 也可以使用其方法</span><br><span class="line">* 可以这么理解吧 抽象类就是一个不能实例化的不同类</span><br><span class="line">* 不过如果方法加了abstract那么就必须在子类里面重写了</span><br></pre></td></tr></table></figure>
 <hr>
@@ -286,9 +286,9 @@ var _hmt = _hmt || [];
 <hr>
 <h1 id="step-5"><a href="#step-5" class="headerlink" title="step-5"></a>step-5</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">联想：</span><br><span class="line">这里我们能够从配置文件里面读取bean了，我们还能添加 &lt;property&gt;标签</span><br><span class="line">&lt;bean name=&quot;helloWorldService&quot; class=&quot;us.codecraft.tinyioc.HelloWorldService&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;text&quot; value=&quot;Hello World!&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">但是当outputService是一个java类时候，简单的key：value，xml是可扩展标记语言，能够输入字符串，但是不能存储实例化对象，所以我们要解决这个问题。</span><br><span class="line">&lt;bean name=&quot;helloWorldService&quot; class=&quot;us.codecraft.tinyioc.HelloWorldService&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;text&quot; value=&quot;Hello World!&quot;&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;outputService&quot; ref=&quot;outputService&quot;&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>已有条件：</strong></p>
-<img src="/codeant/undefined/8.png" title="8.png">    <img src="/codeant/undefined/9.png" title="9.png">
+<img src="/codeant/21a0/8.png" title="8.png">    <img src="/codeant/21a0/9.png" title="9.png">
 <p><strong>新建条件：</strong></p>
-<img src="/codeant/undefined/10.png" title="10.png">
+<img src="/codeant/21a0/10.png" title="10.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">思路：</span><br><span class="line">通过不同的标签来辨别是字符串还是对象</span><br><span class="line">1.如果是value，就直接存储到PropertyValue</span><br><span class="line">2.如果是ref，则按以下代码执行，其中的XmlBeanDefinitionReader.java-&gt;processProperty方法-&gt;beanReference的bean属性为null，以及XmlBeanDefinitionReader.java-&gt;processBeanDefinition方法-&gt;beanDefinition的bean属性也为null</span><br><span class="line">3.自动装配，解决bean属性为unll</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BeanReference beanReference = <span class="keyword">new</span> BeanReference(ref);</span><br><span class="line">beanDefinition.getPropertyValues().addPropertyValue(<span class="keyword">new</span> PropertyValue(name, beanReference));</span><br></pre></td></tr></table></figure>
 <p><strong>实现自动装配（</strong>AbstractBeanFactory.java实现）</p>
@@ -455,11 +455,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/89a4.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2019年计划
+          Java_NIO_尚硅谷笔记
         
       </div>
     </a>
@@ -655,6 +655,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">example</a>
               </li>
              
@@ -663,19 +667,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,6 +696,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">java，nio</a>
               </li>
             
             <div class="clearfix"></div>
