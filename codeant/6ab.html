@@ -18,16 +18,16 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1553949333-0510da388b82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/6ab/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/6ab/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/6ab/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/6ab/4.png">
 <meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/6ab/5.png">
 <meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
 <meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
-<meta property="og:updated_time" content="2019-03-31T11:02:15.453Z">
+<meta property="og:updated_time" content="2019-03-31T11:03:01.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-nginx详解（转载）">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1553949333-0510da388b82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
@@ -249,7 +249,7 @@ var _hmt = _hmt || [];
 
 <hr>
 <h2 id="Nginx是什么"><a href="#Nginx是什么" class="headerlink" title="Nginx是什么"></a>Nginx是什么</h2><p><strong>代理服务器</strong>：一般是指局域网内部的机器通过代理服务器发送请求到互联网上的服务器,代理服务器一般作用在客户端。应用比如：GoAgent，FQ神器.</p>
- <img src="/codeant/undefined/1.png" title="1.png">
+ <img src="/codeant/6ab/1.png" title="1.png">
 <p> <strong>一个完整的代理请求过程为</strong>：客户端首先与代理服务器创建连接，接着根据代理服务器所使用的代理协议，请求对目标服务器创建连接、或者获得目标服务器的指定资源。 Web代理（proxy）服务器是网络的中间实体。 代理位于Web客户端和Web服务器之间，扮演“中间人”的角色。HTTP的代理服务器即是Web服务器又是Web客户端。</p>
 <p>代理服务器是介于客户端和Web服务器之间的另一台服务器，有了它之后，浏览器不是直接到Web服务器去取回网页而是向代理服务器发出请求，信号会先送到代理服务器，由代理服务器来取回浏览器所需要的信息并传送给你的浏览器。</p>
 <p><strong>正向代理</strong> ：是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
@@ -257,7 +257,7 @@ var _hmt = _hmt || [];
 <p>Nginx：Nginx (“engine x”) ，Nginx (“engine x”) 是俄罗斯人Igor Sysoev(塞索耶夫)编写的一款高性能的 HTTP 和反向代理服务器。也是一个IMAP/POP3/SMTP代理服务器；也就是说，Nginx本身就可以托管网站，进行HTTP服务处理，也可以作为反向代理服务器使用。</p>
 <p><strong>说明：</strong>客户端必须设置正向代理服务器，当然前提是要知道正向代理服务器的IP地址，还有代理程序的端口。</p>
 <p>反向代理正好与正向代理相反，对于客户端而言代理服务器就像是原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间(name-space)中的内容发送普通请求，接着反向代理将判断向何处(原始服务器)转交请求，并将获得的内容返回给客户端。</p>
-  <img src="/codeant/undefined/2.png" title="2.png">
+  <img src="/codeant/6ab/2.png" title="2.png">
 <p>用户A始终认为它访问的是原始服务器B而不是代理服务器Z，但实用际上反向代理服务器接受用户A的应答，从原始资源服务器B中取得用户A的需求资源，然后发送给用户A。由于防火墙的作用，只允许代理服务器Z访问原始资源服务器B。尽管在这个虚拟的环境下，防火墙和反向代理的共同作用保护了原始资源服务器B，但用户A并不知情。 </p>
 <h2 id="Nginx的应用现状"><a href="#Nginx的应用现状" class="headerlink" title="Nginx的应用现状"></a>Nginx的应用现状</h2><p>​    Nginx 已经在俄罗斯最大的门户网站── Rambler Media（<a href="http://www.rambler.ru）上运行了3年时间，同时俄罗斯超过20%的虚拟主机平台采用Nginx作为反向代理服务器。在国内，已经有" target="_blank" rel="noopener">www.rambler.ru）上运行了3年时间，同时俄罗斯超过20%的虚拟主机平台采用Nginx作为反向代理服务器。在国内，已经有</a> 淘宝、新浪博客、新浪播客、网易新闻、六间房、56.com、Discuz!、水木社区、豆瓣、YUPOO、海内、迅雷在线 等多家网站使用 Nginx 作为Web服务器或反向代理服务器。</p>
 <h2 id="Nginx的特点"><a href="#Nginx的特点" class="headerlink" title="Nginx的特点"></a>Nginx的特点</h2><ul>
@@ -287,7 +287,7 @@ var _hmt = _hmt || [];
 <p>3、发送响应报文时，是边接收来自后端web服务器的数据，边发送给客户端的</p>
 <p>4、网络依赖型低。NGINX对网络的依赖程度非常低，理论上讲，只要能够ping通就可以实施负载均衡，而且可以有效区分内网和外网流量</p>
 <p>5、支持服务器检测。NGINX能够根据应用服务器处理页面返回的状态码、超时信息等检测服务器是否出现故障，并及时返回错误的请求重新提交到其它节点上</p>
-<h2 id="Nginx的内部-进程-模型"><a href="#Nginx的内部-进程-模型" class="headerlink" title="Nginx的内部(进程)模型"></a>Nginx的内部(进程)模型</h2><img src="/codeant/undefined/3.png" title="3.png">
+<h2 id="Nginx的内部-进程-模型"><a href="#Nginx的内部-进程-模型" class="headerlink" title="Nginx的内部(进程)模型"></a>Nginx的内部(进程)模型</h2><img src="/codeant/6ab/3.png" title="3.png">
 <p>nginx是以多进程的方式来工作的，当然nginx也是支持多线程的方式的,只是我们主流的方式还是多进程的方式，也是nginx的默认方式。nginx采用多进程的方式有诸多好处 .</p>
 <p> (1) nginx在启动后，会有一个master进程和多个worker进程。master进程主要用来管理worker进程，包含：接收来自外界的信号，向各worker进程发送信号，监控 worker进程的运行状态,当worker进程退出后(异常情况下)，会自动重新启动新的worker进程。而基本的网络事件，则是放在worker进程中来处理了 。多个worker进程之间是对等的，他们同等竞争来自客户端的请求，各进程互相之间是独立的 。一个请求，只可能在一个worker进程中处理，一个worker进程，不可能处理其它进程的请求。 worker进程的个数是可以设置的，一般我们会设置与机器cpu核数一致，这里面的原因与nginx的进程模型以及事件处理模型是分不开的 。</p>
 <p>(2)Master接收到信号以后怎样进行处理（./nginx -s reload ）?首先master进程在接到信号后，会先重新加载配置文件，然后再启动新的进程，并向所有老的进程发送信号，告诉他们可以光荣退休了。新的进程在启动后，就开始接收新的请求，而老的进程在收到来自master的信号后，就不再接收新的请求，并且在当前进程中的所有未处理完的请求处理完成后，再退出 .</p>
@@ -298,7 +298,7 @@ var _hmt = _hmt || [];
 <p>当然，nginx也是可以作为客户端来请求其它server的数据的（如upstream模块），此时，与其它server创建的连接，也封装在ngx_connection_t中。作为客户端，nginx先获取一个ngx_connection_t结构体，然后创建socket，并设置socket的属性（ 比如非阻塞）。然后再通过添加读写事件，调用connect/read/write来调用连接，最后关掉连接，并释放ngx_connection_t。 </p>
 <p><strong>说明</strong>：nginx在实现时，是通过一个连接池来管理的，每个worker进程都有一个独立的连接池，连接池的大小是worker_connections。这里的连接池里面保存的其实不是真实的连接，它只是一个worker_connections大小的一个ngx_connection_t结构的数组。并且，nginx会通过一个链表free_connections来保存所有的空闲ngx_connection_t，每次获取一个连接时，就从空闲连接链表中获取一个，用完后，再放回空闲连接链表里面。 </p>
 <p>在这里，很多人会误解worker_connections这个参数的意思，认为这个值就是nginx所能建立连接的最大值。其实不然，这个值是表示每个worker进程所能建立连接的最大值，所以，一个nginx能建立的最大连接数，应该是worker_connections <em> worker_processes。当然，这里说的是最大连接数，对于HTTP请求本地资源来说，能够支持的最大并发数量是worker_connections </em> worker_processes，而如果是HTTP作为反向代理来说，最大并发数量应该是worker_connections * worker_processes/2。因为作为反向代理服务器，每个并发会建立与客户端的连接和与后端服务的连接，会占用两个连接。 </p>
-<h2 id="Nginx典型的应用场景"><a href="#Nginx典型的应用场景" class="headerlink" title="Nginx典型的应用场景"></a>Nginx典型的应用场景</h2><img src="/codeant/undefined/4.png" title="4.png">
+<h2 id="Nginx典型的应用场景"><a href="#Nginx典型的应用场景" class="headerlink" title="Nginx典型的应用场景"></a>Nginx典型的应用场景</h2><img src="/codeant/6ab/4.png" title="4.png">
 <p>负载均衡技术在现有网络结构之上提供了一种廉价、有效、透明的方法，来扩展网络设备和服务器的带宽、增加吞吐量、加强网络数据处理能力、提高网络的 灵活性和可用性。它有两方面的含义：首先，大量的并发访问或数据流量分担到多台节点设备上分别处理，减少用户等待响应的时间；其次，单个重负载的运算分担 到多台节点设备上做并行处理，每个节点设备处理结束后，将结果汇总，返回给用户，系统处理能力得到大幅度提高 </p>
 <h2 id="Nginx的应用"><a href="#Nginx的应用" class="headerlink" title="Nginx的应用"></a>Nginx的应用</h2><p>1、到官网下载Windows版本，下载地址：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a></p>
 <p>2、解压到磁盘任一目录</p>
@@ -348,7 +348,7 @@ var _hmt = _hmt || [];
 <p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
 <p>更详细的模块参数请参考：<a href="http://wiki.nginx.org/Main" target="_blank" rel="noopener">http://wiki.nginx.org/Main</a></p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>Nginx+IIS服务器搭建服务器集群</p>
- <img src="/codeant/undefined/5.png" title="5.png">
+ <img src="/codeant/6ab/5.png" title="5.png">
 <h2 id="配置静态资源"><a href="#配置静态资源" class="headerlink" title="配置静态资源"></a>配置静态资源</h2><p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.(jpg|png|jpeg|bmp|gif|swf|css)$  </span><br><span class="line">          &#123;  </span><br><span class="line">              expires 30d;  </span><br><span class="line">               root /nginx-1.4.7;#root:  </span><br><span class="line">              break;  </span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
 <p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
@@ -508,11 +508,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/7f99.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2019年计划
+          Java-nginx+tomcat集群的简单实现(包括解决session共享问题)
         
       </div>
     </a>
@@ -700,11 +700,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,7 +728,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,11 +744,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
