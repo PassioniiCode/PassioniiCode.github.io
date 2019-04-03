@@ -18,9 +18,9 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1554196694-aa2baaa903a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:updated_time" content="2019-04-02T12:11:25.951Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/7f99/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/7f99/1.png">
+<meta property="og:updated_time" content="2019-04-02T12:12:28.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-nginx+tomcat集群的简单实现(包括解决session共享问题)">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1554196694-aa2baaa903a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80">
@@ -242,7 +242,7 @@ var _hmt = _hmt || [];
 
 <hr>
 <p>#简述<br><strong>服务器集群：</strong>就是指将很多服务器集中起来一起进行同一种服务，在客户端看来就像是只有一个服务器。集群可以利用多个计算机进行并行计算从而获得很高的计算速度，也可以用多个计算机做备份，从而使得任何一个机器坏了整个系统还是能正常运行。</p>
-<p>关于nginx+tomcat的集群实现配置可以看<a href="https://lijinhongpassion.github.io/codeant/7339.html">之前的文章(Java的nginx的基础配置详解)</a>,下面是本次实现的简单架构图：<br><img src="/codeant/undefined/1.png" title="1.png"></p>
+<p>关于nginx+tomcat的集群实现配置可以看<a href="https://lijinhongpassion.github.io/codeant/7339.html">之前的文章(Java的nginx的基础配置详解)</a>,下面是本次实现的简单架构图：<br><img src="/codeant/7f99/1.png" title="1.png"></p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h1><p>当服务器集群过后会发生这样一种现象，当用户在tomcat-A上登录过后，用户下一次请求未必会被nginx发送给tomcat-A，假如发送给tomcat-B处理，而tomcat-B上并没有用户的会话信息，就会导致用户重新验证信息，这样大大降低了用户体验。所以我们需要解决session共享问题。</p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a><strong>方法</strong></h1><ol>
 <li>ip hash：针对nginx进行配置，每个ip只能访问固定的服务器，也就是说用户A通过ip hash第一次访问tomcat-A，在他后面的请求就只能发送给tomcat-A。这种方式是session不共享。缺点是会导致nginx负载不均衡。</li>
@@ -251,7 +251,7 @@ var _hmt = _hmt || [];
 <ol start="2">
 <li>redis：如图所示，tomcat-A,B,C都有共同的数据源，将session存储到数据源中共同管理，就实现了session共享。为什么选择非关系型数据库redis作为数据源？首先redis的读写性能，读110000次/秒，写80000次/秒，相比mysql快速很多。其次数据的特性，session数据主要提供的是验证功能，针对这一类数据并没有持久化的需求，所以存储在缓存中会更快速的响应用户。</li>
 </ol>
-<img src="/codeant/undefined/1.png" title="1.png">
+<img src="/codeant/7f99/1.png" title="1.png">
 <p>例子：<a href="https://github.com/LiJinHongPassion/test_ssm_redis" target="_blank" rel="noopener">https://github.com/LiJinHongPassion/test_ssm_redis</a> </p>
 
       
@@ -595,7 +595,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,7 +603,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,7 +611,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +619,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">example</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">example</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,10 +644,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ioc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
