@@ -17,13 +17,14 @@
 <meta property="og:url" content="https://lijinhongpassion.github.io/codeant/7bf5.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:updated_time" content="2019-04-08T14:49:43.183Z">
+<meta property="og:image" content="https://images.unsplash.com/flagged/photo-1554443883-83db889b4007?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/7bf5/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/7bf5/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/7bf5/3.png">
+<meta property="og:updated_time" content="2019-04-08T14:56:46.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-大型网站技术架构（李智慧著）">
-<meta name="twitter:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
+<meta name="twitter:image" content="https://images.unsplash.com/flagged/photo-1554443883-83db889b4007?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -236,16 +237,17 @@ var _hmt = _hmt || [];
 	
       
         <hr>
+<p><img src="https://images.unsplash.com/flagged/photo-1554443883-83db889b4007?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80" alt></p>
 <a id="more"></a>
 <center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
 <p>#简述<br>最近想学习分布式，但是一直苦于不知道怎么入门。所以就去网上淘了一本关于web架构入门的书。这本书中并没有什么代码，主要是web架构的发展。我认为对于javaweb的初学者很有必要看一下这本书，对后面学习java很有帮助。本文章是针对笔者的弱项进行的知识补充。<br><strong>pdf下载链接：<a href="https://pan.baidu.com/s/1i6LWNUt" target="_blank" rel="noopener">https://pan.baidu.com/s/1i6LWNUt</a> 密码：o7nc</strong></p>
-<p>#第一章 大型架构演化<br><img src="/codeant/undefined/1.png" title="1.png"><br>上图是<strong>书籍上演示的</strong>最后网站架构，在这个架构上大多数问题都能够得到解决。但是在演变过程中的业务拆分不是特别理解，也就是对消息队列（服务器）概念不清楚，它是什么，怎么用。<br>**参考文章：<a href="http://www.codeceo.com/article/web-archte-message-queue.html?from=timeline&amp;isappinstalled=0#10006-weixin-1-52626-6b3bffd01fdde4900130bc5a2751b6d1" target="_blank" rel="noopener">http://www.codeceo.com/article/web-archte-message-queue.html?from=timeline&amp;isappinstalled=0#10006-weixin-1-52626-6b3bffd01fdde4900130bc5a2751b6d1</a></p>
+<p>#第一章 大型架构演化<br><img src="/codeant/7bf5/1.png" title="1.png"><br>上图是<strong>书籍上演示的</strong>最后网站架构，在这个架构上大多数问题都能够得到解决。但是在演变过程中的业务拆分不是特别理解，也就是对消息队列（服务器）概念不清楚，它是什么，怎么用。<br>**参考文章：<a href="http://www.codeceo.com/article/web-archte-message-queue.html?from=timeline&amp;isappinstalled=0#10006-weixin-1-52626-6b3bffd01fdde4900130bc5a2751b6d1" target="_blank" rel="noopener">http://www.codeceo.com/article/web-archte-message-queue.html?from=timeline&amp;isappinstalled=0#10006-weixin-1-52626-6b3bffd01fdde4900130bc5a2751b6d1</a></p>
 <p>其实从字面意思理解也能够大致想到消息队列的作用。</p>
 <p>在实际应用中常用的使用场景，异步处理，应用解耦，流量削锋和消息通讯四个场景。 </p>
 <p>下面举个应用解耦例子：</p>
-<p>场景说明：用户下单后，订单系统需要通知库存系统。传统的做法是，订单系统调用库存系统的接口。<br><img src="/codeant/undefined/2.png" title="2.png"><br>传统模式的缺点：<br>1）  假如库存系统无法访问，则订单减库存将失败，从而导致订单失败；<br>2）  订单系统与库存系统耦合；<br>如何解决以上问题呢？引入应用消息队列后的方案，如下图：<br><img src="/codeant/undefined/3.png" title="3.png"><br>订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功。<br>库存系统：订阅下单的消息，采用拉/推的方式，获取下单信息，库存系统根据下单信息，进行库存操作。<br><strong>假如：在下单时库存系统不能正常使用。也不影响正常下单，因为下单后，订单系统写入消息队列就不再关心其他的后续操作了。实现订单系统与库存系统的应用解耦。</strong></p>
+<p>场景说明：用户下单后，订单系统需要通知库存系统。传统的做法是，订单系统调用库存系统的接口。<br><img src="/codeant/7bf5/2.png" title="2.png"><br>传统模式的缺点：<br>1）  假如库存系统无法访问，则订单减库存将失败，从而导致订单失败；<br>2）  订单系统与库存系统耦合；<br>如何解决以上问题呢？引入应用消息队列后的方案，如下图：<br><img src="/codeant/7bf5/3.png" title="3.png"><br>订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功。<br>库存系统：订阅下单的消息，采用拉/推的方式，获取下单信息，库存系统根据下单信息，进行库存操作。<br><strong>假如：在下单时库存系统不能正常使用。也不影响正常下单，因为下单后，订单系统写入消息队列就不再关心其他的后续操作了。实现订单系统与库存系统的应用解耦。</strong></p>
 <p>#第二章 大型网站架构模式 </p>
 <ol>
 <li><p>分层<br>横向维度进行分层</p>
@@ -467,8 +469,8 @@ var _hmt = _hmt || [];
     </a>
   
   
-    <a href="/codeant/29d7.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">springboot中文文档[译]</div>
+    <a href="/codeant/20de.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java-spring&amp;springboot配置文件转换</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -661,11 +663,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,6 +687,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -693,11 +699,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,7 +711,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,10 +724,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">nio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
