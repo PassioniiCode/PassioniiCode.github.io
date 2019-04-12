@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://lijinhongpassion.github.io/codeant/573a.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
-<meta property="og:updated_time" content="2019-04-12T11:17:00.073Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/573a/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/573a/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/573a/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/573a/4.png">
+<meta property="og:updated_time" content="2019-04-12T11:20:11.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-日志框架类别&amp;配置&amp;使用">
-<meta name="twitter:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
+<meta name="twitter:image" content="https://lijinhongpassion.github.io/codeant/573a/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -272,11 +272,11 @@ var _hmt = _hmt || [];
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="1、如何在系统中使用SLF4j-https-www-slf4j-org-manual-html"><a href="#1、如何在系统中使用SLF4j-https-www-slf4j-org-manual-html" class="headerlink" title="1、如何在系统中使用SLF4j   https://www.slf4j.org/manual.html"></a>1、如何在系统中使用SLF4j   <a href="https://www.slf4j.org/manual.html" target="_blank" rel="noopener">https://www.slf4j.org/manual.html</a></h3><p>以后开发的时候，日志记录方法的调用，<strong>不应该来直接调用日志的实现类，而是调用日志抽象层里面的方法</strong>；</p>
 <p>给系统里面导入slf4j的jar和  logback的实现jar</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Logger logger = LoggerFactory.getLogger(HelloWorld.class);</span><br><span class="line">    logger.info(<span class="string">"Hello World"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>图示：<img src="/codeant/undefined/1.png" title="1.png"></p>
+<p>图示：<img src="/codeant/573a/1.png" title="1.png"></p>
 <p>每一个日志的实现框架都有自己的配置文件。使用slf4j以后，<strong>配置文件还是做成日志实现框架自己本身的配置文件；</strong></p>
 <h3 id="2、统一框架日志https-www-slf4j-org-legacy-html"><a href="#2、统一框架日志https-www-slf4j-org-legacy-html" class="headerlink" title="2、统一框架日志https://www.slf4j.org/legacy.html"></a>2、统一框架日志<a href="https://www.slf4j.org/legacy.html" target="_blank" rel="noopener">https://www.slf4j.org/legacy.html</a></h3><p>一个系统中可能会有spring,mybatis等框架，但是不同框架使用的日志框架不一样，如何统一日志框架？</p>
 <p><strong>统一日志记录，即使是别的框架和我一起统一使用slf4j进行输出</strong></p>
-<img src="/codeant/undefined/2.png" title="2.png">
+<img src="/codeant/573a/2.png" title="2.png">
 <p><strong>如何让系统中所有的日志都统一到slf4j；</strong></p>
 <p>1、将系统中其他日志框架先排除出去；</p>
 <p>2、用中间包来替换原有的日志框架；</p>
@@ -286,12 +286,12 @@ var _hmt = _hmt || [];
 <p>SpringBoot使用它来做日志功能；</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>底层依赖关系</p>
-<img src="/codeant/undefined/3.png" title="3.png">
+<img src="/codeant/573a/3.png" title="3.png">
 <p>总结：</p>
 <p>​    1）、SpringBoot底层也是使用slf4j+logback的方式进行日志记录</p>
 <p>​    2）、SpringBoot也把其他的日志都替换成了slf4j；</p>
 <p>​    3）、中间替换包</p>
-<img src="/codeant/undefined/4.png" title="4.png">
+<img src="/codeant/573a/4.png" title="4.png">
 <p>​    4）、如果我们要引入其他框架？一定要把这个框架的默认日志依赖移除掉？</p>
 <p>​            Spring框架用的是commons-logging；</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -763,10 +763,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
@@ -787,14 +783,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">logging</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
@@ -803,7 +791,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">logging</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
