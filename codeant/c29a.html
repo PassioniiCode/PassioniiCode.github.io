@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/1.png">
-<meta property="og:updated_time" content="2019-04-12T11:40:43.875Z">
+<meta property="og:updated_time" content="2019-04-12T16:23:55.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-图解HTTP">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -519,7 +519,7 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr>
-<td>Cache-Control</td>
+<td><strong>Cache-Control</strong></td>
 <td>控制缓存的行为</td>
 </tr>
 <tr>
@@ -556,6 +556,48 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
+<p>粗体指令为常用指令</p>
+<p><strong>Cache-Control：</strong></p>
+<ul>
+<li>可缓存性<ul>
+<li><strong>public：</strong>表明其他用户也可以利用缓存</li>
+<li><strong>private：</strong>缓存服务器会对该特定用户提供资源缓存服务，<strong>对于其他用户发来的请求，缓存服务器则不会返回缓存</strong></li>
+<li><strong>no-Cache</strong>（不缓存过期的资源）：<ul>
+<li>客户端：客户端发送的请求中包含no-cache指令，表示客户端不会接收缓存过的响应，则中间的缓存服务器（例如nginx服务器）必须将请求转发给源服务器</li>
+<li>服务器端：若是服务器端返回的响应中包含no-cache指令（response.setHeader(……)），那么缓存服务器（例如nginx）就不能对资源进行缓存；<strong>并且在以后都不会再对缓存服务器请求中提出的资源有效性进行确认，且禁止其对响应的资源进行缓存</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>缓存期限和认证<ul>
+<li>s-maxage：该指令和max-age相同，不同点是s-maxage只适用于供对为用户使用的公共缓存服务器（<strong>也就是说只有在代理服务器才会生效</strong>），max-age是在<strong>客户端生效</strong>；使用该指令过后，会忽略对Expires首部字段和max-age指令的处理；eg : Cache-Control:s-maxage=604800（单位秒）</li>
+<li><strong>max-age：</strong>缓存在未过期的时间内是访问的客户端本地的缓存，当缓存过期后才会访问服务器；eg : Cache-Control:max-age=604800（单位秒）</li>
+<li>max-stale：只能由客户端发起请求；客户端对过期的请求接收；eg:Cache-Control:max-stale=604800（<strong>资源过期时间在指定时间内，才会被客户端接收</strong>）； Cache-Control:max-stale（不设置参数表示不论资源过期多久，都接收）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>重新验证<ul>
+<li>must-revalidate：这是用在客户端的；在设置了max-age的缓存资源过期后，那我们必须去源服务端重新获取资源，来验证这个缓存资源是否真的过期，而不能直接使用本地缓存；</li>
+<li>proxy-revalidate：要求<strong>所有的</strong>缓存服务器<strong>接收到客户端带有该指令请求</strong>，在返回响应之前，必须在此验证缓存的有效性。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>其他</p>
+<ul>
+<li><p>no-store（不缓存）：暗示请求（和对应的响应）或者响应中包含机密信息，该指令表示在本地存储不能缓存请求或者响应的任一部分</p>
+</li>
+<li><p>no-transform：表示无论在请求还是响应中，缓存都不能改变实体主体的媒体类型；这样做可防止缓存或代理压缩图片等类似操作。</p>
+</li>
+</ul>
+</li>
+</ul>
 <p><strong>2. 请求首部字段  </strong>–19  </p>
 <p>​                               </p>
 <table>
@@ -644,7 +686,7 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<p><strong>3.响应首部字段</strong>–10</p>
+<p><strong>3.响应首部字段</strong>–9</p>
 <table>
 <thead>
 <tr>
@@ -662,11 +704,7 @@ var _hmt = _hmt || [];
 <td>推算资源创建经过时间</td>
 </tr>
 <tr>
-<td>Content-Disposition</td>
-<td>可以控制返回的资源是下载还是预览（图片）</td>
-</tr>
-<tr>
-<td>ETag</td>
+<td><strong>ETag</strong></td>
 <td>资源的匹配信息</td>
 </tr>
 <tr>
@@ -695,6 +733,10 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
+<p><strong>ETag：</strong></p>
+<p>数据签名，它是一种可将资源以字符串形式做唯一性标识的方式。服务器端会为每份资源分配对应的ETag值。用ETag来标记唯一资源；</p>
+<p>配合if-Match或者if-Non-Match使用（比较实体标记（ETag）），这两个字段都是请求首部字段</p>
+<p>服务器获取到字段后对比ETag，判断是否返回一个新的资源</p>
 <p><strong>4. 实体首部字段  </strong>–10</p>
 <table>
 <thead>
@@ -741,11 +783,53 @@ var _hmt = _hmt || [];
 <td>实体主体过期的日期时间</td>
 </tr>
 <tr>
-<td>Last-Modified</td>
+<td><strong>Last-Modified</strong></td>
 <td>资源的最后修改日期时间</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Last-Modified：</strong></p>
+<p>配合If-Modified-Since或者If-Unmodified-Since使用，比较资源的更新时间，这俩个字段是请求首部字段 </p>
+<p><strong>5、为Cookie服务的首部字段</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>说明</th>
+<th>首部类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set-Cookie</td>
+<td>开始状态管理所使用的Cookie信息</td>
+<td>响应首部字段</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>服务器接收到的Cookie信息</td>
+<td>请求首部字段</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Set-Cookie字段</strong>的属性</p>
+<p>| 属性         | 说明                                                         |<br>| ———— | ———————————————————— |<br>| NAME=VALUE   | 赋予Cookie名称和值（必须项）eg:id = ‘1312’                   |<br>| expires=Date | Cookie的有效期（若是不明确有效期或者没有设置，则Cookie的有效期为游览器关闭为止） |<br>| path=PATH    | 将服务器上的文件目录作为Cookie的适用对象（若不指定则默认为文档所在的文件目录） |<br>| domain=域名  | 作为Cookie适用对象的域名（若不明确则默认为创建Cookie的服务器的域名） |<br>| Secure       | 仅在HTTPS安全通信时才会发送Cookie                            |<br>| HttpOnly     | 加以限制，使Cookie不能被javascript脚本访问                   |</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: Set-Cookie: id=&apos;123&apos;; HttpOnly</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Cookie</p>
+<p>当服务器通过set-cookie设置cookie信息返回响应给客户端，客户端接收到以后，就将响应首部字段中的set-cookie的cookie信息根据所设置的属性保存等；</p>
+<p>在下一次发送请求的时候根据属性要求将cookie信息写入请求首部字段cookie，再发送；</p>
+<p>客户端接收到多个cookie时，同样可以以多个cookie形式返回给服务器；</p>
+</li>
+</ul>
+<p><strong>6、其他首部字段</strong></p>
+<ul>
+<li>X-Frame_Options</li>
+<li>X-Xss_Protection</li>
+<li>DNT</li>
+<li>P3P</li>
+</ul>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="noopener">首部字段</a></p>
 
       
@@ -1094,10 +1178,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
@@ -1111,6 +1191,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">example</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1154,10 +1238,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
               </li>
              
@@ -1166,15 +1246,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
