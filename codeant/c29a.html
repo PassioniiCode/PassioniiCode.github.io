@@ -19,7 +19,12 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/1.png">
-<meta property="og:updated_time" content="2019-04-12T16:23:55.226Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/6.png">
+<meta property="og:updated_time" content="2019-04-13T05:59:10.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-图解HTTP">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -341,12 +346,12 @@ var _hmt = _hmt || [];
 <td>多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择</td>
 </tr>
 <tr>
-<td>301</td>
+<td><strong>301</strong></td>
 <td style="text-align:left">Moved Permanently</td>
 <td>永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
 </tr>
 <tr>
-<td>302</td>
+<td><strong>302</strong></td>
 <td style="text-align:left">Found</td>
 <td>临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
 </tr>
@@ -507,6 +512,11 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
+<p><strong>301与302</strong></p>
+<ul>
+<li>301：永久跳转，客户端发送请求访问‘/test’的资源，游览器接收到后，因为‘/test’资源路径改变，返回301并设置响应首部字段’Location’:’/newtest’，告诉客户端在下次访问‘/test’的时候，<strong>在客户端直接更改为’/newtest’</strong></li>
+<li>302：临时跳转,客户端发送请求访问‘/test’的资源，游览器接收到后，因为‘/test’资源路径改变，返回302并设置响应首部字段’Location’:’/newtest’，告诉客户端临时跳转到’/newtest’；客户端在下次访问‘/test’资源还是会重复上面的操作，并不会在客户端直接更改访问资源的路径</li>
+</ul>
 <p>#2 HTTP结构</p>
 <img src="/codeant/c29a/1.png" title="1.png">
 <p>#3 HTTP首部<br><strong>1. 通用首部字段</strong>–9</p>
@@ -556,8 +566,8 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<p>粗体指令为常用指令</p>
 <p><strong>Cache-Control：</strong></p>
+<p>粗体指令为常用指令</p>
 <ul>
 <li>可缓存性<ul>
 <li><strong>public：</strong>表明其他用户也可以利用缓存</li>
@@ -598,6 +608,23 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
+<p><strong>Connection：</strong></p>
+<p>作用</p>
+<ul>
+<li>控制不再转发给代理首部字段</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: Connection: Upgeade    //表示首部字段中upgrade字段会被从http中删除后在转发</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>管理持久化连接</p>
+<ul>
+<li><p>close：当服务器端想明确断开连接时，则指定Connection的值为close</p>
+</li>
+<li><p>Keep-Alive：客户端发送请求给服务器时，服务器会像下图那样加上Keep-Alive首部字段和Connection首部字段后返回响应</p>
+<img src="/codeant/c29a/2.png" title="2.png">
+</li>
+</ul>
+</li>
+</ul>
 <p><strong>2. 请求首部字段  </strong>–19  </p>
 <p>​                               </p>
 <table>
@@ -609,7 +636,7 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr>
-<td>Accept</td>
+<td><strong>Accept</strong></td>
 <td>用户代理可处理的媒体类型</td>
 </tr>
 <tr>
@@ -617,11 +644,11 @@ var _hmt = _hmt || [];
 <td>优先的字符集</td>
 </tr>
 <tr>
-<td>Accept-Encoding</td>
+<td><strong>Accept-Encoding</strong></td>
 <td>优先的内容编码</td>
 </tr>
 <tr>
-<td>Accept-Language</td>
+<td><strong>Accept-Language</strong></td>
 <td>优先的语言（自然语言）</td>
 </tr>
 <tr>
@@ -681,11 +708,13 @@ var _hmt = _hmt || [];
 <td>传输编码的优先级</td>
 </tr>
 <tr>
-<td>User-Agent</td>
+<td><strong>User-Agent</strong></td>
 <td>HTTP客户端程序的信息</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Accept、Accept-Encoding、Accept-Language</strong>与实体类首部字段Content-Type、Content-Encoding、Content-Language相对应</p>
+<p>客户端发送请求首部字段Accept、Accept-Encoding、Accept-Language，服务器接收后在实体报文里面设置Content-Type、Content-Encoding、Content-Language与之对应响应客户端的请求</p>
 <p><strong>3.响应首部字段</strong>–9</p>
 <table>
 <thead>
@@ -751,11 +780,11 @@ var _hmt = _hmt || [];
 <td>资源可支持的HTTP方法</td>
 </tr>
 <tr>
-<td>Content-Encoding</td>
+<td><strong>Content-Encoding</strong></td>
 <td>实体主体试用的编码方式</td>
 </tr>
 <tr>
-<td>Content-Language</td>
+<td><strong>Content-Language</strong></td>
 <td>实体主体的自然语言</td>
 </tr>
 <tr>
@@ -775,7 +804,7 @@ var _hmt = _hmt || [];
 <td>实体主体的位置范围</td>
 </tr>
 <tr>
-<td>Content-Type</td>
+<td><strong>Content-Type</strong></td>
 <td>实体主体的媒体类型</td>
 </tr>
 <tr>
@@ -830,7 +859,78 @@ var _hmt = _hmt || [];
 <li>DNT</li>
 <li>P3P</li>
 </ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="noopener">首部字段</a></p>
+<h1 id="4-HTTPS"><a href="#4-HTTPS" class="headerlink" title="4 HTTPS"></a>4 HTTPS</h1><p>##<strong>1. HTTP缺点</strong></p>
+<ul>
+<li>明文通信（不加密），内容可能会被窃取</li>
+<li>不验证通信方的身份，身份可能会被伪装；例如cookie泄露，攻击者可利用cookie模拟用户操作</li>
+<li>无法证明报文完整性，内容可能被篡改</li>
+</ul>
+<p>所以HTTP是不安全的通信协议</p>
+<hr>
+<p>##<strong>2. HTTPS = HTTP + 加密 + 认证 + 完整性保护 = HTTP + SSL （或者TLS）</strong></p>
+<p><strong>解释：</strong>HTTP将通信接口部分用SSL或TLS协议代替</p>
+<p>HTTP通信过程：HTTP-&gt;TCP</p>
+<p>HTTPS通信过程：HTTP-&gt;SSL-&gt;TCP</p>
+<hr>
+<p>##<strong>3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？</strong></p>
+<ol>
+<li><p>加密方式</p>
+<ul>
+<li><p>对称密钥加密（也叫共享密钥加密）：加密和解密同用一个密钥</p>
+<p>问题：如何保证密钥在传输过程中不被窃取</p>
+<p>解决：利用 非对称密钥加密 传输 对称密钥加密中需要使用到的密钥</p>
+</li>
+<li><p>非对称密钥加密（也叫公开密钥加密）：私钥、公钥；发送方先用公钥对内容加密，接收方用自己的私钥进行解密；该方法解决了<strong>对称密钥加密方式</strong>存在的问题，因为即使发送方发送过来的信息在传输途中被窃取，因为攻击者没有私钥，所以无法解密</p>
+<p>问题：无法证明公钥就是真正的公钥，有可能被攻击者替换掉</p>
+<p>解决：使用 数字证书认证机构（CA） 和 相关机关 颁发的 公开密钥证书，在下面第三点会详细阐述</p>
+</li>
+</ul>
+<p>非对称比对称处理速度更慢；</p>
+</li>
+<li><p>HTTPS加密方式<br>HTTPS采用混合加密制度，非对称密钥加密用于传输对称密钥加密使用的密钥，在之后就是使用对称密钥加密传输加密的报文，因为堆成密钥加密方式保证了密钥不会被窃取。</p>
+</li>
+<li><p>HTTPS使用证书</p>
+<ul>
+<li><p>证明公开密钥正确性的证书</p>
+<img src="/codeant/c29a/3.png" title="3.png">
+<img src="/codeant/c29a/4.png" title="4.png">
+</li>
+<li><p>证明组织真实性的EV SSL证书</p>
+</li>
+<li><p>用以确认客户端的客户端证书</p>
+<p>证明正在与服务器通信的客户端一直是预料之中的客户端。与服务器证书是一样的原理。</p>
+</li>
+<li><p>自认证机构颁发的自签名证书（无效）</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="4-HTTPS安全通信流程"><a href="#4-HTTPS安全通信流程" class="headerlink" title="4. HTTPS安全通信流程"></a><strong>4. HTTPS安全通信流程</strong></h2><img src="/codeant/c29a/5.png" title="5.png">
+<h2 id="5-SSL速度"><a href="#5-SSL速度" class="headerlink" title="5. SSL速度"></a><strong>5. SSL速度</strong></h2><p>因为HTTPS与HTTP相比，增加了SSL，导致速度会慢2~100倍。</p>
+<p>SSL的慢：</p>
+<ul>
+<li>通信慢（因为要协商准备加密组件等）</li>
+<li>小号CPU及内存等资源（加密解密操作）</li>
+</ul>
+<p>改善方式：SSL加速器</p>
+<h2 id="6-为什么不一直使用HTTPS"><a href="#6-为什么不一直使用HTTPS" class="headerlink" title="6. 为什么不一直使用HTTPS"></a><strong>6. 为什么不一直使用HTTPS</strong></h2><ul>
+<li>消耗更多的服务器资源，导致单位时间内处理请求的数量减少</li>
+<li>节约购买证书的开销</li>
+</ul>
+<p>使用方式：如果是非敏感信息则使用HTTP通信，反之，包含个人敏感数据时使用HTTPS；在进行HTTPS通信时，所传输的数据不一定全部是敏感数据，所以可选择部分加密，以节约资源。</p>
+<p>#5 确认用户身份的认证</p>
+<p>HTTP1.1使用的认证方式</p>
+<ul>
+<li><del>BASIC认证（基本认证）</del>  <strong>不常用</strong></li>
+<li><del>DIGEST认证（摘要认证）</del>  <strong>不常用</strong></li>
+<li><del>SSL客户端认证</del>  （需要客户端导入证书以及证书需要费用，并未普及使用）</li>
+<li>FORMBASE认证（基于表单认证）</li>
+</ul>
+<p>所以现在常用的是表单认证+cookie，使用cookie来管理session会话，并且为了防止XSS攻击，应在cookie里设置httponly属性，这样在js脚本里面就不能使用document.cookie</p>
+<img src="/codeant/c29a/6.png" title="6.png">
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><strong>[1]【日】上野 宣.图解HTTP[M].人民邮电出版社:北京,2014.05:1-165.</strong></p>
+<p><strong>[2]维基百科.HTTP标头字段列表[EB/OL].<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/List_of_HTTP_header_fields</a>.</strong></p>
 
       
 		
@@ -1016,7 +1116,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-HTTPS"><span class="toc-number">1.</span> <span class="toc-text">4 HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HTTPS安全通信流程"><span class="toc-number">1.1.</span> <span class="toc-text">4. HTTPS安全通信流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-SSL速度"><span class="toc-number">1.2.</span> <span class="toc-text">5. SSL速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-为什么不一直使用HTTPS"><span class="toc-number">1.3.</span> <span class="toc-text">6. 为什么不一直使用HTTPS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -1170,19 +1270,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,7 +1294,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,10 +1314,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -1226,15 +1322,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1246,7 +1346,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
               </li>
              
               <li class="article-tag-list-item">

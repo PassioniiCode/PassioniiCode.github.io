@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1553475378-b3d18d898c34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:updated_time" content="2019-04-03T00:51:04.608Z">
+<meta property="og:updated_time" content="2019-04-15T00:48:32.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-ssm-shiro">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1553475378-b3d18d898c34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -288,6 +288,15 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p><a href="http://shiro.apache.org/spring.html" target="_blank" rel="noopener">shiro官网：简介spring集成shiro方法</a></p>
+<h1 id="三、cacheManager"><a href="#三、cacheManager" class="headerlink" title="三、cacheManager"></a>三、cacheManager</h1><p>缓存用户登录信息，当用户登录过后在访问具有authc页面的时候不需要再次登录</p>
+<p>eg：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//路径的访问权限</span></span><br><span class="line">map.put(<span class="string">"/login.jsp"</span>, <span class="string">"anon"</span>);</span><br><span class="line">map.put(<span class="string">"/user/login"</span>, <span class="string">"anon"</span>);</span><br><span class="line">map.put(<span class="string">"/index.jsp"</span>, <span class="string">"authc"</span>);</span><br><span class="line">map.put(<span class="string">"/personal.jsp"</span>, <span class="string">"authc"</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>关闭cacheManager<br>  “/login.jsp”、”/user/login”能够直接访问</p>
+</li>
+<li><p>开启cacheManager</p>
+</li>
+</ul>
 
       
 		
@@ -477,7 +486,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、配置"><span class="toc-number">2.</span> <span class="toc-text">一、配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ehcache-shiro-xml"><span class="toc-number">2.1.</span> <span class="toc-text">ehcache-shiro.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-shiro-xml"><span class="toc-number">2.2.</span> <span class="toc-text">spring-shiro.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-xml"><span class="toc-number">2.3.</span> <span class="toc-text">web.xml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、登录验证过程"><span class="toc-number">3.</span> <span class="toc-text">二、登录验证过程</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一、配置"><span class="toc-number">2.</span> <span class="toc-text">一、配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ehcache-shiro-xml"><span class="toc-number">2.1.</span> <span class="toc-text">ehcache-shiro.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-shiro-xml"><span class="toc-number">2.2.</span> <span class="toc-text">spring-shiro.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-xml"><span class="toc-number">2.3.</span> <span class="toc-text">web.xml</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、登录验证过程"><span class="toc-number">3.</span> <span class="toc-text">二、登录验证过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、cacheManager"><span class="toc-number">4.</span> <span class="toc-text">三、cacheManager</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -631,19 +640,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,7 +664,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,10 +684,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
@@ -687,15 +692,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,7 +716,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
               </li>
              
               <li class="article-tag-list-item">
