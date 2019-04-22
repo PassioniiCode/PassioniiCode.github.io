@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1555626906-087b9f27e451?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/6.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/7.png">
-<meta property="og:updated_time" content="2019-04-22T12:15:58.985Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/6.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/7.png">
+<meta property="og:updated_time" content="2019-04-22T12:26:13.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-dubbo高可用">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1555626906-087b9f27e451?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -287,10 +287,11 @@ var _hmt = _hmt || [];
 <p>当某一台提供者挂时，原本发往该提供者的请求，基于虚拟节点，平摊到其它提供者，不会引起剧烈变动。算法参见：<a href="http://en.wikipedia.org/wiki/Consistent_hashing" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Consistent_hashing</a></p>
 <p>缺省只对第一个参数 Hash，如果要修改请配置 <code>&lt;dubbo:parameter key=&quot;hash.arguments&quot; value=&quot;0,1&quot; /&gt;</code></p>
 <p>缺省用160 份虚拟节点，如果要修改，请配置<code>&lt;dubbo:parameter key=&quot;hash.nodes&quot; value=&quot;320&quot; /&gt;</code></p>
-<img src="/codeant/undefined/1.png" title="1.png">
-<img src="/codeant/undefined/2.png" title="2.png">
-<img src="/codeant/undefined/3.png" title="3.png">
-<img src="/codeant/undefined/4.png" title="4.png">
+<hr>
+<img src="/codeant/eb26/1.png" title="1.png">
+<img src="/codeant/eb26/2.png" title="2.png">
+<img src="/codeant/eb26/3.png" title="3.png">
+<img src="/codeant/eb26/4.png" title="4.png">
 <ul>
 <li><p>配置</p>
 <ul>
@@ -312,7 +313,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>   也可以通过dubbo-admin控制台动态调整，倍权、半权</p>
-  <img src="/codeant/undefined/5.png" title="5.png">
+  <img src="/codeant/eb26/5.png" title="5.png">
 <h1 id="3、服务降级"><a href="#3、服务降级" class="headerlink" title="3、服务降级"></a>3、服务降级</h1><p>官方文档：<a href="http://dubbo.apache.org/zh-cn/docs/user/demos/service-downgrade.html" target="_blank" rel="noopener">http://dubbo.apache.org/zh-cn/docs/user/demos/service-downgrade.html</a></p>
 <p><strong>什么是服务降级？</strong></p>
 <p><strong>当服务器压力剧增的情况下，根据实际业务情况及流量，对一些服务和页面有策略的不处理或换种简单的方式处理，从而释放服务器资源以保证核心交易正常运作或高效运作。</strong></p>
@@ -322,10 +323,10 @@ var _hmt = _hmt || [];
 <p>其中：</p>
 <ul>
 <li><p><code>mock=force:return+null</code>表示消费方对该服务的方法调用都直接返回 null 值，不发起远程调用。用来屏蔽不重要服务不可用时对调用方的影响。</p>
-<img src="/codeant/undefined/6.png" title="6.png">
+<img src="/codeant/eb26/6.png" title="6.png">
 </li>
 <li><p>还可以改为<code>mock=fail:return+null</code> 表示消费方对该服务的方法调用在失败后，再返回 null 值，不抛异常。用来容忍不重要服务不稳定时对调用方的影响。</p>
-<img src="/codeant/undefined/7.png" title="7.png">
+<img src="/codeant/eb26/7.png" title="7.png">
 </li>
 </ul>
 <h1 id="4、集群容错"><a href="#4、集群容错" class="headerlink" title="4、集群容错"></a>4、集群容错</h1><p>官方文档：<a href="http://dubbo.apache.org/zh-cn/docs/user/demos/fault-tolerent-strategy.html" target="_blank" rel="noopener">http://dubbo.apache.org/zh-cn/docs/user/demos/fault-tolerent-strategy.html</a></p>
@@ -691,6 +692,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
@@ -699,7 +704,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,11 +712,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -720,10 +725,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rss</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
