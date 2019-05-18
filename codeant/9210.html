@@ -11,14 +11,15 @@
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
   <title>Java-Springboot+websocket+stomp实现消息功能 | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="keywords" content="java,Springboot,websocket,stomp">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java-Springboot+websocket+stomp实现消息功能">
 <meta property="og:url" content="https://lijinhongpassion.github.io/codeant/9210.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1556909172-89cf0b24ff02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:updated_time" content="2019-05-18T09:03:00.637Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/9210/1.png">
+<meta property="og:updated_time" content="2019-05-18T09:20:41.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-Springboot+websocket+stomp实现消息功能">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1556909172-89cf0b24ff02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80">
@@ -240,6 +241,7 @@ var _hmt = _hmt || [];
 
 <hr>
 <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>在日常的web开发中，我们常用的就是http协议，这种协议是基于请求/响应的方式，由客户端发起请求，服务器端给出响应。现websocket协议是基于TCP协议开发的，在建立连接后，可以实现服务器端主动给客户端发送消息，以此来实现消息推送，聊天室等功能。</p>
+<p><a href="https://github.com/LiJinHongPassion/springboot/tree/master/springboot_websocket_demo" target="_blank" rel="noopener">demo</a></p>
 <p>#一、websocket协议概述</p>
 <p>  <code>Websocket protocol</code>是<code>HTML5</code>一种新的协议。它实现了浏览器与服务器全双工通信<code>full-duplex</code>)。<strong>一开始的握手需要借助<code>HTTP</code>请求完成，后面的消息传输是基于长连接socket</strong>。</p>
 <p>  <code>WebSocket</code>是真正实现了全双工通信的服务器向客户端推的互联网技术。它是<strong>一种在单个TCP连接上进行全双工通讯协议</strong>。<code>Websocket</code>通信协议与2011年倍JETF定为标准<code>RFC 6455</code>， <code>Websocket API</code>被<code>W3C</code>定为标准。</p>
@@ -277,7 +279,7 @@ var _hmt = _hmt || [];
 <h1 id="三、springboot-websocket-stomp例子"><a href="#三、springboot-websocket-stomp例子" class="headerlink" title="三、springboot+websocket+stomp例子"></a>三、springboot+websocket+stomp例子</h1><p>先要明白WebSocket 是发送和接收消息的 底层API，而SockJS 是在 WebSocket 之上的 API；最后 STOMP（面向消息的简单文本协议）是基于 SockJS 的高级API</p>
 <p>下面是我在CSDN上看到的一篇十分详细的blog，分别对websocket，sockjs，stomp进行了解释，分享出来大家一起学习。</p>
 <p><strong>主要关注stomp部分的内容</strong></p>
-<img src="/codeant/undefined/1.png" title="1.png">
+<img src="/codeant/9210/1.png" title="1.png">
 
       
 		
@@ -339,7 +341,41 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">websocket</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stomp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -595,6 +631,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stomp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
@@ -611,47 +659,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">example</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rss</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,15 +687,51 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">example</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">logging</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
               </li>
              
               <li class="article-tag-list-item">
