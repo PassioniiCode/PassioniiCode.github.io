@@ -18,15 +18,15 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1542558817211-17b8e8699cc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/6.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/7.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/9.png">
-<meta property="og:updated_time" content="2019-05-21T05:25:58.027Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/6.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/7.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/daba/9.png">
+<meta property="og:updated_time" content="2019-05-21T05:26:33.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-实现springbootdemo部署到docker">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1542558817211-17b8e8699cc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
@@ -256,20 +256,20 @@ var _hmt = _hmt || [];
 <p>在 <code>ExecStart=/usr/bin/dockerd</code> 配置文件后面加上<code>-H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock</code> 保存并退出。</p>
 <p>注 :  端口 2375 就是<code>docker remoteApi</code>的 端口，确保此端口linux没有被占用。<br><strong>防火墙开放端口，或者关闭防火墙<code>systemlctl firewalld stop</code></strong></p>
 <p>执行 重启 docker 命令  docker重新读取配置文件，并重新启动docker服务 命令 :  <code>sudo systemctl daemon-reload &amp;&amp; systemctl restart docker</code></p>
-<p>#3、配置idea上的docker<br><strong>1. 安装docker插件</strong><br>file-&gt;settings-&gt;plugins<br><img src="/codeant/undefined/1.png" title="1.png"><br><img src="/codeant/undefined/4.png" title="4.png"></p>
-<p><strong>2. 编写springboot_docker_demo例子</strong><br>创建一个简单的springboot项目<br><img src="/codeant/undefined/2.png" title="2.png"><br>主要看一下pom.xml文件和DockerFile</p>
+<p>#3、配置idea上的docker<br><strong>1. 安装docker插件</strong><br>file-&gt;settings-&gt;plugins<br><img src="/codeant/daba/1.png" title="1.png"><br><img src="/codeant/daba/4.png" title="4.png"></p>
+<p><strong>2. 编写springboot_docker_demo例子</strong><br>创建一个简单的springboot项目<br><img src="/codeant/daba/2.png" title="2.png"><br>主要看一下pom.xml文件和DockerFile</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example.li<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springboot_docker_demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>springboot_docker_demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- 打包方式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">docker.image.prefix</span>&gt;</span>springboot<span class="tag">&lt;/<span class="name">docker.image.prefix</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">&lt;!-- docker插件 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#指定基础镜像，在其上进行定制</span><br><span class="line">FROM java:8</span><br><span class="line"></span><br><span class="line">#维护者信息</span><br><span class="line">#MAINTAINER wuweixiang &lt;wuweixiang.alex@gmail.com&gt;</span><br><span class="line"></span><br><span class="line">#这里的 /tmp 目录就会在运行时自动挂载为匿名卷，任何向 /tmp 中写入的信息都不会记录进容器存储层</span><br><span class="line">VOLUME /tmp</span><br><span class="line"></span><br><span class="line">#复制上下文目录下的target/demo-0.0.1-SNAPSHOT.jar 到容器里</span><br><span class="line">COPY /target/springboot_docker_demo-0.0.1-SNAPSHOT.jar springboot_docker_demo-0.0.1-SNAPSHOT.jar</span><br><span class="line"></span><br><span class="line">#bash方式执行，使demo-0.0.1-SNAPSHOT.jar可访问</span><br><span class="line">#RUN新建立一层，在其上执行这些命令，执行结束后， commit 这一层的修改，构成新的镜像。</span><br><span class="line">RUN bash -c &quot;touch /springboot_docker_demo-0.0.1-SNAPSHOT.jar&quot;</span><br><span class="line"></span><br><span class="line">#ADD /target/springboot_docker_demo-0.0.1-SNAPSHOT.jar springboot_docker_demo-0.0.1-SNAPSHOT.jar</span><br><span class="line"></span><br><span class="line">#声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务</span><br><span class="line">EXPOSE 8080</span><br><span class="line"></span><br><span class="line">#指定容器启动程序及参数   &lt;ENTRYPOINT&gt; &quot;&lt;CMD&gt;&quot;</span><br><span class="line">ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;springboot_docker_demo-0.0.1-SNAPSHOT.jar&quot;]</span><br></pre></td></tr></table></figure>
 <p><strong>3. 配置例子中的docker</strong></p>
-<img src="/codeant/undefined/3.png" title="3.png">
+<img src="/codeant/daba/3.png" title="3.png">
 <p><strong>4. 部署到docker</strong></p>
 <p>在centos上启动docker</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
 <p>查看centos的ip</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
-<p>打包项目，会在根目录下生成项目jar包<br><img src="/codeant/undefined/5.png" title="5.png"></p>
-<p>执行DockerFile脚本，生成镜像并根据该镜像生成相应的容器<br><img src="/codeant/undefined/6.png" title="6.png"><br><img src="/codeant/undefined/7.png" title="7.png"></p>
-<p>访问ip:port/hello，这里是<code>http://192.168.26.130:8888/hello</code><br><img src="/codeant/undefined/9.png" title="9.png"></p>
+<p>打包项目，会在根目录下生成项目jar包<br><img src="/codeant/daba/5.png" title="5.png"></p>
+<p>执行DockerFile脚本，生成镜像并根据该镜像生成相应的容器<br><img src="/codeant/daba/6.png" title="6.png"><br><img src="/codeant/daba/7.png" title="7.png"></p>
+<p>访问ip:port/hello，这里是<code>http://192.168.26.130:8888/hello</code><br><img src="/codeant/daba/9.png" title="9.png"></p>
 
       
 		
@@ -425,11 +425,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/a4ca.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2019年计划
+          personal_msg
         
       </div>
     </a>
@@ -633,10 +633,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
@@ -645,11 +641,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,11 +657,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">example</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">example</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,15 +697,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
