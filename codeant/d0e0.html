@@ -18,10 +18,10 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1559526324-c1f275fbfa32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:updated_time" content="2019-06-04T07:42:04.907Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/d0e0/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/d0e0/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/d0e0/3.png">
+<meta property="og:updated_time" content="2019-06-04T07:47:16.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-深入理解Java虚拟机之内存模型">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1559526324-c1f275fbfa32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -244,7 +244,7 @@ var _hmt = _hmt || [];
 <hr>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>​        本次主要是对Java虚拟机（Hot Spot）进行学习，所有的知识都是从周志明的《深入理解Java虚拟机》这本书的基础上，根据自己理解消化，来编写这篇文章。让我对Java虚拟机有了更清晰的认识。</p>
 <p>#1 简述<br>​        首先我们得知道什么是Java虚拟机，在以前的认知中，我们所理解的Java虚拟机不过就是jdk8，9啥的，其实并不是。Java虚拟机是一种规范，根据这个规范研发出来的Java虚拟机有很多种，其中最常用的就是<code>Hot Spot</code>，我们常说的虚拟机就是指的它。</p>
-<h1 id="2-内存模型"><a href="#2-内存模型" class="headerlink" title="2 内存模型"></a>2 内存模型</h1><img src="/codeant/undefined/1.png" title="1.png">
+<h1 id="2-内存模型"><a href="#2-内存模型" class="headerlink" title="2 内存模型"></a>2 内存模型</h1><img src="/codeant/d0e0/1.png" title="1.png">
 <p>内存模型主要分为两个板块：</p>
 <ul>
 <li>线程共享区<ul>
@@ -261,14 +261,10 @@ var _hmt = _hmt || [];
 </ul>
 <p>总结：栈管内存，堆管运行</p>
 <h2 id="2-1-线程共享区"><a href="#2-1-线程共享区" class="headerlink" title="2.1 线程共享区"></a>2.1 线程共享区</h2><h3 id="2-1-1-方法区"><a href="#2-1-1-方法区" class="headerlink" title="2.1.1 方法区"></a>2.1.1 方法区</h3><ol>
-<li>概念<pre><code>Java虚拟机规范**将方法区描述为堆的一个逻辑部分**，但是方法区的别名叫做非堆，目的应该是与Java堆区分开来
-</code></pre></li>
-<li>存储信息<pre><code>类信息、常量、静态成员、即时编译后的代码、类的构造方法、接口、实例化的对象
-</code></pre></li>
-<li>运行时常量池<pre><code>运行时常量池是方法区的一部分，存放编译后的常量
-</code></pre></li>
-<li>误解“永久代”<pre><code>首先 永久代 ≠ 方法区。实质 是使用永久代来实现方法区（因为HotSpot虚拟机的设计团队选择把GC分代收集扩展至方法区，这样**HotSpot的垃圾收集器可以像管理Java堆一样管理这部分内存**）
-</code></pre>但是根据JDK的迭代，永久区发生了相应的变化：<ul>
+<li>概念<br> ​        Java虚拟机规范<strong>将方法区描述为堆的一个逻辑部分</strong>，但是方法区的别名叫做非堆，目的应该是与Java堆区分开来</li>
+<li>存储信息<br> ​        类信息、常量、静态成员、即时编译后的代码、类的构造方法、接口、实例化的对象</li>
+<li>运行时常量池<br> ​        运行时常量池是方法区的一部分，存放编译后的常量</li>
+<li>误解“永久代”<br> ​        首先 永久代 ≠ 方法区。实质 是使用永久代来实现方法区（因为HotSpot虚拟机的设计团队选择把GC分代收集扩展至方法区，这样<strong>HotSpot的垃圾收集器可以像管理Java堆一样管理这部分内存</strong>）<br>但是根据JDK的迭代，永久区发生了相应的变化：<ul>
 <li>jdk1.6及之前    有永久代，常量池1.6在方法区</li>
 <li>jdk1.7                有永久代，但已逐步“去永久代”，常量池1.7在堆</li>
 <li>jdk1.8及之后    无永久代，常量池1.8在<strong>元空间</strong></li>
@@ -277,10 +273,8 @@ var _hmt = _hmt || [];
 </ol>
 <p>###2.1.2 堆空间</p>
 <ol>
-<li><p>概念</p>
-<pre><code>Java虚拟机规范：**所有的对象实例以及数组**都要在堆上分配，但随着JIT编译器的发展，所有对象在堆上也渐渐变得不是那么绝对了。
-   ***Java堆是垃圾收集器管理的主要区域，所以别名GC堆（可以理解为垃圾堆，哈哈）***
-</code></pre></li>
+<li><p>概念<br> ​        Java虚拟机规范：<strong>所有的对象实例以及数组</strong>都要在堆上分配，但随着JIT编译器的发展，所有对象在堆上也渐渐变得不是那么绝对了。<br> ​        <strong><em>Java堆是垃圾收集器管理的主要区域，所以别名GC堆（可以理解为垃圾堆，哈哈）</em></strong></p>
+</li>
 <li><p>存储信息</p>
 <ul>
 <li>所有对象实例</li>
@@ -288,7 +282,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><p>分代</p>
-<img src="/codeant/undefined/2.png" title="2.png">
+<img src="/codeant/d0e0/2.png" title="2.png">
 <ul>
 <li>新生区（小GC作用范围）<ul>
 <li>Eden空间（伊甸区）–  所有的类都是在伊甸园被new出来的</li>
@@ -307,17 +301,15 @@ var _hmt = _hmt || [];
 <p>   （2）代码中创建了大量大对象，并且长时间不能被垃圾收集器收集（存在被引用）。</p>
 <h2 id="2-2-线程私有区"><a href="#2-2-线程私有区" class="headerlink" title="2.2 线程私有区"></a>2.2 线程私有区</h2><p>###2.2.1 本地方法栈</p>
 <ol>
-<li><p>概念</p>
-<pre><code>本地方法栈与虚拟机栈区分开来，他们服务的对象不一样。
-   虚拟机栈是为java方法服务的，编写方法的语言是java
-   本地方法栈是为带有Native方法服务的，编写该方法的是c/c++语言，调用本地方法库里面的方法
-</code></pre></li>
+<li>概念</li>
 </ol>
+<p>​        本地方法栈与虚拟机栈区分开来，他们服务的对象不一样。<br>​        虚拟机栈是为java方法服务的，编写方法的语言是java<br>​        本地方法栈是为带有Native方法服务的，编写该方法的是c/c++语言，调用本地方法库里面的方法</p>
 <p>###2.2.2 虚拟机栈</p>
 <ol>
-<li><p>概念</p>
-<pre><code>虚拟机栈描述的是Java方法执行的内存模型（生命周期和线程相同）：每个方法执行的时候都会创建一个栈帧用于存储**局部变量表、操作数栈、动态链接、方法出口等**信息
-</code></pre></li>
+<li>概念</li>
+</ol>
+<p>​        虚拟机栈描述的是Java方法执行的内存模型（生命周期和线程相同）：每个方法执行的时候都会创建一个栈帧用于存储<strong>局部变量表、操作数栈、动态链接、方法出口等</strong>信息</p>
+<ol start="2">
 <li><p>栈帧主要存储信息</p>
 <ul>
 <li>本地变量：输入参数和输出参数以及方法内的变量；</li>
@@ -326,15 +318,14 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><p>示例</p>
-<img src="/codeant/undefined/3.png" title="3.png">
+<img src="/codeant/d0e0/3.png" title="3.png">
 </li>
 </ol>
 <p>###2.2.3 程序计数器（PC Register）</p>
 <ol>
-<li><p>概念</p>
-<pre><code>有学过操作系统这门课的都知道，程序计数器就是当前线程所执行的字节码的行号指示器。也就是说一个线程里有很多方法需要执行，程序计数器就是根据你的逻辑，将执行的方法顺序排列好。
-</code></pre></li>
+<li>概念</li>
 </ol>
+<p>​        有学过操作系统这门课的都知道，程序计数器就是当前线程所执行的字节码的行号指示器。也就是说一个线程里有很多方法需要执行，程序计数器就是根据你的逻辑，将执行的方法顺序排列好。</p>
 
       
 		
@@ -710,18 +701,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rss</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
@@ -730,7 +709,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">example</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rss</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,15 +745,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
