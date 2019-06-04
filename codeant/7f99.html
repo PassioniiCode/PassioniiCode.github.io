@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://images.unsplash.com/photo-1554196694-aa2baaa903a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/7f99/1.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/7f99/1.png">
-<meta property="og:updated_time" content="2019-04-02T12:12:28.534Z">
+<meta property="og:updated_time" content="2019-06-04T08:30:08.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-nginx+tomcat集群的简单实现(包括解决session共享问题)">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1554196694-aa2baaa903a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80">
@@ -241,7 +241,7 @@ var _hmt = _hmt || [];
 <center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
-<p>#简述<br><strong>服务器集群：</strong>就是指将很多服务器集中起来一起进行同一种服务，在客户端看来就像是只有一个服务器。集群可以利用多个计算机进行并行计算从而获得很高的计算速度，也可以用多个计算机做备份，从而使得任何一个机器坏了整个系统还是能正常运行。</p>
+<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p><strong>服务器集群：</strong>就是指将很多服务器集中起来一起进行同一种服务，在客户端看来就像是只有一个服务器。集群可以利用多个计算机进行并行计算从而获得很高的计算速度，也可以用多个计算机做备份，从而使得任何一个机器坏了整个系统还是能正常运行。</p>
 <p>关于nginx+tomcat的集群实现配置可以看<a href="https://lijinhongpassion.github.io/codeant/7339.html">之前的文章(Java的nginx的基础配置详解)</a>,下面是本次实现的简单架构图：<br><img src="/codeant/7f99/1.png" title="1.png"></p>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h1><p>当服务器集群过后会发生这样一种现象，当用户在tomcat-A上登录过后，用户下一次请求未必会被nginx发送给tomcat-A，假如发送给tomcat-B处理，而tomcat-B上并没有用户的会话信息，就会导致用户重新验证信息，这样大大降低了用户体验。所以我们需要解决session共享问题。</p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a><strong>方法</strong></h1><ol>
@@ -442,7 +442,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法"><span class="toc-number">2.</span> <span class="toc-text">方法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#方法"><span class="toc-number">3.</span> <span class="toc-text">方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -588,10 +588,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -605,6 +601,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stomp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,11 +672,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">

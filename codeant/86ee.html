@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1554847464-bce967372cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1041&q=80">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/86ee/1.png">
-<meta property="og:updated_time" content="2019-04-12T04:39:21.870Z">
+<meta property="og:updated_time" content="2019-06-04T08:26:53.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git-Git工作流">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1554847464-bce967372cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1041&q=80">
@@ -242,13 +242,10 @@ var _hmt = _hmt || [];
 <hr>
 <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>开发过程中，团队使用Git的方式</p>
 <h1 id="GitFlow工作流"><a href="#GitFlow工作流" class="headerlink" title="GitFlow工作流"></a>GitFlow工作流</h1><img src="/codeant/86ee/1.png" title="1.png">
-<p>###master：</p>
-<p>master分支存储了正式发布的历史 </p>
-<p>###Hotfix：</p>
-<p>维护分支或说是热修复（<code>hotfix</code>）分支用于生成快速给产品发布版本（<code>production releases</code>）打补丁，这是唯一可以直接从<code>master</code>分支<code>fork</code>出来的分支。修复完成，修改应该马上合并回<code>master</code>分支和<code>develop</code>分支（当前的发布分支），<code>master</code>分支应该用新的版本号打好<code>Tag</code>。</p>
+<h3 id="master："><a href="#master：" class="headerlink" title="master："></a>master：</h3><p>master分支存储了正式发布的历史 </p>
+<h3 id="Hotfix："><a href="#Hotfix：" class="headerlink" title="Hotfix："></a>Hotfix：</h3><p>维护分支或说是热修复（<code>hotfix</code>）分支用于生成快速给产品发布版本（<code>production releases</code>）打补丁，这是唯一可以直接从<code>master</code>分支<code>fork</code>出来的分支。修复完成，修改应该马上合并回<code>master</code>分支和<code>develop</code>分支（当前的发布分支），<code>master</code>分支应该用新的版本号打好<code>Tag</code>。</p>
 <p>为<code>Bug</code>修复使用专门分支，让团队可以处理掉问题而不用打断其它工作或是等待下一个发布循环。你可以把维护分支想成是一个直接在<code>master</code>分支上处理的临时发布。</p>
-<p>###Release：</p>
-<p>预发布分支。一旦develop分支上有了做一次发布（或者说快到了既定的发布日）的足够功能，就从develop分支上fork一个预发布分支。新建的分支用于开始发布循环，所以从这个时间点开始之后新的功能不能再加到这个分支上 —— 这个分支只应该做Bug修复、文档生成和其它面向发布任务。一旦对外发布的工作都完成了，预发布分支合并到master分支并分配一个版本号打好Tag。另外，这些从新建预发布分支以来的做的修改<strong>要合并回develop分支</strong>。</p>
+<h3 id="Release："><a href="#Release：" class="headerlink" title="Release："></a>Release：</h3><p>预发布分支。一旦develop分支上有了做一次发布（或者说快到了既定的发布日）的足够功能，就从develop分支上fork一个预发布分支。新建的分支用于开始发布循环，所以从这个时间点开始之后新的功能不能再加到这个分支上 —— 这个分支只应该做Bug修复、文档生成和其它面向发布任务。一旦对外发布的工作都完成了，预发布分支合并到master分支并分配一个版本号打好Tag。另外，这些从新建预发布分支以来的做的修改<strong>要合并回develop分支</strong>。</p>
 <p>使用一个用于为发布准备的预发布分支，使得一个团队可以在完善当前的发布版本的同时，另一个团队可以继续开发下个版本的功能。<br>这也打造定义良好的开发阶段（比如，可以很轻松地说，『这周我们要做准备发布版本4.0』，并且在仓库的目录结构中可以实际看到）。</p>
 <p>常用的分支约定：</p>
 <ul>
@@ -256,10 +253,8 @@ var _hmt = _hmt || [];
 <li>用于合并的分支: master</li>
 <li>分支命名: release-<em> 或 release/</em>`</li>
 </ul>
-<p>###Develop：</p>
-<p>develop分支作为功能的集成分支 ；从develop分支上fork一个<strong>release</strong>分支</p>
-<p>###Feature：</p>
-<p>功能分支。每个新功能位于一个自己的分支，这样可以push到中央仓库以备份和协作。但功能分支不是从master分支上拉出新分支，而是使用develop分支作为父分支。当新功能完成时，合并回<strong>develop</strong>分支。新功能提交应该从不直接与master分支交互。</p>
+<h3 id="Develop："><a href="#Develop：" class="headerlink" title="Develop："></a>Develop：</h3><p>develop分支作为功能的集成分支 ；从develop分支上fork一个<strong>release</strong>分支</p>
+<h3 id="Feature："><a href="#Feature：" class="headerlink" title="Feature："></a>Feature：</h3><p>功能分支。每个新功能位于一个自己的分支，这样可以push到中央仓库以备份和协作。但功能分支不是从master分支上拉出新分支，而是使用develop分支作为父分支。当新功能完成时，合并回<strong>develop</strong>分支。新功能提交应该从不直接与master分支交互。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.cnblogs.com/jiuyi/p/7690615.html" target="_blank" rel="noopener">Git工作流</a></p>
 
       
@@ -446,7 +441,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GitFlow工作流"><span class="toc-number">2.</span> <span class="toc-text">GitFlow工作流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GitFlow工作流"><span class="toc-number">2.</span> <span class="toc-text">GitFlow工作流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#master："><span class="toc-number">2.0.1.</span> <span class="toc-text">master：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hotfix："><span class="toc-number">2.0.2.</span> <span class="toc-text">Hotfix：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Release："><span class="toc-number">2.0.3.</span> <span class="toc-text">Release：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Develop："><span class="toc-number">2.0.4.</span> <span class="toc-text">Develop：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Feature："><span class="toc-number">2.0.5.</span> <span class="toc-text">Feature：</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li>
                     </div>
                 </span>
             </div>
@@ -592,10 +587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -609,6 +600,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stomp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,11 +671,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
