@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/5.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/6.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/eb26/7.png">
-<meta property="og:updated_time" content="2019-04-22T12:26:13.286Z">
+<meta property="og:updated_time" content="2019-06-04T07:59:01.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-dubbo高可用">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1555626906-087b9f27e451?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -246,7 +246,7 @@ var _hmt = _hmt || [];
 <center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
-<p>#简述<br>前面我们简单讲了一下dubbo的基本配置和简单使用，在这章我们了解一下dubbo的高可用的几种实现。</p>
+<h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>前面我们简单讲了一下dubbo的基本配置和简单使用，在这章我们了解一下dubbo的高可用的几种实现。</p>
 <h1 id="1、zookeeper宕机与dubbo直连"><a href="#1、zookeeper宕机与dubbo直连" class="headerlink" title="1、zookeeper宕机与dubbo直连"></a>1、zookeeper宕机与dubbo直连</h1><ul>
 <li><p>zookeeper宕机（现象：zookeeper注册中心宕机，还可以消费dubbo暴露的服务）</p>
 <p>  健壮性</p>
@@ -294,8 +294,9 @@ var _hmt = _hmt || [];
 <img src="/codeant/eb26/4.png" title="4.png">
 <ul>
 <li><p>配置</p>
-<ul>
-<li>服务端服务级别</li>
+</li>
+<li><p>服务端服务级别</p>
+</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:service</span> <span class="attr">interface</span>=<span class="string">"..."</span> <span class="attr">loadbalance</span>=<span class="string">"roundrobin"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
@@ -305,15 +306,13 @@ var _hmt = _hmt || [];
 <ul>
 <li>服务端方法级别</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:service</span> <span class="attr">interface</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dubbo:method</span> <span class="attr">name</span>=<span class="string">"..."</span> <span class="attr">loadbalance</span>=<span class="string">"roundrobin"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dubbo:service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:service</span> <span class="attr">interface</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:method</span> <span class="attr">name</span>=<span class="string">"..."</span> <span class="attr">loadbalance</span>=<span class="string">"roundrobin"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dubbo:service</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>客户端方法级别</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:reference</span> <span class="attr">interface</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dubbo:method</span> <span class="attr">name</span>=<span class="string">"..."</span> <span class="attr">loadbalance</span>=<span class="string">"roundrobin"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dubbo:reference</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>   也可以通过dubbo-admin控制台动态调整，倍权、半权</p>
-  <img src="/codeant/eb26/5.png" title="5.png">
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:reference</span> <span class="attr">interface</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:method</span> <span class="attr">name</span>=<span class="string">"..."</span> <span class="attr">loadbalance</span>=<span class="string">"roundrobin"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dubbo:reference</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>也可以通过dubbo-admin控制台动态调整，倍权、半权</p>
+<img src="/codeant/eb26/5.png" title="5.png">
 <h1 id="3、服务降级"><a href="#3、服务降级" class="headerlink" title="3、服务降级"></a>3、服务降级</h1><p>官方文档：<a href="http://dubbo.apache.org/zh-cn/docs/user/demos/service-downgrade.html" target="_blank" rel="noopener">http://dubbo.apache.org/zh-cn/docs/user/demos/service-downgrade.html</a></p>
 <p><strong>什么是服务降级？</strong></p>
 <p><strong>当服务器压力剧增的情况下，根据实际业务情况及流量，对一些服务和页面有策略的不处理或换种简单的方式处理，从而释放服务器资源以保证核心交易正常运作或高效运作。</strong></p>
@@ -534,7 +533,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1、zookeeper宕机与dubbo直连"><span class="toc-number">1.</span> <span class="toc-text">1、zookeeper宕机与dubbo直连</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、集群下dubbo的负载均衡"><span class="toc-number">2.</span> <span class="toc-text">2、集群下dubbo的负载均衡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、服务降级"><span class="toc-number">3.</span> <span class="toc-text">3、服务降级</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、集群容错"><span class="toc-number">4.</span> <span class="toc-text">4、集群容错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、hystrix实现容错"><span class="toc-number">5.</span> <span class="toc-text">5、hystrix实现容错</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、配置spring-cloud-starter-netflix-hystrix"><span class="toc-number">5.1.</span> <span class="toc-text">1、配置spring-cloud-starter-netflix-hystrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、配置Provider端"><span class="toc-number">5.2.</span> <span class="toc-text">2、配置Provider端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、配置Consumer端"><span class="toc-number">5.3.</span> <span class="toc-text">3、配置Consumer端</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1、zookeeper宕机与dubbo直连"><span class="toc-number">2.</span> <span class="toc-text">1、zookeeper宕机与dubbo直连</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2、集群下dubbo的负载均衡"><span class="toc-number">3.</span> <span class="toc-text">2、集群下dubbo的负载均衡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3、服务降级"><span class="toc-number">4.</span> <span class="toc-text">3、服务降级</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4、集群容错"><span class="toc-number">5.</span> <span class="toc-text">4、集群容错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5、hystrix实现容错"><span class="toc-number">6.</span> <span class="toc-text">5、hystrix实现容错</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、配置spring-cloud-starter-netflix-hystrix"><span class="toc-number">6.1.</span> <span class="toc-text">1、配置spring-cloud-starter-netflix-hystrix</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、配置Provider端"><span class="toc-number">6.2.</span> <span class="toc-text">2、配置Provider端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、配置Consumer端"><span class="toc-number">6.3.</span> <span class="toc-text">3、配置Consumer端</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -700,6 +699,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
@@ -725,10 +728,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,15 +767,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
