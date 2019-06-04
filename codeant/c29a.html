@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/4.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/5.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/6.png">
-<meta property="og:updated_time" content="2019-04-13T05:59:10.442Z">
+<meta property="og:updated_time" content="2019-06-04T08:16:56.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-图解HTTP">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -245,8 +245,7 @@ var _hmt = _hmt || [];
 <center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
-<p>#1 HTTP状态码</p>
-<table>
+<h1 id="1-HTTP状态码"><a href="#1-HTTP状态码" class="headerlink" title="1 HTTP状态码"></a>1 HTTP状态码</h1><table>
 <thead>
 <tr>
 <th>分类</th>
@@ -517,9 +516,8 @@ var _hmt = _hmt || [];
 <li>301：永久跳转，客户端发送请求访问‘/test’的资源，游览器接收到后，因为‘/test’资源路径改变，返回301并设置响应首部字段’Location’:’/newtest’，告诉客户端在下次访问‘/test’的时候，<strong>在客户端直接更改为’/newtest’</strong></li>
 <li>302：临时跳转,客户端发送请求访问‘/test’的资源，游览器接收到后，因为‘/test’资源路径改变，返回302并设置响应首部字段’Location’:’/newtest’，告诉客户端临时跳转到’/newtest’；客户端在下次访问‘/test’资源还是会重复上面的操作，并不会在客户端直接更改访问资源的路径</li>
 </ul>
-<p>#2 HTTP结构</p>
-<img src="/codeant/c29a/1.png" title="1.png">
-<p>#3 HTTP首部<br><strong>1. 通用首部字段</strong>–9</p>
+<h1 id="2-HTTP结构"><a href="#2-HTTP结构" class="headerlink" title="2 HTTP结构"></a>2 HTTP结构</h1><img src="/codeant/c29a/1.png" title="1.png">
+<h1 id="3-HTTP首部"><a href="#3-HTTP首部" class="headerlink" title="3 HTTP首部"></a>3 HTTP首部</h1><p><strong>1. 通用首部字段</strong>–9</p>
 <table>
 <thead>
 <tr>
@@ -872,8 +870,7 @@ var _hmt = _hmt || [];
 <p>HTTP通信过程：HTTP-&gt;TCP</p>
 <p>HTTPS通信过程：HTTP-&gt;SSL-&gt;TCP</p>
 <hr>
-<p>##<strong>3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？</strong></p>
-<ol>
+<h2 id="3-怎么实现HTTP-加密-认证-完整性保护？"><a href="#3-怎么实现HTTP-加密-认证-完整性保护？" class="headerlink" title="3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？"></a><strong>3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？</strong></h2><ol>
 <li><p>加密方式</p>
 <ul>
 <li><p>对称密钥加密（也叫共享密钥加密）：加密和解密同用一个密钥</p>
@@ -919,8 +916,7 @@ var _hmt = _hmt || [];
 <li>节约购买证书的开销</li>
 </ul>
 <p>使用方式：如果是非敏感信息则使用HTTP通信，反之，包含个人敏感数据时使用HTTPS；在进行HTTPS通信时，所传输的数据不一定全部是敏感数据，所以可选择部分加密，以节约资源。</p>
-<p>#5 确认用户身份的认证</p>
-<p>HTTP1.1使用的认证方式</p>
+<h1 id="5-确认用户身份的认证"><a href="#5-确认用户身份的认证" class="headerlink" title="5 确认用户身份的认证"></a>5 确认用户身份的认证</h1><p>HTTP1.1使用的认证方式</p>
 <ul>
 <li><del>BASIC认证（基本认证）</del>  <strong>不常用</strong></li>
 <li><del>DIGEST认证（摘要认证）</del>  <strong>不常用</strong></li>
@@ -1116,7 +1112,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-HTTPS"><span class="toc-number">1.</span> <span class="toc-text">4 HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HTTPS安全通信流程"><span class="toc-number">1.1.</span> <span class="toc-text">4. HTTPS安全通信流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-SSL速度"><span class="toc-number">1.2.</span> <span class="toc-text">5. SSL速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-为什么不一直使用HTTPS"><span class="toc-number">1.3.</span> <span class="toc-text">6. 为什么不一直使用HTTPS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HTTP状态码"><span class="toc-number">1.</span> <span class="toc-text">1 HTTP状态码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-HTTP结构"><span class="toc-number">2.</span> <span class="toc-text">2 HTTP结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-HTTP首部"><span class="toc-number">3.</span> <span class="toc-text">3 HTTP首部</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-HTTPS"><span class="toc-number">4.</span> <span class="toc-text">4 HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-怎么实现HTTP-加密-认证-完整性保护？"><span class="toc-number">4.1.</span> <span class="toc-text">3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HTTPS安全通信流程"><span class="toc-number">4.2.</span> <span class="toc-text">4. HTTPS安全通信流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-SSL速度"><span class="toc-number">4.3.</span> <span class="toc-text">5. SSL速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-为什么不一直使用HTTPS"><span class="toc-number">4.4.</span> <span class="toc-text">6. 为什么不一直使用HTTPS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-确认用户身份的认证"><span class="toc-number">5.</span> <span class="toc-text">5 确认用户身份的认证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -1298,15 +1294,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1350,15 +1346,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
