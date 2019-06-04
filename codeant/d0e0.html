@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/d0e0/1.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/d0e0/2.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/d0e0/3.png">
-<meta property="og:updated_time" content="2019-06-04T07:47:16.028Z">
+<meta property="og:updated_time" content="2019-06-04T07:51:48.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-深入理解Java虚拟机之内存模型">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1559526324-c1f275fbfa32?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -243,7 +243,7 @@ var _hmt = _hmt || [];
 
 <hr>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>​        本次主要是对Java虚拟机（Hot Spot）进行学习，所有的知识都是从周志明的《深入理解Java虚拟机》这本书的基础上，根据自己理解消化，来编写这篇文章。让我对Java虚拟机有了更清晰的认识。</p>
-<p>#1 简述<br>​        首先我们得知道什么是Java虚拟机，在以前的认知中，我们所理解的Java虚拟机不过就是jdk8，9啥的，其实并不是。Java虚拟机是一种规范，根据这个规范研发出来的Java虚拟机有很多种，其中最常用的就是<code>Hot Spot</code>，我们常说的虚拟机就是指的它。</p>
+<h1 id="1-简述"><a href="#1-简述" class="headerlink" title="1 简述"></a>1 简述</h1><p>​        首先我们得知道什么是Java虚拟机，在以前的认知中，我们所理解的Java虚拟机不过就是jdk8，9啥的，其实并不是。Java虚拟机是一种规范，根据这个规范研发出来的Java虚拟机有很多种，其中最常用的就是<code>Hot Spot</code>，我们常说的虚拟机就是指的它。</p>
 <h1 id="2-内存模型"><a href="#2-内存模型" class="headerlink" title="2 内存模型"></a>2 内存模型</h1><img src="/codeant/d0e0/1.png" title="1.png">
 <p>内存模型主要分为两个板块：</p>
 <ul>
@@ -271,8 +271,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ol>
-<p>###2.1.2 堆空间</p>
-<ol>
+<h3 id="2-1-2-堆空间"><a href="#2-1-2-堆空间" class="headerlink" title="2.1.2 堆空间"></a>2.1.2 堆空间</h3><ol>
 <li><p>概念<br> ​        Java虚拟机规范：<strong>所有的对象实例以及数组</strong>都要在堆上分配，但随着JIT编译器的发展，所有对象在堆上也渐渐变得不是那么绝对了。<br> ​        <strong><em>Java堆是垃圾收集器管理的主要区域，所以别名GC堆（可以理解为垃圾堆，哈哈）</em></strong></p>
 </li>
 <li><p>存储信息</p>
@@ -293,19 +292,17 @@ var _hmt = _hmt || [];
 <li>养老区（大GC作用范围）</li>
 <li>永久代（jdk1.7及之前存在）</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">新生区是类的诞生、成长、消亡的区域，一个类在这里产生，应用，最后被垃圾回收器收集，结束生命。新生区又分为两部分： 伊甸区（Eden space）和幸存者区（Survivor pace） ，所有的类都是在伊甸区被new出来的。幸存区有两个： 0区（Survivor 0 space）和1区（Survivor 1 space）。当伊甸园的空间用完时，程序又需要创建对象，JVM的垃圾回收器将对伊甸园区进行垃圾回收(Minor GC)，将伊甸园区中的不再被其他对象所引用的对象进行销毁。然后将伊甸园中的剩余对象移动到幸存0区.若幸存0区也满了，再对该区进行垃圾回收，然后移动到1区。那如果1区也满了呢？再移动到养老区。若养老区也满了，那么这个时候将产生MajorGC（FullGC），进行养老区的内存清理。若养老区执行了Full GC之后发现依然无法进行对象的保存，就会产生OOM异常“OutOfMemoryError”。</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">新生区是类的诞生、成长、消亡的区域，一个类在这里产生，应用，最后被垃圾回收器收集，结束生命。新生区又分为两部分： 伊甸区（Eden space）和幸存者区（Survivor pace） ，所有的类都是在伊甸区被new出来的。幸存区有两个： 0区（Survivor 0 space）和1区（Survivor 1 space）。当伊甸园的空间用完时，程序又需要创建对象，JVM的垃圾回收器将对伊甸园区进行垃圾回收(Minor GC)，将伊甸园区中的不再被其他对象所引用的对象进行销毁。然后将伊甸园中的剩余对象移动到幸存0区.若幸存0区也满了，再对该区进行垃圾回收，然后移动到1区。那如果1区也满了呢？再移动到养老区。若养老区也满了，那么这个时候将产生MajorGC（FullGC），进行养老区的内存清理。若养老区执行了Full GC之后发现依然无法进行对象的保存，就会产生OOM异常“OutOfMemoryError”。</span><br></pre></td></tr></table></figure>
 <p>   如果出现java.lang.OutOfMemoryError: Java heap space异常，说明Java虚拟机的堆内存不够。原因有二：</p>
 <p>   （1）Java虚拟机的堆内存设置不够，可以通过参数-Xms、-Xmx来调整。</p>
 <p>   （2）代码中创建了大量大对象，并且长时间不能被垃圾收集器收集（存在被引用）。</p>
-<h2 id="2-2-线程私有区"><a href="#2-2-线程私有区" class="headerlink" title="2.2 线程私有区"></a>2.2 线程私有区</h2><p>###2.2.1 本地方法栈</p>
-<ol>
+<h2 id="2-2-线程私有区"><a href="#2-2-线程私有区" class="headerlink" title="2.2 线程私有区"></a>2.2 线程私有区</h2><h3 id="2-2-1-本地方法栈"><a href="#2-2-1-本地方法栈" class="headerlink" title="2.2.1 本地方法栈"></a>2.2.1 本地方法栈</h3><ol>
 <li>概念</li>
 </ol>
 <p>​        本地方法栈与虚拟机栈区分开来，他们服务的对象不一样。<br>​        虚拟机栈是为java方法服务的，编写方法的语言是java<br>​        本地方法栈是为带有Native方法服务的，编写该方法的是c/c++语言，调用本地方法库里面的方法</p>
-<p>###2.2.2 虚拟机栈</p>
-<ol>
+<h3 id="2-2-2-虚拟机栈"><a href="#2-2-2-虚拟机栈" class="headerlink" title="2.2.2 虚拟机栈"></a>2.2.2 虚拟机栈</h3><ol>
 <li>概念</li>
 </ol>
 <p>​        虚拟机栈描述的是Java方法执行的内存模型（生命周期和线程相同）：每个方法执行的时候都会创建一个栈帧用于存储<strong>局部变量表、操作数栈、动态链接、方法出口等</strong>信息</p>
@@ -321,8 +318,7 @@ var _hmt = _hmt || [];
 <img src="/codeant/d0e0/3.png" title="3.png">
 </li>
 </ol>
-<p>###2.2.3 程序计数器（PC Register）</p>
-<ol>
+<h3 id="2-2-3-程序计数器（PC-Register）"><a href="#2-2-3-程序计数器（PC-Register）" class="headerlink" title="2.2.3 程序计数器（PC Register）"></a>2.2.3 程序计数器（PC Register）</h3><ol>
 <li>概念</li>
 </ol>
 <p>​        有学过操作系统这门课的都知道，程序计数器就是当前线程所执行的字节码的行号指示器。也就是说一个线程里有很多方法需要执行，程序计数器就是根据你的逻辑，将执行的方法顺序排列好。</p>
@@ -515,7 +511,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-内存模型"><span class="toc-number">2.</span> <span class="toc-text">2 内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-线程共享区"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 线程共享区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-方法区"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 方法区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-线程私有区"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 线程私有区</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-简述"><span class="toc-number">2.</span> <span class="toc-text">1 简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-内存模型"><span class="toc-number">3.</span> <span class="toc-text">2 内存模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-线程共享区"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 线程共享区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-方法区"><span class="toc-number">3.1.1.</span> <span class="toc-text">2.1.1 方法区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-堆空间"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.1.2 堆空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-线程私有区"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 线程私有区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-本地方法栈"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.2.1 本地方法栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-虚拟机栈"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2.2 虚拟机栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-程序计数器（PC-Register）"><span class="toc-number">3.2.3.</span> <span class="toc-text">2.2.3 程序计数器（PC Register）</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -681,10 +677,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
@@ -710,6 +702,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
