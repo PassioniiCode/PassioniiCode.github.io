@@ -2592,7 +2592,7 @@ pre .css~* .id,pre .id {
 }
 
 .jump-container:hover .icon-back {
-	background: rgba(36,193,246,.9)
+	background: rgb(51,51,51)
 }
 
 .jump-container,.toc-container {
@@ -2636,8 +2636,8 @@ pre .css~* .id,pre .id {
 }
 
 .mod-side-operation__jump-to-top .icon-back:hover {
-	background: #24c1f6;
-	color: #24c1f6
+	background: #333;
+	color: #333
 }
 
 .toc-container.tooltip-left {
@@ -2647,7 +2647,7 @@ pre .css~* .id,pre .id {
 }
 
 .toc-container.tooltip-left:hover {
-	background: rgba(36,193,246,.9)
+	background: rgb(51,51,51)
 }
 
 .toc-container.tooltip-left .icon-font {
@@ -2671,7 +2671,7 @@ pre .css~* .id,pre .id {
 	min-width: 200px;
 	width: auto;
 	font-size: 14px;
-	text-shadow: 1px 1px 1px #398199;
+	text-shadow: 1px 1px 1px #333;
 	bottom: -10px;
 	-webkit-transform-origin: 100% 100%;
 	transform-origin: 100% 100%;
@@ -2746,7 +2746,7 @@ pre .css~* .id,pre .id {
 
 .tooltip-left .tooltip-content {
 	position: absolute;
-	background: rgba(36,193,246,.9);
+	background: rgb(51,51,51);
 	z-index: 9999;
 	width: 200px;
 	bottom: 50%;
