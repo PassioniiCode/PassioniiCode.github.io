@@ -9,19 +9,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>Yilia添加分类 | Code Ant&#39;s Blog</title>
+  <title>读书笔记-深入理解Java虚拟机之垃圾收集算法&amp;JVM调优 | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="yilia,hexo">
+  <meta name="keywords" content="java,jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yilia添加分类">
-<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/1db7.html">
+<meta property="og:title" content="读书笔记-深入理解Java虚拟机之垃圾收集算法&amp;JVM调优">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/ad39.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images.unsplash.com/photo-1552598538-3720085bb8d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80">
-<meta property="og:updated_time" content="2019-03-18T07:58:19.177Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1556228578-626e9590b81f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/6.png">
+<meta property="og:updated_time" content="2019-06-06T09:04:38.248Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yilia添加分类">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1552598538-3720085bb8d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80">
+<meta name="twitter:title" content="读书笔记-深入理解Java虚拟机之垃圾收集算法&amp;JVM调优">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1556228578-626e9590b81f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -208,7 +214,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Yilia添加分类" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-读书笔记-深入理解Java虚拟机之垃圾收集算法-JVM调优" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -216,8 +222,8 @@ var _hmt = _hmt || [];
         
 		
         
-        <a href="/codeant/1db7.html" class="archive-article-date">
-  	<time datetime="2019-03-18T06:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
+        <a href="/codeant/ad39.html" class="archive-article-date">
+  	<time datetime="2019-06-06T09:02:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-06</time>
 </a>
         
       </header>
@@ -227,30 +233,215 @@ var _hmt = _hmt || [];
 		<center><p>
   
     </p><h1 class="article-title_code_ant" itemprop="name">
-      Yilia添加分类
+      读书笔记-深入理解Java虚拟机之垃圾收集算法&amp;JVM调优
     </h1>
   
 <p></p></center>
 	
       
         <hr>
-<p><img src="https://images.unsplash.com/photo-1552598538-3720085bb8d5?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80" alt></p>
+<p><img src="https://images.unsplash.com/photo-1556228578-626e9590b81f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
 <a id="more"></a>
-<center><br><br>​    <span>City—羽肿</span><br><br>​    <audio controls> <source src="http://music.163.com/song/media/outer/url?id=451319227.mp3" type="audio/mpeg"> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>
+<center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
-<ol>
-<li><p>新建一个页面，命名为 <code>categories</code> 。命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编辑刚新建的页面，将页面的类型设置为 <code>categories</code> ，主题将自动为这个页面显示所有分类。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: 分类</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>注意：如果有启用多说 或者 Disqus 评论，默认页面也会带有评论。需要关闭的话，请添加字段 <code>comments</code> 并将值设置为 <code>false</code>，如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 分类</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在菜单中添加链接。编辑主题的 <code>_config.yml</code> ，将 <code>menu</code> 中的 <code>categories: /categories</code> 注释去掉，如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br></pre></td></tr></table></figure></li>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>上一节我们了解了Java虚拟机的内存模型，这节我们来学习一下Java虚拟机的内存管理，也就是垃圾收集器。这也是Java语言和c语言的区别，Java利用垃圾收集器收集不使用的对象，c语言则不行，需要手动回收对象。 </p>
+<hr>
+<h1 id="1-对象已死吗"><a href="#1-对象已死吗" class="headerlink" title="1 对象已死吗"></a>1 对象已死吗</h1><p>垃圾收集器在对堆进行回收前，需要判断哪些对象还存活着，哪些已经死去；从标题字面意思，我们如何来判断一个对象是否已死。</p>
+<hr>
+<h2 id="1-1-引用计数算法"><a href="#1-1-引用计数算法" class="headerlink" title="1.1 引用计数算法"></a>1.1 引用计数算法</h2><ol>
+<li>思路<br>给对象中添加一个引用计数器，每一个地方引用它的时候，计数器就加1，引用失效时，计数器就减1；任何时刻计数器为0的对象就是不可能再被使用的。<br><strong>但是Java虚拟机并没有选用计数算法来进行内存管理</strong></li>
+<li>存在问题<br><strong>对象之间相互循环引用难以解决</strong><br>用大白话描述就是：实例化出两个对象A、B，把B对象赋值给A，A对象赋值给B。互相引用着对方，导致他们的引用计数器都不为0。</li>
 </ol>
+<hr>
+<h2 id="1-2-可达性分析算法（根搜索算法）"><a href="#1-2-可达性分析算法（根搜索算法）" class="headerlink" title="1.2 可达性分析算法（根搜索算法）"></a>1.2 可达性分析算法（根搜索算法）</h2><ol>
+<li>思路<br>通过一系列名为<code>GC Roots</code>的对象做为<strong>起点</strong>，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到<code>GC Roots</code>没有任何引用链或者说从<code>GC Roots</code>到这个对象不可达的时候，证明这个对象是不可用的。<br><strong>Java虚拟机采用的是这个算法进行内存管理，具体回收流程在1.4 对象生存-&gt;死亡</strong><img src="/codeant/undefined/1.png" title="1.png"></li>
+<li>GC Roots对象</li>
+</ol>
+<ul>
+<li>虚拟机栈（栈帧中的本地变量）中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中JNI（Native方法）引用的对象</li>
+</ul>
+<hr>
+<h2 id="1-3-何为引用"><a href="#1-3-何为引用" class="headerlink" title="1.3 何为引用"></a>1.3 何为引用</h2><ol>
+<li><p>JDK1.2之前<br>JDK1.2之前，如果<strong>reference类型的数据</strong>中<strong>存储的数值代表的是另外一块内存的起始地址</strong>，就称这块内存代表着一个引用。</p>
+</li>
+<li><p>JDK1.2之后<br>应用场景：当内存空间还足够时，则能保留在内存之中；如果内存在进行垃圾回收后还是非常紧张，则抛弃这些对象。<br>概念扩充：强引用、软引用、弱引用、虚引用</p>
+</li>
+</ol>
+<ul>
+<li>强引用：类似“Object obj = new Object()”，<strong>只要强引用还存在，垃圾收集器永远不会回收掉被引用的对象</strong></li>
+<li>软引用：<strong>在系统将要发生内存溢出异常之前</strong>，将会把这些对象列进回收范围之中并进行第二次回收，第二次回收还是没有足够内存则抛内存溢出异常</li>
+<li>弱引用：<strong>被弱引用关联的对象智能生存到下一次垃圾收集发生之前</strong></li>
+<li>虚引用：<strong>一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个实例对象</strong></li>
+</ul>
+<hr>
+<h2 id="1-4-对象生存-gt-死亡"><a href="#1-4-对象生存-gt-死亡" class="headerlink" title="1.4 对象生存-&gt;死亡"></a>1.4 对象生存-&gt;死亡</h2><p>在根搜索算法中的不可达对象并非“非死不可”，要真正宣告一个对象死亡，至少要经历两次标记过程：</p>
+<p>第一次标记：如果对象在进行根搜索后发现没有与<code>GC Roots</code>相连接的引用链，他将会被第一次标记并且进行筛选，筛选条件是<strong>此对象是否有必要执行finalize（）方法</strong>。对象没有覆盖finalize方法或者finalize方法已经被虚拟机调用过，这两种情况都是视为没必要执行</p>
+<p>第二次标记：当判定为有必要执行finalize（）方法，这个对象将会放置在F-Queue队列中，并在稍后由一条由虚拟机自动创建的、低优先级的Finalizer线程去执行，但并不保证线程执行结束（因为有可能会发生死循环，则会引起系统崩溃）。finalize方法是对象逃脱死亡命运的最后一次机会，稍后GC将对F-Queue中的对象进行第二次小规模的标记。<strong>如果对象要在finalize（）方法中拯救自己，只要重新与引用链上的任何一个对象建立关联即可，那在第二次标记时他将会被移出“即将回收”的集合。如果没有逃脱，就会被回收</strong></p>
+<p>注：任何一个对象的finalize（）方法只会<strong>被系统自动调用一次（如需要逃脱，只要重新与引用链上的任何一个对象建立关联即可）</strong>，如果<strong>面临下一次回收，他的finalize（）方法不会被再次执行</strong>。</p>
+<p><strong>finalize（）能做的所有工作，使用try-finally或者其他方法都可以做，所以不要使用finalize（）方法，这里只是让大家了解对象生存到死亡的一个过程</strong></p>
+<hr>
+<h1 id="2-垃圾收集"><a href="#2-垃圾收集" class="headerlink" title="2 垃圾收集"></a>2 垃圾收集</h1><h2 id="2-1-如何回收"><a href="#2-1-如何回收" class="headerlink" title="2.1 如何回收"></a>2.1 如何回收</h2><h3 id="2-1-1-回收方法区"><a href="#2-1-1-回收方法区" class="headerlink" title="2.1.1 回收方法区"></a>2.1.1 回收方法区</h3><img src="/codeant/undefined/2.png" title="2.png">
+<hr>
+<h3 id="2-1-2-回收堆空间"><a href="#2-1-2-回收堆空间" class="headerlink" title="2.1.2 回收堆空间"></a>2.1.2 回收堆空间</h3><p>在堆中，尤其是新生代，常规应用进行一次垃圾收集一般可以回收70%~95%的空间，而永久代的垃圾收集效率远低于此。<br>主要是收集堆中存储的信息（对象，数组）</p>
+<hr>
+<h2 id="2-2-垃圾回收算法"><a href="#2-2-垃圾回收算法" class="headerlink" title="2.2 垃圾回收算法"></a>2.2 垃圾回收算法</h2><p>在java虚拟机中，针对堆空间，采用了<strong>分代收集算法</strong>，分为新生代和老年代（永久代是非堆空间，不归纳进来），针对各代特性，新生代–复制算法，老年代–标记-整理算法。</p>
+<h3 id="2-2-1-标记-清除算法"><a href="#2-2-1-标记-清除算法" class="headerlink" title="2.2.1 标记-清除算法"></a>2.2.1 标记-清除算法</h3><ol>
+<li><p>意义<br>该算法是最基础的收集算法，算法分为两个阶段：标记 &amp; 清除</p>
+</li>
+<li><p>思路<br>首先标记出所有需要回收的对象，在标记完成后统一回收掉被标记的对象；标记过程就是<strong>1.4 对象生存-&gt;死亡</strong>讲诉的过程。</p>
+</li>
+<li><p>缺点<br><strong>a. 效率</strong>：标记和清除效率都不高<br><strong>b. 空间</strong>：回收后会产生很多空间碎片</p>
+</li>
+</ol>
+<hr>
+<h3 id="2-2-2-复制算法（小-GC）–用于新生代"><a href="#2-2-2-复制算法（小-GC）–用于新生代" class="headerlink" title="2.2.2 复制算法（小 GC）–用于新生代"></a>2.2.2 复制算法（小 GC）–用于新生代</h3><ol>
+<li><p>意义<br><strong>为解决效率问题</strong></p>
+</li>
+<li><p>思路<br>将可用内存按容量分为大小相等的凉快，每次使用其中的一块。当这一块的内存用完了，就将会存活着的对象复制到另一块上面，然后把已使用过的内存空间一次清理掉。不用考虑内存碎片的问题。</p>
+</li>
+<li><p>缺点<br><strong>a. 空间代价</strong>：空间代价比较高，内存缩小到原来的一半</p>
+</li>
+<li><p>用途<br>回收<strong>新生代</strong></p>
+</li>
+</ol>
+<p>流程：将内存分为一块较大的Eden空间和两块较小的Survivor空间。<strong>空间大小比例为 默认伊甸园：幸存0：幸存1 = 8：1：1</strong>，每次使用eden和其中一块survivor空间，当回收时候，将还存活着的对象一次性地拷贝到另一块survivor空间，随后清理掉eden和刚才用过的survivor空间。</p>
+<p>注意：因为比例为8：1：1，所以新生代容量相当于有新生代总容量的90%，那剩下的10%用于存储回收过后还存活的对象。但是我们不能保证每次回收后存活的对象不大于10%，<strong>当survivor空间不够用时候，需要依赖 老年代 进行分配担保</strong></p>
+<hr>
+<h3 id="2-2-3-标记-整理算法（大-GC）–用于老年代"><a href="#2-2-3-标记-整理算法（大-GC）–用于老年代" class="headerlink" title="2.2.3 标记-整理算法（大 GC）–用于老年代"></a>2.2.3 标记-整理算法（大 GC）–用于老年代</h3><ol>
+<li><p>意义<br>复制收集算法适用于对象存活率较低的场景，当用于存活率较高的场景时，效率会变低，并且复制收集算法的缺点是为浪费50%的空间代价，所以老年代一半不能直接选用这种算法。</p>
+</li>
+<li><p>思路<br>分为标记 &amp; 整理两个阶段：标记过程还是跟标记清除算法一样，但是后续不是直接清除掉可回收对象，<strong>是先让所有的对象都向一端移动，然后直接清理掉端边界以外的内存</strong></p>
+</li>
+<li><p>用途<br>回收<strong>老年代</strong></p>
+</li>
+</ol>
+<hr>
+<h3 id="2-2-4-分代收集算法"><a href="#2-2-4-分代收集算法" class="headerlink" title="2.2.4 分代收集算法"></a>2.2.4 分代收集算法</h3><ol>
+<li><p>意义<br>当前商业虚拟机的垃圾收集都采用分代收集算法</p>
+</li>
+<li><p>思路<br>根据对象存活周期的不同将内存划分为几块。</p>
+</li>
+<li><p>示例<br>一般是把Java堆分为新生代和老年代，这样就可以根据各个年代的特点采用最适当的收集算法。在新生代中，每次垃圾收集时都发现有大批对象死去，只有少量存活，那就选用复制算法，只需要付出少量存活对象的复制成本就可以完成收集。而老年代中因为对象存活率高、没有额外空间对它进行分配担保，就必须使用“标记- -清理”或者“标记一整理”算法来进行回收。</p>
+</li>
+</ol>
+<hr>
+<h2 id="2-3-垃圾收集器"><a href="#2-3-垃圾收集器" class="headerlink" title="2.3 垃圾收集器"></a>2.3 垃圾收集器</h2><p>收集算法是内存回收的方法论，垃圾收集器就是内存回收的具体实现。<br><img src="/codeant/undefined/3.png" title="3.png"><br>两个收集器之间存在连线表示可以搭配使用，不同的收集器适用于不同的应用场景</p>
+<p>在新生区的收集器一般选用的复制收集算法，老年区的收集器一般使用“标记- -清理”或者“标记一整理”算法来进行回收。</p>
+<p>这里罗列一下：<br>复制收集算法：Serial 收集器、ParNem 收集器、Parallel Scavenge 收集器<br>标记-整理算法：Serial Old 收集器、Parallel Old 收集器、G1 收集器<br>标记-清除算法：CMS 收集器</p>
+<p>提前了解：</p>
+<ul>
+<li>并发：用户线程和垃圾收集线程同时执行（不一定并行，可能会交替执行），用户程序继续运行，垃圾收集线程运行在另外一个cpu</li>
+<li>并行：多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态</li>
+</ul>
+<h3 id="2-3-1-Serial-收集器"><a href="#2-3-1-Serial-收集器" class="headerlink" title="2.3.1 Serial 收集器"></a>2.3.1 Serial 收集器</h3><img src="/codeant/undefined/4.png" title="4.png">
+<p>特点：</p>
+<ul>
+<li>最早的收集器，单线程收集器</li>
+<li>GC的时候会暂停所有用户线程</li>
+</ul>
+<hr>
+<h3 id="2-3-2-ParNew-收集器"><a href="#2-3-2-ParNew-收集器" class="headerlink" title="2.3.2 ParNew 收集器"></a>2.3.2 ParNew 收集器</h3><img src="/codeant/undefined/5.png" title="5.png">
+<p>特点：</p>
+<ul>
+<li>是Serial 收集器的多线程版本（并行）</li>
+</ul>
+<p><strong>Server模式下首选新生代收集器，因为目前只有它能与CMS收集器配合工作</strong></p>
+<hr>
+<h3 id="2-3-3-Parallel-Scavenge-收集器"><a href="#2-3-3-Parallel-Scavenge-收集器" class="headerlink" title="2.3.3 Parallel Scavenge 收集器"></a>2.3.3 Parallel Scavenge 收集器</h3><p>特点：</p>
+<ul>
+<li>并行的多线程收集器</li>
+<li>达到一个可控制的吞吐量（吞吐量=运行用户代码时间/（运行用户代码时间+垃圾收集时间））</li>
+</ul>
+<hr>
+<h3 id="2-3-4-Serial-Old-收集器"><a href="#2-3-4-Serial-Old-收集器" class="headerlink" title="2.3.4 Serial Old 收集器"></a>2.3.4 Serial Old 收集器</h3><p>特点：</p>
+<ul>
+<li>Serial 收集器的老年代版本</li>
+<li>单线程收集器</li>
+<li>给Client模式下的虚拟机使用</li>
+</ul>
+<p>工作过程如Serial 收集器所示</p>
+<hr>
+<h3 id="2-3-5-Parallel-Old-收集器"><a href="#2-3-5-Parallel-Old-收集器" class="headerlink" title="2.3.5 Parallel Old 收集器"></a>2.3.5 Parallel Old 收集器</h3><img src="/codeant/undefined/6.png" title="6.png">
+<p>特点：</p>
+<ul>
+<li>是Parallel Scavenge 收集器的老年代版本</li>
+<li>多线程</li>
+<li>标记-整理算法</li>
+</ul>
+<hr>
+<h3 id="2-3-6-CMS-收集器"><a href="#2-3-6-CMS-收集器" class="headerlink" title="2.3.6 CMS 收集器"></a>2.3.6 CMS 收集器</h3><p>特点：</p>
+<ul>
+<li>以获取最短回收停顿时间为目标</li>
+<li>重视服务的响应速度</li>
+<li><strong>标记-清除算法</strong>（会产生大量的空间碎片）</li>
+<li>并发收集、低停顿</li>
+</ul>
+<p>运转过程：</p>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>重新标记</li>
+<li>并发清除<br>初始标记和重新标记需要“stop the word”，也就是停止其他所有线程，只有这个线程运行。初始标记仅仅只是标记一下GC Roots能直接关联到的对象，速度很快；并发标记阶段就是进行GC Roots Tracing 的过程；而重新标记阶段则是为了修正并发标记期间，因用户程序继续运作而导致标记产生变动的那一部分对象的标记记录；</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>CMS 收集器对CPU资源非常敏感</li>
+<li>CMS 收集器无法处理浮动垃圾</li>
+<li>会产生大量的空间碎片（标记-清除算法）</li>
+</ul>
+<hr>
+<h3 id="2-3-7-G1-收集器"><a href="#2-3-7-G1-收集器" class="headerlink" title="2.3.7 G1 收集器"></a>2.3.7 G1 收集器</h3><p>面向server端应用的垃圾收集器</p>
+<p>特点：</p>
+<ul>
+<li>并行与并发：利用多CPU、多核的硬件条件，缩短“Stop the word”的时间</li>
+<li>分代收集</li>
+<li>空间整合：局部使用复制算法，整体是标记-整理算法。这种特效在分配大对象是不会因为内存不足提前GC</li>
+<li>可预测的停顿</li>
+</ul>
+<p>运转过程：</p>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>最终标记</li>
+<li>筛选回收</li>
+</ul>
+<hr>
+<h2 id="2-4-内存分配和回收策略"><a href="#2-4-内存分配和回收策略" class="headerlink" title="2.4 内存分配和回收策略"></a>2.4 内存分配和回收策略</h2><ul>
+<li>对象优先在eden区分配</li>
+<li>大对象直接进入老年代</li>
+<li>长期存活的对象将进入老年代</li>
+</ul>
+<h1 id="3-JVM调优汇总"><a href="#3-JVM调优汇总" class="headerlink" title="3 JVM调优汇总"></a>3 JVM调优汇总</h1><h2 id="3-1-调优工具"><a href="#3-1-调优工具" class="headerlink" title="3.1 调优工具"></a>3.1 调优工具</h2><p>Jconsole，jProfile，VisualVM</p>
+<ul>
+<li>Jconsole : jdk自带，功能简单，但是可以在系统有一定负荷的情况下使用。对垃圾回收算法有很详细的跟踪。</li>
+<li>JProfiler：商业软件，需要付费。功能强大。</li>
+<li>VisualVM：JDK自带，功能强大，与JProfiler类似。推荐。</li>
+</ul>
+<hr>
+<h2 id="3-2-常见配置"><a href="#3-2-常见配置" class="headerlink" title="3.2 常见配置"></a>3.2 常见配置</h2><p>堆设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-Xms:初始堆大小</span><br><span class="line">-Xmx:最大堆大小</span><br><span class="line">-XX:NewSize=n:设置年轻代大小</span><br><span class="line">-XX:NewRatio=n:设置年轻代和年老代的比值。如:为3，表示年轻代与年老代比值为1：3，年轻代占整个年轻代年老代和的1/4</span><br><span class="line">-XX:SurvivorRatio=n:年轻代中Eden区与两个Survivor区的比值。注意Survivor区有两个。如：3，表示Eden：Survivor=3：2，一个Survivor区占整个年轻代的1/5</span><br><span class="line">-XX:MaxPermSize=n:设置持久代大小</span><br></pre></td></tr></table></figure></p>
+<p>收集器设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-XX:+UseSerialGC:设置串行收集器</span><br><span class="line">-XX:+UseParallelGC:设置并行收集器</span><br><span class="line">-XX:+UseParalledlOldGC:设置并行年老代收集器</span><br><span class="line">-XX:+UseConcMarkSweepGC:设置并发收集器</span><br></pre></td></tr></table></figure></p>
+<p>垃圾回收统计信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-XX:+PrintGC</span><br><span class="line">-XX:+PrintGCDetails</span><br><span class="line">-XX:+PrintGCTimeStamps</span><br><span class="line">-Xloggc:filename</span><br></pre></td></tr></table></figure></p>
+<p>并行收集器设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-XX:ParallelGCThreads=n:设置并行收集器收集时使用的CPU数。并行收集线程数。</span><br><span class="line">-XX:MaxGCPauseMillis=n:设置并行收集最大暂停时间</span><br><span class="line">-XX:GCTimeRatio=n:设置垃圾回收时间占程序运行时间的百分比。公式为1/(1+n)</span><br></pre></td></tr></table></figure></p>
+<p>并发收集器设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-XX:+CMSIncrementalMode:设置为增量模式。适用于单CPU情况。</span><br><span class="line">-XX:ParallelGCThreads=n:设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="3-3-调优总结"><a href="#3-3-调优总结" class="headerlink" title="3.3 调优总结"></a>3.3 调优总结</h2><p>年轻代大小选择</p>
+<p>响应时间优先的应用：尽可能设大，直到接近系统的最低响应时间限制（根据实际情况选择）。在此种情况下，年轻代收集发生的频率也是最小的。同时，减少到达年老代的对象。</p>
+<p>吞吐量优先的应用：尽可能的设置大，可能到达Gbit的程度。因为对响应时间没有要求，垃圾收集可以并行进行，一般适合8CPU以上的应用。</p>
+<p>年老代大小选择</p>
+<p>响应时间优先的应用：年老代使用并发收集器，所以其大小需要小心设置，一般要考虑并发会话率和会话持续时间等一些参数。如果堆设置小了，可以会造成内存碎片、高回收频率以及应用暂停而使用传统的标记清除方式；如果堆大了，则需要较长的收集时间。最优化的方案，一般需要参考以下数据获得：</p>
+<p>并发垃圾收集信息<br>持久代并发收集次数<br>传统GC信息<br>花在年轻代和年老代回收上的时间比例<br>减少年轻代和年老代花费的时间，一般会提高应用的效率<br>吞吐量优先的应用</p>
+<p>一般吞吐量优先的应用都有一个很大的年轻代和一个较小的年老代。原因是，这样可以尽可能回收掉大部分短期对象，减少中期的对象，而年老代尽存放长期存活对象。</p>
+<p>较小堆引起的碎片问题</p>
+<p>因为年老代的并发收集器使用标记、清除算法，所以不会对堆进行压缩。当收集器回收时，他会把相邻的空间进行合并，这样可以分配给较大的对象。但是，当堆空间较小时，运行一段时间以后，就会出现“碎片”，如果并发收集器找不到足够的空间，那么并发收集器将会停止，然后使用传统的标记、清除方式进行回收。如果出现“碎片”，可能需要进行如下配置：</p>
+<ol>
+<li>-XX:+UseCMSCompactAtFullCollection：使用并发收集器时，开启对年老代的压缩。</li>
+<li>-XX:CMSFullGCsBeforeCompaction=0：上面配置开启的情况下，这里设置多少次Full GC后，对年老代进行压缩</li>
+</ol>
+<hr>
 
       
 		
@@ -265,7 +456,7 @@ var _hmt = _hmt || [];
 				
 				<br>
 				<strong>本文链接：</strong>
-				https://lijinhongpassion.github.io/codeant/1db7.html
+				https://lijinhongpassion.github.io/codeant/ad39.html
 				<br>
 				<strong>版权声明：</strong>
 				本作品采用
@@ -317,11 +508,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
         		</li>
       		
 		</ul>
@@ -333,7 +524,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -388,7 +579,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://lijinhongpassion.github.io/codeant/1db7.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lijinhongpassion.github.io/codeant/ad39.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -402,18 +593,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/5752.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          hexo添加分类
+          2019年计划
         
       </div>
     </a>
   
   
-    <a href="/codeant/61549.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo设置短地址</div>
+    <a href="/codeant/c608.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java-常见springboot注解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -440,7 +631,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-对象已死吗"><span class="toc-number">2.</span> <span class="toc-text">1 对象已死吗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-引用计数算法"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 引用计数算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-可达性分析算法（根搜索算法）"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 可达性分析算法（根搜索算法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-何为引用"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 何为引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-对象生存-gt-死亡"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 对象生存-&gt;死亡</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-垃圾收集"><span class="toc-number">3.</span> <span class="toc-text">2 垃圾收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-如何回收"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 如何回收</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-回收方法区"><span class="toc-number">3.1.1.</span> <span class="toc-text">2.1.1 回收方法区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-回收堆空间"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.1.2 回收堆空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-垃圾回收算法"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 垃圾回收算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-标记-清除算法"><span class="toc-number">3.2.1.</span> <span class="toc-text">2.2.1 标记-清除算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-复制算法（小-GC）–用于新生代"><span class="toc-number">3.2.2.</span> <span class="toc-text">2.2.2 复制算法（小 GC）–用于新生代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-标记-整理算法（大-GC）–用于老年代"><span class="toc-number">3.2.3.</span> <span class="toc-text">2.2.3 标记-整理算法（大 GC）–用于老年代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-分代收集算法"><span class="toc-number">3.2.4.</span> <span class="toc-text">2.2.4 分代收集算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-垃圾收集器"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 垃圾收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-Serial-收集器"><span class="toc-number">3.3.1.</span> <span class="toc-text">2.3.1 Serial 收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-ParNew-收集器"><span class="toc-number">3.3.2.</span> <span class="toc-text">2.3.2 ParNew 收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-Parallel-Scavenge-收集器"><span class="toc-number">3.3.3.</span> <span class="toc-text">2.3.3 Parallel Scavenge 收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-4-Serial-Old-收集器"><span class="toc-number">3.3.4.</span> <span class="toc-text">2.3.4 Serial Old 收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-5-Parallel-Old-收集器"><span class="toc-number">3.3.5.</span> <span class="toc-text">2.3.5 Parallel Old 收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-6-CMS-收集器"><span class="toc-number">3.3.6.</span> <span class="toc-text">2.3.6 CMS 收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-7-G1-收集器"><span class="toc-number">3.3.7.</span> <span class="toc-text">2.3.7 G1 收集器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-内存分配和回收策略"><span class="toc-number">3.4.</span> <span class="toc-text">2.4 内存分配和回收策略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-JVM调优汇总"><span class="toc-number">4.</span> <span class="toc-text">3 JVM调优汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-调优工具"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 调优工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-常见配置"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 常见配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-调优总结"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 调优总结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -467,7 +658,7 @@ var _hmt = _hmt || [];
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: 'Mon Mar 18 2019 14:12:38 GMT+0800',
+  id: 'Thu Jun 06 2019 17:02:10 GMT+0800',
   owner: 'LiJinHongPassion',
   repo: 'LiJinHongPassion.github.io',
   oauth: {
