@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
 <meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/6.png">
-<meta property="og:updated_time" content="2019-06-06T09:04:38.248Z">
+<meta property="og:updated_time" content="2019-06-06T09:07:46.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-深入理解Java虚拟机之垃圾收集算法&amp;JVM调优">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1556228578-626e9590b81f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -428,14 +428,14 @@ var _hmt = _hmt || [];
 <p>并行收集器设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-XX:ParallelGCThreads=n:设置并行收集器收集时使用的CPU数。并行收集线程数。</span><br><span class="line">-XX:MaxGCPauseMillis=n:设置并行收集最大暂停时间</span><br><span class="line">-XX:GCTimeRatio=n:设置垃圾回收时间占程序运行时间的百分比。公式为1/(1+n)</span><br></pre></td></tr></table></figure></p>
 <p>并发收集器设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-XX:+CMSIncrementalMode:设置为增量模式。适用于单CPU情况。</span><br><span class="line">-XX:ParallelGCThreads=n:设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。</span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="3-3-调优总结"><a href="#3-3-调优总结" class="headerlink" title="3.3 调优总结"></a>3.3 调优总结</h2><p>年轻代大小选择</p>
+<h2 id="3-3-调优总结"><a href="#3-3-调优总结" class="headerlink" title="3.3 调优总结"></a>3.3 调优总结</h2><p><strong>年轻代大小选择</strong></p>
 <p>响应时间优先的应用：尽可能设大，直到接近系统的最低响应时间限制（根据实际情况选择）。在此种情况下，年轻代收集发生的频率也是最小的。同时，减少到达年老代的对象。</p>
 <p>吞吐量优先的应用：尽可能的设置大，可能到达Gbit的程度。因为对响应时间没有要求，垃圾收集可以并行进行，一般适合8CPU以上的应用。</p>
-<p>年老代大小选择</p>
+<p><strong>年老代大小选择</strong></p>
 <p>响应时间优先的应用：年老代使用并发收集器，所以其大小需要小心设置，一般要考虑并发会话率和会话持续时间等一些参数。如果堆设置小了，可以会造成内存碎片、高回收频率以及应用暂停而使用传统的标记清除方式；如果堆大了，则需要较长的收集时间。最优化的方案，一般需要参考以下数据获得：</p>
 <p>并发垃圾收集信息<br>持久代并发收集次数<br>传统GC信息<br>花在年轻代和年老代回收上的时间比例<br>减少年轻代和年老代花费的时间，一般会提高应用的效率<br>吞吐量优先的应用</p>
 <p>一般吞吐量优先的应用都有一个很大的年轻代和一个较小的年老代。原因是，这样可以尽可能回收掉大部分短期对象，减少中期的对象，而年老代尽存放长期存活对象。</p>
-<p>较小堆引起的碎片问题</p>
+<p><strong>较小堆引起的碎片问题</strong></p>
 <p>因为年老代的并发收集器使用标记、清除算法，所以不会对堆进行压缩。当收集器回收时，他会把相邻的空间进行合并，这样可以分配给较大的对象。但是，当堆空间较小时，运行一段时间以后，就会出现“碎片”，如果并发收集器找不到足够的空间，那么并发收集器将会停止，然后使用传统的标记、清除方式进行回收。如果出现“碎片”，可能需要进行如下配置：</p>
 <ol>
 <li>-XX:+UseCMSCompactAtFullCollection：使用并发收集器时，开启对年老代的压缩。</li>
@@ -817,6 +817,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
@@ -829,15 +833,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -873,19 +873,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
               </li>
              
               <li class="article-tag-list-item">
