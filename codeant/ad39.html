@@ -18,13 +18,13 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1556228578-626e9590b81f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/5.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/6.png">
-<meta property="og:updated_time" content="2019-06-06T09:07:46.118Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/ad39/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/ad39/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/ad39/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/ad39/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/ad39/5.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/ad39/6.png">
+<meta property="og:updated_time" content="2019-06-06T09:08:15.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-深入理解Java虚拟机之垃圾收集算法&amp;JVM调优">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1556228578-626e9590b81f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
 </ol>
 <hr>
 <h2 id="1-2-可达性分析算法（根搜索算法）"><a href="#1-2-可达性分析算法（根搜索算法）" class="headerlink" title="1.2 可达性分析算法（根搜索算法）"></a>1.2 可达性分析算法（根搜索算法）</h2><ol>
-<li>思路<br>通过一系列名为<code>GC Roots</code>的对象做为<strong>起点</strong>，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到<code>GC Roots</code>没有任何引用链或者说从<code>GC Roots</code>到这个对象不可达的时候，证明这个对象是不可用的。<br><strong>Java虚拟机采用的是这个算法进行内存管理，具体回收流程在1.4 对象生存-&gt;死亡</strong><img src="/codeant/undefined/1.png" title="1.png"></li>
+<li>思路<br>通过一系列名为<code>GC Roots</code>的对象做为<strong>起点</strong>，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到<code>GC Roots</code>没有任何引用链或者说从<code>GC Roots</code>到这个对象不可达的时候，证明这个对象是不可用的。<br><strong>Java虚拟机采用的是这个算法进行内存管理，具体回收流程在1.4 对象生存-&gt;死亡</strong><img src="/codeant/ad39/1.png" title="1.png"></li>
 <li>GC Roots对象</li>
 </ol>
 <ul>
@@ -284,7 +284,7 @@ var _hmt = _hmt || [];
 <p>注：任何一个对象的finalize（）方法只会<strong>被系统自动调用一次（如需要逃脱，只要重新与引用链上的任何一个对象建立关联即可）</strong>，如果<strong>面临下一次回收，他的finalize（）方法不会被再次执行</strong>。</p>
 <p><strong>finalize（）能做的所有工作，使用try-finally或者其他方法都可以做，所以不要使用finalize（）方法，这里只是让大家了解对象生存到死亡的一个过程</strong></p>
 <hr>
-<h1 id="2-垃圾收集"><a href="#2-垃圾收集" class="headerlink" title="2 垃圾收集"></a>2 垃圾收集</h1><h2 id="2-1-如何回收"><a href="#2-1-如何回收" class="headerlink" title="2.1 如何回收"></a>2.1 如何回收</h2><h3 id="2-1-1-回收方法区"><a href="#2-1-1-回收方法区" class="headerlink" title="2.1.1 回收方法区"></a>2.1.1 回收方法区</h3><img src="/codeant/undefined/2.png" title="2.png">
+<h1 id="2-垃圾收集"><a href="#2-垃圾收集" class="headerlink" title="2 垃圾收集"></a>2 垃圾收集</h1><h2 id="2-1-如何回收"><a href="#2-1-如何回收" class="headerlink" title="2.1 如何回收"></a>2.1 如何回收</h2><h3 id="2-1-1-回收方法区"><a href="#2-1-1-回收方法区" class="headerlink" title="2.1.1 回收方法区"></a>2.1.1 回收方法区</h3><img src="/codeant/ad39/2.png" title="2.png">
 <hr>
 <h3 id="2-1-2-回收堆空间"><a href="#2-1-2-回收堆空间" class="headerlink" title="2.1.2 回收堆空间"></a>2.1.2 回收堆空间</h3><p>在堆中，尤其是新生代，常规应用进行一次垃圾收集一般可以回收70%~95%的空间，而永久代的垃圾收集效率远低于此。<br>主要是收集堆中存储的信息（对象，数组）</p>
 <hr>
@@ -329,7 +329,7 @@ var _hmt = _hmt || [];
 </li>
 </ol>
 <hr>
-<h2 id="2-3-垃圾收集器"><a href="#2-3-垃圾收集器" class="headerlink" title="2.3 垃圾收集器"></a>2.3 垃圾收集器</h2><p>收集算法是内存回收的方法论，垃圾收集器就是内存回收的具体实现。<br><img src="/codeant/undefined/3.png" title="3.png"><br>两个收集器之间存在连线表示可以搭配使用，不同的收集器适用于不同的应用场景</p>
+<h2 id="2-3-垃圾收集器"><a href="#2-3-垃圾收集器" class="headerlink" title="2.3 垃圾收集器"></a>2.3 垃圾收集器</h2><p>收集算法是内存回收的方法论，垃圾收集器就是内存回收的具体实现。<br><img src="/codeant/ad39/3.png" title="3.png"><br>两个收集器之间存在连线表示可以搭配使用，不同的收集器适用于不同的应用场景</p>
 <p>在新生区的收集器一般选用的复制收集算法，老年区的收集器一般使用“标记- -清理”或者“标记一整理”算法来进行回收。</p>
 <p>这里罗列一下：<br>复制收集算法：Serial 收集器、ParNem 收集器、Parallel Scavenge 收集器<br>标记-整理算法：Serial Old 收集器、Parallel Old 收集器、G1 收集器<br>标记-清除算法：CMS 收集器</p>
 <p>提前了解：</p>
@@ -337,14 +337,14 @@ var _hmt = _hmt || [];
 <li>并发：用户线程和垃圾收集线程同时执行（不一定并行，可能会交替执行），用户程序继续运行，垃圾收集线程运行在另外一个cpu</li>
 <li>并行：多条垃圾收集线程并行工作，但此时用户线程仍然处于等待状态</li>
 </ul>
-<h3 id="2-3-1-Serial-收集器"><a href="#2-3-1-Serial-收集器" class="headerlink" title="2.3.1 Serial 收集器"></a>2.3.1 Serial 收集器</h3><img src="/codeant/undefined/4.png" title="4.png">
+<h3 id="2-3-1-Serial-收集器"><a href="#2-3-1-Serial-收集器" class="headerlink" title="2.3.1 Serial 收集器"></a>2.3.1 Serial 收集器</h3><img src="/codeant/ad39/4.png" title="4.png">
 <p>特点：</p>
 <ul>
 <li>最早的收集器，单线程收集器</li>
 <li>GC的时候会暂停所有用户线程</li>
 </ul>
 <hr>
-<h3 id="2-3-2-ParNew-收集器"><a href="#2-3-2-ParNew-收集器" class="headerlink" title="2.3.2 ParNew 收集器"></a>2.3.2 ParNew 收集器</h3><img src="/codeant/undefined/5.png" title="5.png">
+<h3 id="2-3-2-ParNew-收集器"><a href="#2-3-2-ParNew-收集器" class="headerlink" title="2.3.2 ParNew 收集器"></a>2.3.2 ParNew 收集器</h3><img src="/codeant/ad39/5.png" title="5.png">
 <p>特点：</p>
 <ul>
 <li>是Serial 收集器的多线程版本（并行）</li>
@@ -365,7 +365,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>工作过程如Serial 收集器所示</p>
 <hr>
-<h3 id="2-3-5-Parallel-Old-收集器"><a href="#2-3-5-Parallel-Old-收集器" class="headerlink" title="2.3.5 Parallel Old 收集器"></a>2.3.5 Parallel Old 收集器</h3><img src="/codeant/undefined/6.png" title="6.png">
+<h3 id="2-3-5-Parallel-Old-收集器"><a href="#2-3-5-Parallel-Old-收集器" class="headerlink" title="2.3.5 Parallel Old 收集器"></a>2.3.5 Parallel Old 收集器</h3><img src="/codeant/ad39/6.png" title="6.png">
 <p>特点：</p>
 <ul>
 <li>是Parallel Scavenge 收集器的老年代版本</li>
@@ -482,7 +482,7 @@ var _hmt = _hmt || [];
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>山高路不平，给一块钱行不行。哈哈<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>一块就是对我最大的支持<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
@@ -797,10 +797,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
@@ -813,11 +809,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -829,11 +825,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -841,11 +837,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">example</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">example</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -865,11 +865,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
