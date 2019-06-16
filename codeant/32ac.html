@@ -18,14 +18,14 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1560568082-c15188aa6510?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/32ac/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/32ac/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/32ac/3.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/32ac/4.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/32ac/4.png">
 <meta property="og:image" content="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/方法表的结构.png">
 <meta property="og:image" content="https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-6/方法表的access_flag的所有标志位.png">
-<meta property="og:updated_time" content="2019-06-16T09:20:25.200Z">
+<meta property="og:updated_time" content="2019-06-16T09:21:01.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-深入理解Java虚拟机之类文件结构">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1560568082-c15188aa6510?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -249,7 +249,7 @@ var _hmt = _hmt || [];
 <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>本文主要对类文件（<code>.class</code>文件）结构简单讲诉，一次对文件结构有个大致的了解。</p>
 <h1 id="1-类文件结构"><a href="#1-类文件结构" class="headerlink" title="1. 类文件结构"></a>1. 类文件结构</h1><p>根据java虚拟机规范，<code>.class</code>文件结构如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ClassFile &#123;</span><br><span class="line">    u4             magic; <span class="comment">//Class 文件的标志</span></span><br><span class="line">    u2             minor_version;<span class="comment">//Class 的小版本号</span></span><br><span class="line">    u2             major_version;<span class="comment">//Class 的大版本号</span></span><br><span class="line">    u2             constant_pool_count;<span class="comment">//常量池的数量</span></span><br><span class="line">    cp_info        constant_pool[constant_pool_count-<span class="number">1</span>];<span class="comment">//常量池</span></span><br><span class="line">    u2             access_flags;<span class="comment">//Class 的访问标记</span></span><br><span class="line">    u2             this_class;<span class="comment">//当前类</span></span><br><span class="line">    u2             super_class;<span class="comment">//父类</span></span><br><span class="line">    u2             interfaces_count;<span class="comment">//接口</span></span><br><span class="line">    u2             interfaces[interfaces_count];<span class="comment">//一个类可以实现多个接口</span></span><br><span class="line">    u2             fields_count;<span class="comment">//Class 文件的字段属性</span></span><br><span class="line">    field_info     fields[fields_count];<span class="comment">//一个类会可以有个字段</span></span><br><span class="line">    u2             methods_count;<span class="comment">//Class 文件的方法数量</span></span><br><span class="line">    method_info    methods[methods_count];<span class="comment">//一个类可以有个多个方法</span></span><br><span class="line">    u2             attributes_count;<span class="comment">//此类的属性表中的属性数</span></span><br><span class="line">    attribute_info attributes[attributes_count];<span class="comment">//属性表集合</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Class文件字节码结构组织示意图 </strong><br><img src="/codeant/undefined/1.png" title="1.png"></p>
+<p><strong>Class文件字节码结构组织示意图 </strong><br><img src="/codeant/32ac/1.png" title="1.png"></p>
 <hr>
 <h1 id="2-结构详细"><a href="#2-结构详细" class="headerlink" title="2. 结构详细"></a>2. 结构详细</h1><h2 id="2-1-魔数（咖啡宝贝）"><a href="#2-1-魔数（咖啡宝贝）" class="headerlink" title="2.1 魔数（咖啡宝贝）"></a>2.1 魔数（咖啡宝贝）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">u4             magic; <span class="comment">//Class 文件的标志</span></span><br></pre></td></tr></table></figure>
 <p>每个 Class 文件的头四个字节称为魔数（Magic Number）,它的唯一作用是确定这个文件是否为一个能被虚拟机接收的 Class 文件。<br><strong>魔数</strong>的值为0xCAFEBABE（咖啡宝贝）</p>
@@ -351,18 +351,18 @@ var _hmt = _hmt || [];
 <p><code>.class</code> 文件可以通过<code>javap -v class类名</code> 指令来看一下其常量池中的信息(<code>javap -v  class类名-&gt; temp.txt</code> ：将结果输出到 temp.txt 文件)。</p>
 <h2 id="2-4-访问标志"><a href="#2-4-访问标志" class="headerlink" title="2.4 访问标志"></a>2.4 访问标志</h2><p>在常量池结束之后，紧接着的两个字节代表访问标志，这个标志用于识别一些类或者接口层次的访问信息，包括：这个 Class 是类还是接口，是否为 public 或者 abstract 类型，如果是类的话是否声明为 final 等等。</p>
 <p>类访问和属性修饰符:</p>
-<img src="/codeant/undefined/2.png" title="2.png">
+<img src="/codeant/32ac/2.png" title="2.png">
 <p>我们定义了一个 Employee 类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.snailclimb.bean;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过<code>javap -v class类名</code> 指令来看一下类的访问标志。</p>
-<img src="/codeant/undefined/3.png" title="3.png">
+<img src="/codeant/32ac/3.png" title="3.png">
 <h2 id="2-5-当前类索引-父类索引与接口索引集合"><a href="#2-5-当前类索引-父类索引与接口索引集合" class="headerlink" title="2.5 当前类索引,父类索引与接口索引集合"></a>2.5 当前类索引,父类索引与接口索引集合</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">u2             this_class;<span class="comment">//当前类</span></span><br><span class="line">u2             super_class;<span class="comment">//父类</span></span><br><span class="line">u2             interfaces_count;<span class="comment">//接口</span></span><br><span class="line">u2             interfaces[interfaces_count];<span class="comment">//一个雷可以实现多个接口</span></span><br></pre></td></tr></table></figure>
 <p><strong>类索引用于确定这个类的全限定名，父类索引用于确定这个类的父类的全限定名，由于 Java 语言的单继承，所以父类索引只有一个，除了 <code>java.lang.Object</code> 之外，所有的 java 类都有父类，因此除了 <code>java.lang.Object</code> 外，所有 Java 类的父类索引都不为 0。</strong></p>
 <p><strong>接口索引集合用来描述这个类实现了那些接口，这些被实现的接口将按<code>implents</code>(如果这个类本身是接口的话则是<code>extends</code>) 后的接口顺序从左到右排列在接口索引集合中。</strong></p>
 <h2 id="2-6-字段表集合"><a href="#2-6-字段表集合" class="headerlink" title="2.6 字段表集合"></a>2.6 字段表集合</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u2             fields_count;<span class="comment">//Class 文件的字段的个数</span></span><br><span class="line">field_info     fields[fields_count];<span class="comment">//一个类会可以有个字段</span></span><br></pre></td></tr></table></figure>
 <p>字段表（field info）用于描述接口或类中声明的变量。字段包括类级变量以及实例变量，但不包括在方法内部声明的局部变量。</p>
 <p><strong>field info(字段表) 的结构:</strong></p>
-<img src="/codeant/undefined/4.png" title="4.png">
+<img src="/codeant/32ac/4.png" title="4.png">
 <ul>
 <li><strong>access_flags:</strong>  字段的作用域（<code>public</code> ,<code>private</code>,<code>protected</code>修饰符），是实例变量还是类变量（<code>static</code>修饰符）,可否被序列化（transient 修饰符）,可变性（final）,可见性（volatile 修饰符，是否强制从主内存读写）。</li>
 <li><strong>name_index:</strong> 对常量池的引用，表示的字段的名称；</li>
@@ -372,7 +372,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>上述这些信息中，各个修饰符都是布尔值，要么有某个修饰符，要么没有，很适合使用标志位来表示。而字段叫什么名字、字段被定义为什么数据类型这些都是无法固定的，只能引用常量池中常量来描述。</p>
 <p><strong>字段的 access_flags 的取值:</strong></p>
-<img src="/codeant/undefined/4.png" title="4.png">
+<img src="/codeant/32ac/4.png" title="4.png">
 <h2 id="2-7-方法表集合"><a href="#2-7-方法表集合" class="headerlink" title="2.7 方法表集合"></a>2.7 方法表集合</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u2             methods_count;<span class="comment">//Class 文件的方法的数量</span></span><br><span class="line">method_info    methods[methods_count];<span class="comment">//一个类可以有个多个方法</span></span><br></pre></td></tr></table></figure>
 <p>methods_count 表示方法的数量，而 method_info 表示的方法表。</p>
 <p>Class 文件存储格式中对方法的描述与对字段的描述几乎采用了完全一致的方式。方法表的结构如同字段表一样，依次包括了访问标志、名称索引、描述符索引、属性表集合几项。 </p>
@@ -539,11 +539,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/57ee.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2019年计划
+          读书笔记-深入理解Java虚拟机之类加载过程
         
       </div>
     </a>
@@ -723,10 +723,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
@@ -740,6 +736,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stomp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,15 +763,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -811,19 +811,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">

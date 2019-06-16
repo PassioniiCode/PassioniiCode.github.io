@@ -9,18 +9,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>Archives | Code Ant&#39;s Blog</title>
+  <title>读书笔记-深入理解Java虚拟机之类加载过程 | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="千里之堤，溃于蚁穴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Code Ant&#39;s Blog">
-<meta property="og:url" content="https://lijinhongpassion.github.io/archives/page/5/index.html">
+  <meta name="keywords" content="java,jvm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记-深入理解Java虚拟机之类加载过程">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/57ee.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
-<meta property="og:description" content="千里之堤，溃于蚁穴">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.unsplash.com/photo-1560568082-c15188aa6510?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.png">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.png">
+<meta property="og:updated_time" content="2019-06-16T09:37:16.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code Ant&#39;s Blog">
-<meta name="twitter:description" content="千里之堤，溃于蚁穴">
+<meta name="twitter:title" content="读书笔记-深入理解Java虚拟机之类加载过程">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1560568082-c15188aa6510?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -207,325 +211,132 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-读书笔记-深入理解Java虚拟机之类加载过程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+	  
+        
+		
+        
+        <a href="/codeant/57ee.html" class="archive-article-date">
+  	<time datetime="2019-06-16T09:35:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+		
+		<center><p>
+  
+    </p><h1 class="article-title_code_ant" itemprop="name">
+      读书笔记-深入理解Java虚拟机之类加载过程
+    </h1>
+  
+<p></p></center>
+	
+      
+        <hr>
+<p><img src="https://images.unsplash.com/photo-1560568082-c15188aa6510?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=750&amp;q=80" alt></p>
+<a id="more"></a>
+<center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
+
+<hr>
+<h1 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h1><p>Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚拟机是如何加载这些 Class 文件呢？</p>
+<p>系统加载 Class 类型的文件主要三步:<strong>加载-&gt;连接-&gt;初始化</strong>。连接过程又可分为三步:<strong>验证-&gt;准备-&gt;解析</strong>。</p>
+<img src="/codeant/undefined/1.png" title="1.png">
+<h2 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h2><p>类加载过程的第一步，主要完成下面3件事情：</p>
+<ol>
+<li>通过全类名获取定义此类的二进制字节流</li>
+<li>将字节流所代表的静态存储结构转换为方法区的运行时数据结构</li>
+<li>在内存中生成一个代表该类的 Class 对象,作为方法区这些数据的访问入口</li>
+</ol>
+<p>虚拟机规范多上面这3点并不具体，因此是非常灵活的。比如：”通过全类名获取定义此类的二进制字节流” 并没有指明具体从哪里获取、怎样获取。比如：比较常见的就是从 ZIP 包中读取（日后出现的JAR、EAR、WAR格式的基础）、其他文件生成（典型应用就是JSP）等等。</p>
+<p><strong>一个非数组类的加载阶段（加载阶段获取类的二进制字节流的动作）是可控性最强的阶段，这一步我们可以去完成还可以自定义类加载器去控制字节流的获取方式（重写一个类加载器的 <code>loadClass()</code> 方法）。数组类型不通过类加载器创建，它由 Java 虚拟机直接创建。</strong></p>
+<p>类加载器、双亲委派模型也是非常重要的知识点，这部分内容会在后面的文章中单独介绍到。</p>
+<p>加载阶段和连接阶段的部分内容是交叉进行的，加载阶段尚未结束，连接阶段可能就已经开始了。</p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><img src="/codeant/undefined/2.png" title="2.png">
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p><strong>准备阶段是正式为类变量分配内存并设置类变量初始值的阶段</strong>，这些内存都将在方法区中分配。对于该阶段有以下几点需要注意：</p>
+<ol>
+<li>这时候进行内存分配的仅包括类变量（static），而不包括实例变量，实例变量会在对象实例化时随着对象一块分配在 Java 堆中。</li>
+<li>这里所设置的初始值”通常情况”下是数据类型默认的零值（如0、0L、null、false等），比如我们定义了<code>public static int value=111</code> ，那么 value 变量在准备阶段的初始值就是 0 而不是111（初始化阶段才会复制）。特殊情况：比如给 value 变量加上了 fianl 关键字<code>public static final int value=111</code> ，那么准备阶段 value 的值就被复制为 111。</li>
+</ol>
+<p><strong>基本数据类型的零值：</strong></p>
+<img src="/codeant/undefined/3.png" title="3.png">
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用限定符7类符号引用进行。</p>
+<p>符号引用就是一组符号来描述目标，可以是任何字面量。<strong>直接引用</strong>就是直接指向目标的指针、相对偏移量或一个间接定位到目标的句柄。在程序实际运行时，只有符号引用是不够的，举个例子：在程序执行方法时，系统需要明确知道这个方法所在的位置。Java 虚拟机为每个类都准备了一张方法表来存放类中所有的方法。当需要调用一个类的方法的时候，只要知道这个方法在方发表中的偏移量就可以直接调用该方法了。通过解析操作符号引用就可以直接转变为目标方法在类中方法表的位置，从而使得方法可以被调用。</p>
+<p>综上，解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程，也就是得到类或者字段、方法在内存中的指针或者偏移量。</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>初始化是类加载的最后一步，也是真正执行类中定义的 Java 程序代码(字节码)，初始化阶段是执行类构造器 <code>&lt;clinit&gt; ()</code>方法的过程。</p>
+<p>对于<code>&lt;clinit&gt;（）</code> 方法的调用，虚拟机会自己确保其在多线程环境中的安全性。因为 <code>&lt;clinit&gt;（）</code> 方法是带锁线程安全，所以在多线程环境下进行类初始化的话可能会引起死锁，并且这种死锁很难被发现。</p>
+<p>对于初始化阶段，虚拟机严格规范了有且只有5中情况下，必须对类进行初始化：</p>
+<ol>
+<li>当遇到 new 、 getstatic、putstatic或invokestatic 这4条直接码指令时，比如 new 一个类，读取一个静态字段(未被 final 修饰)、或调用一个类的静态方法时。</li>
+<li>使用 <code>java.lang.reflect</code> 包的方法对类进行反射调用时 ，如果类没初始化，需要触发其初始化。</li>
+<li>初始化一个类，如果其父类还未初始化，则先触发该父类的初始化。</li>
+<li>当虚拟机启动时，用户需要定义一个要执行的主类 (包含 main 方法的那个类)，虚拟机会先初始化这个类。</li>
+<li>当使用 JDK1.7 的动态动态语言时，如果一个 MethodHandle 实例的最后解析结构为 REF_getStatic、REF_putStatic、REF_invokeStatic、的方法句柄，并且这个句柄没有初始化，则需要先触发器初始化。</li>
+</ol>
+
+      
+		
+		
+		
+		
+		  <div>
+			<blockquote>
+				<strong>本文作者：</strong>
+				
+				  Code Ant
+				
+				<br>
+				<strong>本文链接：</strong>
+				https://lijinhongpassion.github.io/codeant/57ee.html
+				<br>
+				<strong>版权声明：</strong>
+				本作品采用
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+				进行许可。转载请注明出处！
+				
+			</blockquote>
+			
+			
+			<hr>
+				<center><strong>感谢有你，伴我成长。</strong></center>
+			<hr>
+		  </div>
+		
+		
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>一块就是对我最大的支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/5752.html" class="archive-article-date">
-  	<time datetime="2019-03-18T07:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/5752.html">hexo添加分类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/1db7.html" class="archive-article-date">
-  	<time datetime="2019-03-18T06:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/1db7.html">Yilia添加分类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/61549.html" class="archive-article-date">
-  	<time datetime="2019-03-18T05:26:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/61549.html">hexo设置短地址</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/34400.html" class="archive-article-date">
-  	<time datetime="2019-03-18T04:44:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/34400.html">Yilia加密文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/59360.html" class="archive-article-date">
-  	<time datetime="2019-03-18T03:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/59360.html">hexo添加RSS订阅功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rss</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Yilia//" class="article-tag-list-link color1">Yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/4312.html" class="archive-article-date">
-  	<time datetime="2019-03-18T02:11:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/4312.html">example-this-is-a-password-example</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">example</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/31561.html" class="archive-article-date">
-  	<time datetime="2019-03-17T13:19:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/31561.html">Java-ssm静态资源无法访问的问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -535,96 +346,162 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/ssm框架//" class="article-tag-list-link color1">ssm框架</a>
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lijinhongpassion.github.io/codeant/57ee.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/codeant/1766.html" class="archive-article-date">
-  	<time datetime="2019-03-17T12:14:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/codeant/2511.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2019年计划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/codeant/32ac.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">读书笔记-深入理解Java虚拟机之类文件结构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/codeant/1766.html">Java-mybatis集成redis二级缓存方法+原理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/ssm框架//" class="article-tag-list-link color1">ssm框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#类加载过程"><span class="toc-number">1.</span> <span class="toc-text">类加载过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#加载"><span class="toc-number">1.1.</span> <span class="toc-text">加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证"><span class="toc-number">1.2.</span> <span class="toc-text">验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">1.3.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析"><span class="toc-number">1.4.</span> <span class="toc-text">解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-number">1.5.</span> <span class="toc-text">初始化</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/6/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<!--<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">-->
+<!--<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Sun Jun 16 2019 17:35:51 GMT+0800',
+  owner: 'LiJinHongPassion',
+  repo: 'LiJinHongPassion.github.io',
+  oauth: {
+    client_id: '5ad7ec70a25067e86139',
+    client_secret: '21a8b9052808acddd0734e828103e88beabd97c5',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -658,8 +535,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
