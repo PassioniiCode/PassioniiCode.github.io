@@ -11,16 +11,18 @@
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
   <title>Java-JDBC事务 | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="keywords" content="java,mysql,jdbc">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java-JDBC事务">
 <meta property="og:url" content="https://lijinhongpassion.github.io/codeant/6175.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.jpg">
-<meta property="og:updated_time" content="2019-06-18T16:23:53.579Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1558980394-0a06c4631733?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/6175/1.jpg">
+<meta property="og:updated_time" content="2019-06-20T06:15:54.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-JDBC事务">
-<meta name="twitter:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.jpg">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1558980394-0a06c4631733?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -233,13 +235,14 @@ var _hmt = _hmt || [];
 	
       
         <hr>
+<p><img src="https://images.unsplash.com/photo-1558980394-0a06c4631733?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
 <a id="more"></a>
 <center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
 <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>今天了解了一下spring的@Transactional事务回滚操作，由此对Java代码如何操作JDBC来对事务进行回滚操作。下面简单阐述一下存储过程，有不足之处还望指出。</p>
 <h1 id="1-JDBC"><a href="#1-JDBC" class="headerlink" title="1. JDBC"></a>1. JDBC</h1><p>首先了解一下JDBC在对数据库操作中，处于什么位置。</p>
-<img src="/codeant/undefined/1.jpg" title="1.jpg">
+<img src="/codeant/6175/1.jpg" title="1.jpg">
 <p>由图可知，在java中JDBC的api在<code>java.sql</code>包下，所以我们可以调用该包下的对象来实现对数据库的操作。</p>
 <h1 id="2-常规操作"><a href="#2-常规操作" class="headerlink" title="2. 常规操作"></a>2. 常规操作</h1><p>对数据库的常规操作（不添加事务）有以下几个步骤：</p>
 <pre><code>1. 加载驱动
@@ -266,18 +269,10 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Connection connection = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    <span class="comment">//1		</span></span><br><span class="line">    Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">    <span class="comment">//2</span></span><br><span class="line">    connection = DriverManager.getConnection(<span class="string">""</span>, <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">    <span class="comment">//3</span></span><br><span class="line">    PreparedStatement preparedStatement = connection.prepareStatement(<span class="string">"sql"</span>);</span><br><span class="line">    <span class="comment">//4:preparedStatement.executeQuery()这里会自动提交</span></span><br><span class="line">    <span class="comment">//5</span></span><br><span class="line">    ResultSet resultSet = preparedStatement.executeQuery();</span><br><span class="line">    <span class="comment">//遍历resultSet</span></span><br><span class="line">    <span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">          resultSet.getInt(<span class="string">"字段名"</span>);</span><br><span class="line">         <span class="comment">//......</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//关闭流</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="comment">//回滚</span></span><br><span class="line">    	connection.rollback();</span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由此我可以大概猜测spring事务注解实现的基本流程，但是对于JDBC是怎么做这个回滚的，继续往下看</p>
 <h1 id="4-MySQL的六种日志"><a href="#4-MySQL的六种日志" class="headerlink" title="4. MySQL的六种日志"></a>4. MySQL的六种日志</h1><p>参考地址：<a href="https://yq.aliyun.com/articles/531757?utm_content=m_1000006701" target="_blank" rel="noopener">https://yq.aliyun.com/articles/531757?utm_content=m_1000006701</a></p>
+<p>​                    <a href="https://zhuanlan.zhihu.com/p/58011817" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/58011817</a></p>
 <p>mysql中文文档：<a href="https://www.mysqlzh.com/doc/48.html" target="_blank" rel="noopener">https://www.mysqlzh.com/doc/48.html</a></p>
 <p>mysql官网文档：<a href="https://dev.mysql.com/doc/refman/5.7/en/server-logs.html" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.7/en/server-logs.html</a></p>
 <p>根据官网文档，MySQL中有六种日志文件，分别是：</p>
-<ul>
-<li>重做日志（redo log）</li>
-<li>回滚日志（undo log）</li>
-<li>二进制日志（binlog）</li>
-<li>错误日志（errorlog）</li>
-<li>慢查询日志（slow query log）</li>
-<li>一般查询日志（general log）</li>
-<li>中继日志（relay log）</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -287,31 +282,138 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr>
-<td>错误日志</td>
+<td>错误日志（errorlog）</td>
 <td>启动，运行或停止<strong>mysqld</strong>时遇到的问题</td>
 </tr>
 <tr>
-<td>一般查询日志</td>
-<td>建立客户端连接和从客户端收到的语句</td>
+<td>一般查询日志（general log）</td>
+<td>建立客户端<strong>连接</strong>和从客户端收到的<strong>语句</strong></td>
 </tr>
 <tr>
-<td>二进制日志</td>
+<td>二进制日志（binlog）</td>
 <td>更改数据的语句（也用于复制）</td>
 </tr>
 <tr>
-<td>中继日志</td>
+<td>中继日志（relay log）</td>
 <td>从复制主服务器收到的数据更改</td>
 </tr>
 <tr>
-<td>慢查询日志</td>
+<td>慢查询日志（slow query log）</td>
 <td><strong><code>long_query_time</code></strong>执行时间超过几秒的查询</td>
 </tr>
 <tr>
-<td>DDL日志（元数据日志）</td>
+<td><strong><em>DDL日志（元数据日志、回滚日志）（undo log）</em></strong></td>
 <td>DDL语句执行的元数据操作</td>
 </tr>
 </tbody>
 </table>
+<p>重点了解：DDL日志，重做日志，二进制日志</p>
+<h2 id="回滚日志"><a href="#回滚日志" class="headerlink" title="回滚日志"></a>回滚日志</h2><p>明显看出，mysql日志类别中有一个<strong>回滚日志</strong>，他的具体作用：</p>
+<ul>
+<li>作用：</li>
+</ul>
+<p>保存了事务发生之前的数据的一个版本，<strong>可以用于回滚</strong>，同时可以<strong>提供多版本并发控制下的读（MVCC）</strong>，也即非锁定读</p>
+<ul>
+<li>内容：</li>
+</ul>
+<p><strong>逻辑格式的日志</strong>，在执行undo的时候，仅仅是将数据从逻辑上恢复至事务之前的状态，而不是从物理页面上操作实现的，这一点是不同于redo log的。</p>
+<ul>
+<li>什么时候产生：</li>
+</ul>
+<p><strong>事务开始之前</strong>，将当前是的版本生成undo log，<strong>undo 也会产生 redo 来保证undo log的可靠性</strong></p>
+<ul>
+<li>什么时候释放：</li>
+</ul>
+<p><strong>当事务提交之后，undo log并不能立马被删除</strong>，而是放入待清理的链表，由purge线程判断是否有其他事务在使用undo段中表的上一个事务之前的版本信息，决定是否可以清理undo log的日志空间。</p>
+<p>对应的物理文件：</p>
+<p>MySQL5.6之前，undo表空间位于共享表空间的回滚段中，共享表空间的默认的名称是ibdata，位于数据文件目录中。</p>
+<p>MySQL5.6之后，undo表空间可以配置成独立的文件，但是提前需要在配置文件中配置，完成数据库初始化后生效且不可改变undo log文件的个数</p>
+<p>如果初始化数据库之前没有进行相关配置，那么就无法配置成独立的表空间了。</p>
+<p>关于MySQL5.7之后的独立undo 表空间配置参数如下：</p>
+<p>innodb_undo_directory = /data/undospace/ –undo独立表空间的存放目录</p>
+<p>innodb_undo_logs = 128 –回滚段为128KB</p>
+<p>innodb_undo_tablespaces = 4 –指定有4个undo log文件</p>
+<p>如果undo使用的共享表空间，这个共享表空间中又不仅仅是存储了undo的信息，共享表空间的默认为与MySQL的数据目录下面，其属性由参数innodb_data_file_path配置。</p>
+<ul>
+<li>其他：</li>
+</ul>
+<p>undo是在事务开始之前保存的被修改数据的一个版本，产生undo日志的时候，同样会伴随类似于保护事务持久化机制的redolog的产生。</p>
+<p>默认情况下undo文件是保持在共享表空间的，也即ibdatafile文件中，当数据库中发生一些大的事务性操作的时候，要生成大量的undo信息，全部保存在共享表空间中的。</p>
+<p>因此共享表空间可能会变的很大，默认情况下，也就是undo 日志使用共享表空间的时候，被“撑大”的共享表空间是不会也不能自动收缩的。</p>
+<p>因此，mysql5.7之后的“独立undo 表空间”的配置就显得很有必要了。</p>
+<h2 id="重做日志（redo-log）"><a href="#重做日志（redo-log）" class="headerlink" title="重做日志（redo log）"></a>重做日志（redo log）</h2><p>作用：</p>
+<p>确保事务的持久性。防止在发生故障的时间点，尚有脏页未写入磁盘，在重启mysql服务的时候，根据redo log进行重做，从而达到事务的持久性这一特性。</p>
+<ul>
+<li>内容：</li>
+</ul>
+<p>物理格式的日志，记录的是物理数据页面的修改的信息，其redo log是顺序写入redo log file的物理文件中去的。</p>
+<ul>
+<li>什么时候产生：</li>
+</ul>
+<p><strong>事务开始之后就产生redo log</strong>，redo log的落盘并不是随着事务的提交才写入的，而是在事务的执行过程中，便开始写入redo log文件中。</p>
+<ul>
+<li>什么时候释放：</li>
+</ul>
+<p><strong>当对应事务的脏页写入到磁盘之后</strong>，redo log的使命也就完成了，重做日志占用的空间就可以重用（被覆盖）。</p>
+<p>对应的物理文件：</p>
+<p>默认情况下，对应的物理文件位于数据库的data目录下的ib_logfile1&amp;ib_logfile2</p>
+<p>innodb_log_group_home_dir 指定日志文件组所在的路径，默认./ ，表示在数据库的数据目录下。</p>
+<p>innodb_log_files_in_group 指定重做日志文件组中文件的数量，默认2</p>
+<p>关于文件的大小和数量，由以下两个参数配置：</p>
+<p>innodb_log_file_size 重做日志文件的大小。</p>
+<p>innodb_mirrored_log_groups 指定了日志镜像文件组的数量，默认1</p>
+<ul>
+<li>其他：</li>
+</ul>
+<p>很重要一点，redo log是什么时候写盘的？前面说了是在事物开始之后逐步写盘的。</p>
+<p>之所以说重做日志是在事务开始之后逐步写入重做日志文件，而不一定是事务提交才写入重做日志缓存，原因就是，重做日志有一个缓存区Innodb_log_buffer，Innodb_log_buffer的默认大小为8M(这里设置的16M),Innodb存储引擎先将重做日志写入innodb_log_buffer中。</p>
+<p>然后会通过以下三种方式将innodb日志缓冲区的日志刷新到磁盘</p>
+<p>Master Thread 每秒一次执行刷新Innodb_log_buffer到重做日志文件。</p>
+<p>每个事务提交时会将重做日志刷新到重做日志文件。</p>
+<p>当重做日志缓存可用空间 少于一半时，重做日志缓存被刷新到重做日志文件</p>
+<p>由此可以看出，重做日志通过不止一种方式写入到磁盘，尤其是对于第一种方式，Innodb_log_buffer到重做日志文件是Master Thread线程的定时任务。</p>
+<p>因此重做日志的写盘，并不一定是随着事务的提交才写入重做日志文件的，而是随着事务的开始，逐步开始的。</p>
+<p>另外引用《MySQL技术内幕 Innodb 存储引擎》（page37）上的原话：</p>
+<p>即使某个事务还没有提交，Innodb存储引擎仍然每秒会将重做日志缓存刷新到重做日志文件。</p>
+<p>这一点是必须要知道的，因为这可以很好地解释再大的事务的提交（commit）的时间也是很短暂的。</p>
+<h2 id="二进制日志（binlog）："><a href="#二进制日志（binlog）：" class="headerlink" title="二进制日志（binlog）："></a>二进制日志（binlog）：</h2><ul>
+<li>作用：</li>
+</ul>
+<p>用于复制，在<strong>主从复制</strong>中，从库利用主库上的binlog进行重播，实现主从同步。</p>
+<p>用于数据库的基于时间点的还原。</p>
+<p>逻辑格式的日志，可以简单认为就是执行过的事务中的sql语句。</p>
+<p>但又不完全是sql语句这么简单，而是包括了执行的sql语句（增删改）反向的信息，也就意味着delete对应着delete本身和其反向的insert；update对应着update执行前后的版本的信息；insert对应着delete和insert本身的信息。</p>
+<p>在使用mysqlbinlog解析binlog之后一些都会真相大白。</p>
+<p>因此可以基于binlog做到类似于oracle的闪回功能，其实都是依赖于binlog中的日志记录。</p>
+<ul>
+<li>什么时候产生：</li>
+</ul>
+<p>事务提交的时候，一次性将事务中的sql语句（一个事物可能对应多个sql语句）按照一定的格式记录到binlog中。</p>
+<p>这里与redo log很明显的差异就是redo log并不一定是在事务提交的时候刷新到磁盘，redo log是在事务开始之后就开始逐步写入磁盘。</p>
+<p>因此对于事务的提交，即便是较大的事务，提交（commit）都是很快的，但是在开启了bin_log的情况下，对于较大事务的提交，可能会变得比较慢一些。</p>
+<p>这是因为binlog是在事务提交的时候一次性写入的造成的，这些可以通过测试验证。</p>
+<p>binlog的默认是保持时间由参数expire_logs_days配置，也就是说对于非活动的日志文件，在生成时间超过expire_logs_days配置的天数之后，会被自动删除。</p>
+<p>配置文件的路径为log_bin_basename，binlog日志文件按照指定大小，当日志文件达到指定的最大的大小之后，进行滚动更新，生成新的日志文件。</p>
+<p>对于每个binlog日志文件，通过一个统一的index文件来组织。</p>
+<ul>
+<li>其他：</li>
+</ul>
+<p>二进制日志的作用之一是还原数据库的，这与redo log很类似，很多人混淆过，但是两者有本质的不同</p>
+<p>作用不同：redo log是保证事务的持久性的，是事务层面的，binlog作为还原的功能，是数据库层面的（当然也可以精确到事务层面的），虽然都有还原的意思，但是其保护数据的层次是不一样的。</p>
+<p>内容不同：redo log是物理日志，是数据页面的修改之后的物理记录，binlog是逻辑日志，可以简单认为记录的就是sql语句</p>
+<p>另外，两者日志产生的时间，可以释放的时间，在可释放的情况下清理机制，都是完全不同的。</p>
+<p>恢复数据时候的效率，基于物理日志的redo log恢复数据的效率要高于语句逻辑日志的binlog</p>
+<p>关于事务提交时，redo log和binlog的写入顺序，为了保证主从复制时候的主从一致（当然也包括使用binlog进行基于时间点还原的情况），是要严格一致的，MySQL通过两阶段提交过程来完成事务的一致性的，也即redo log和binlog的一致性的，理论上是先写redo log，再写binlog，两个日志都提交成功（刷入磁盘），事务才算真正的完成</p>
+<h1 id="5-MySQL执行流程"><a href="#5-MySQL执行流程" class="headerlink" title="5. MySQL执行流程"></a>5. MySQL执行流程</h1><p><code>SQL语句--&gt;JDBC API--&gt;MySQL驱动--&gt;MySQL数据库</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">启动MySQL server服务，若是在启动过程报出异常，会写入错误日志；</span><br></pre></td></tr></table></figure>
+<p>上面涉及到一个日志<code>error log</code>（错误日志），当启动，运行或停止mysqld时遇到的问题，会写入错误日志</p>
+<p>SQL语句通过JDBC API执行，JDBC API调用MySQL驱动，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MySQL驱动在事务开始之前产生redo log，在事务开始之后，产生 redo 来保证undo log的可靠性</span><br><span class="line"></span><br><span class="line">**当事务提交之后，undo log并不能立马被删除，而是放入待清理的链表，由purge线程判断是否有其他事务在使用undo段中表的上一个事务之前的版本信息，决定是否可以清理undo log的日志空间（这里也就是说当事务提交后，需并不是立即执行，而是存放在undo log日志里，然后mysql数据库再读取undo log执行）。当对应事务的脏页写入到磁盘之后，redo log的使命也就完成了**，重做日志占用的空间就可以重用（被覆盖）。</span><br><span class="line"></span><br><span class="line">在执行事务过程中数据库服务异常关闭，在重启mysql服务的时候，根据redo log进行重做</span><br></pre></td></tr></table></figure>
+<p>上面涉及到两张日志 <code>ddl log</code> 和<code>redo log</code>（回滚日志和重做日志）</p>
+<p>一般查询日志（general log）和慢查询日志（slow query log）默认关闭</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当mysql数据库需要搭建主从复制的时候，就需要中继日志，主库先将事务执行后将增删改操作写入至中继文件，从库就从主库的中继日志获取数据变化，实现同步</span><br></pre></td></tr></table></figure>
+<p>上面涉及到中继日志（relay log）</p>
+<p>二进制日志（binlog）：看第四点中的二进制文件</p>
 
       
 		
@@ -373,7 +475,37 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdbc</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -475,7 +607,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-JDBC"><span class="toc-number">2.</span> <span class="toc-text">1. JDBC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-常规操作"><span class="toc-number">3.</span> <span class="toc-text">2. 常规操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-回滚"><span class="toc-number">4.</span> <span class="toc-text">3. 回滚</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-MySQL的六种日志"><span class="toc-number">5.</span> <span class="toc-text">4. MySQL的六种日志</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-JDBC"><span class="toc-number">2.</span> <span class="toc-text">1. JDBC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-常规操作"><span class="toc-number">3.</span> <span class="toc-text">2. 常规操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-回滚"><span class="toc-number">4.</span> <span class="toc-text">3. 回滚</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-MySQL的六种日志"><span class="toc-number">5.</span> <span class="toc-text">4. MySQL的六种日志</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#回滚日志"><span class="toc-number">5.1.</span> <span class="toc-text">回滚日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重做日志（redo-log）"><span class="toc-number">5.2.</span> <span class="toc-text">重做日志（redo log）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二进制日志（binlog）："><span class="toc-number">5.3.</span> <span class="toc-text">二进制日志（binlog）：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-MySQL执行流程"><span class="toc-number">6.</span> <span class="toc-text">5. MySQL执行流程</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -629,6 +761,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Springboot</a>
               </li>
              
@@ -642,10 +778,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,6 +809,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -686,6 +822,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,11 +841,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
               </li>
              
               <li class="article-tag-list-item">
