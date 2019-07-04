@@ -18,11 +18,11 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1562065540-efa93744ed71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.jpg">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.jpg">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.jpg">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/4.jpg">
-<meta property="og:updated_time" content="2019-07-02T14:34:00.999Z">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/fb49/1.jpg">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/fb49/2.jpg">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/fb49/3.jpg">
+<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/fb49/4.jpg">
+<meta property="og:updated_time" content="2019-07-02T14:34:34.476Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-spring事务">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1562065540-efa93744ed71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
@@ -285,10 +285,10 @@ var _hmt = _hmt || [];
 </ol>
 <h3 id="2-3-趣味问题"><a href="#2-3-趣味问题" class="headerlink" title="2.3 趣味问题"></a>2.3 趣味问题</h3><p>我在知乎上看见一个问题，当一个没有@Transaction注解的方法A去调用一个有@Transaction注解的方法B的时候，抛出异常后会执行事务吗？答案是不能的<br>知乎参考文章地址：<a href="https://zhuanlan.zhihu.com/p/38208248" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38208248</a><br>其中需要理解的是这个代理的知识点，下面来梳理一下：<br>条件：A方法没有事务注解，B方法有事务@Transaction注解</p>
 <pre><code>A方法调用B方法是否会执行事务？**答案：不会**（所以我们理解只有加了@Transaction注解才会执行事务回滚）
-</code></pre><p>首先B方法有注解，如图：<br><img src="/codeant/undefined/1.jpg" title="1.jpg"></p>
-<p>spring的@Transaction注解会对方法生成的代理方法加上try块，添加事务回滚处理，如图：<br><img src="/codeant/undefined/2.jpg" title="2.jpg"></p>
-<p>A方法调用B方法，如图：<br><img src="/codeant/undefined/3.jpg" title="3.jpg"></p>
-<p>因为A方法没有注解，就不会在代理方法上加上try块，所以就没有事务，如图：<br>A方法调用B方法是将B方法压入A方法的栈中，没有带上事务<br><img src="/codeant/undefined/4.jpg" title="4.jpg"></p>
+</code></pre><p>首先B方法有注解，如图：<br><img src="/codeant/fb49/1.jpg" title="1.jpg"></p>
+<p>spring的@Transaction注解会对方法生成的代理方法加上try块，添加事务回滚处理，如图：<br><img src="/codeant/fb49/2.jpg" title="2.jpg"></p>
+<p>A方法调用B方法，如图：<br><img src="/codeant/fb49/3.jpg" title="3.jpg"></p>
+<p>因为A方法没有注解，就不会在代理方法上加上try块，所以就没有事务，如图：<br>A方法调用B方法是将B方法压入A方法的栈中，没有带上事务<br><img src="/codeant/fb49/4.jpg" title="4.jpg"></p>
 <h3 id="2-4-事务传播"><a href="#2-4-事务传播" class="headerlink" title="2.4 事务传播"></a>2.4 事务传播</h3><p>参考文档：<a href="https://mp.weixin.qq.com/s?__biz=MzU2MzY3ODI4OA==&amp;mid=2247483888&amp;idx=1&amp;sn=bd75e58f855d07d58715e381ae0d0e7e&amp;chksm=fc57dccfcb2055d9e4f11695ed58ecdaf72d9c63afa59a4ac44dd5d85e82d8bd6f932c5c6088&amp;mpshare=1&amp;scene=23&amp;srcid=#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzU2MzY3ODI4OA==&amp;mid=2247483888&amp;idx=1&amp;sn=bd75e58f855d07d58715e381ae0d0e7e&amp;chksm=fc57dccfcb2055d9e4f11695ed58ecdaf72d9c63afa59a4ac44dd5d85e82d8bd6f932c5c6088&amp;mpshare=1&amp;scene=23&amp;srcid=#rd</a></p>
 <p><strong>含义</strong>：确定客户端和被调用端的事务边界（说得通俗一点就是多个具有事务控制的service的相互调用时所形成的复杂的事务边界控制）</p>
 <p><strong>什么是上下文</strong>：自我理解，上下文==环境，直接把上下文替换为环境理解，如下面涉及到的<code>表示当前方法必须在一个具有事务的上下文中运行</code>,可以替换为<code>表示当前方法必须在一个具有事务的环境中运行</code></p>
@@ -721,10 +721,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
@@ -733,11 +729,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,6 +742,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -785,11 +785,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -797,7 +793,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -813,11 +813,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+                <a href="javascript:void(0)" class="js-tag color3">事务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">事务</a>
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
               </li>
              
               <li class="article-tag-list-item">
