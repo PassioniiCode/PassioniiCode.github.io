@@ -18,10 +18,10 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1563170071-b97db1b4ae94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/1.jpg">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/2.jpg">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/undefined/3.jpg">
-<meta property="og:updated_time" content="2019-07-16T07:10:42.802Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/3.jpg">
+<meta property="og:updated_time" content="2019-07-16T07:17:03.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-JJWT入门教程">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1563170071-b97db1b4ae94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
@@ -266,12 +266,13 @@ var _hmt = _hmt || [];
 <h2 id="2-4-测试"><a href="#2-4-测试" class="headerlink" title="2.4 测试"></a>2.4 测试</h2><h3 id="2-4-1-编写controller"><a href="#2-4-1-编写controller" class="headerlink" title="2.4.1 编写controller"></a>2.4.1 编写controller</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.example.li.springboot_jjwt_demo.service.JwtService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LJH</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/7/16-6:16</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@QQ</span> 1755497577</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//需要token验证才能访问</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"user/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">user</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>   <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取token</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"user/test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"name"</span>, <span class="string">"codeAnt"</span>);</span><br><span class="line">        map.put(<span class="string">"age"</span>, <span class="number">21</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> JwtService.createPersonToken(map, <span class="string">"codeAnt"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>user/hello</strong>：这个路径在2.2.2中配置有过滤器，所以访问的时候会过滤，判断是否携带token</p>
 <h3 id="2-4-2-接口测试"><a href="#2-4-2-接口测试" class="headerlink" title="2.4.2 接口测试"></a>2.4.2 接口测试</h3><p><strong>获取token</strong>：<a href="http://localhost:8080/user/test" target="_blank" rel="noopener">http://localhost:8080/user/test</a></p>
-<img src="/codeant/undefined/1.jpg" title="1.jpg">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/1.jpg" alt></p>
 <p><strong>不携带token访问</strong>：<a href="http://localhost:8080/user/hello" target="_blank" rel="noopener">http://localhost:8080/user/hello</a><br>不携带就会报错，抛出错误提示信息</p>
-<img src="/codeant/undefined/2.jpg" title="2.jpg">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/2.jpg" alt></p>
 <p><strong>携带token访问</strong>：<a href="http://localhost:8080/user/hello" target="_blank" rel="noopener">http://localhost:8080/user/hello</a></p>
 <p>authorization：这个字段是在2.2.1编写过滤器中编写的</p>
-<img src="/codeant/undefined/3.jpg" title="3.jpg">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/3.jpg" alt></p>
+
       
 		
 		
@@ -626,11 +627,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,15 +647,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,11 +667,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">example</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
+                <a href="javascript:void(0)" class="js-tag color3">example</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,15 +695,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jwt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,14 +723,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
@@ -730,11 +731,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
+                <a href="javascript:void(0)" class="js-tag color3">事务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">事务</a>
+                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
               </li>
              
               <li class="article-tag-list-item">
