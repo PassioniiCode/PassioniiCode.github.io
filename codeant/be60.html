@@ -18,18 +18,19 @@
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1509716159367-0180b75063d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/4.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/6.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/7.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/5.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/8.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/9.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/10.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/be60/11.png">
-<meta property="og:updated_time" content="2019-06-04T08:13:07.891Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/12.png">
+<meta property="og:updated_time" content="2019-07-22T11:32:54.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-dubbo的简单使用">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1509716159367-0180b75063d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -258,25 +259,26 @@ var _hmt = _hmt || [];
 <li>打开剩余两个项目,分别运行</li>
 <li>打开游览器访问<code>localhost:8081/initOrder?uid=1</code></li>
 </ul>
-<h1 id="1、基础"><a href="#1、基础" class="headerlink" title="1、基础"></a>1、基础</h1><h2 id="1-1-系统架构发展演变"><a href="#1-1-系统架构发展演变" class="headerlink" title="1.1 系统架构发展演变"></a>1.1 系统架构发展演变</h2><h3 id="单一应用架构"><a href="#单一应用架构" class="headerlink" title="单一应用架构"></a>单一应用架构</h3><p>​        也称为单体应用。当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。<br><img src="/codeant/be60/1.png" title="1.png"><br>​        适用于小型网站，小型管理系统，将所有功能都部署到一个功能里，简单易用。<br>缺点：<br>​    1、性能扩展比较难<br>​    2、协同开发问题<br>​    3、不利于升级维护</p>
-<h3 id="垂直应用架构"><a href="#垂直应用架构" class="headerlink" title="垂直应用架构"></a>垂直应用架构</h3><p>​        当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。<br><img src="/codeant/be60/2.png" title="2.png"><br>​        通过切分业务来实现各个模块独立部署，降低了维护和部署的难度，团队各司其职更易管理，性能扩展也更方便，更有针对性。<br>缺点： 公用模块无法重复利用，开发性的浪费</p>
+<h1 id="1、基础"><a href="#1、基础" class="headerlink" title="1、基础"></a>1、基础</h1><h2 id="1-1-系统架构发展演变"><a href="#1-1-系统架构发展演变" class="headerlink" title="1.1 系统架构发展演变"></a>1.1 系统架构发展演变</h2><h3 id="单一应用架构"><a href="#单一应用架构" class="headerlink" title="单一应用架构"></a>单一应用架构</h3><p>​        也称为单体应用。当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。</p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/1.png" alt><br>        适用于小型网站，小型管理系统，将所有功能都部署到一个功能里，简单易用。<br>缺点：<br>    1、性能扩展比较难<br>    2、协同开发问题<br>    3、不利于升级维护</p>
+<h3 id="垂直应用架构"><a href="#垂直应用架构" class="headerlink" title="垂直应用架构"></a>垂直应用架构</h3><p>​        当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。<br><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/2.png" alt><br>​        通过切分业务来实现各个模块独立部署，降低了维护和部署的难度，团队各司其职更易管理，性能扩展也更方便，更有针对性。<br>缺点： 公用模块无法重复利用，开发性的浪费</p>
 <h3 id="分布式服务架构"><a href="#分布式服务架构" class="headerlink" title="分布式服务架构"></a>分布式服务架构</h3><p>​        当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的<strong>分布式服务框架**</strong>(RPC)**是关键。</p>
-<img src="/codeant/be60/3.png" title="3.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/3.png" alt></p>
 <h3 id="流动计算架构"><a href="#流动计算架构" class="headerlink" title="流动计算架构"></a>流动计算架构</h3><p>​        当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于<strong>提高机器利用率的资源调度和治理中心**</strong>(SOA)[<br>Service Oriented Architecture]<strong> </strong>是关键**。</p>
-<img src="/codeant/be60/4.png" title="4.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/4.png" alt></p>
 <h2 id="1-2-RPC"><a href="#1-2-RPC" class="headerlink" title="1.2 RPC"></a>1.2 RPC</h2><ul>
 <li><p>什么叫RPC</p>
 <p><code>RPC【Remote Procedure Call】</code>是指远程过程调用，是一种进程间通信方式，他是一种技术的思想，而不是规范。它允许程序调用另一个地址空间（通常是共享网络的另一台机器上）的过程或函数，而不用程序员显式编码这个远程调用的细节。即程序员无论是调用本地的还是远程的函数，本质上编写的调用代码基本相同。</p>
 </li>
 <li><p>RPC基本原理</p>
 <p>RPC两个核心模块：通讯，序列化。</p>
-<img src="/codeant/be60/6.png" title="6.png">
-<img src="/codeant/be60/7.png" title="7.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/6.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/7.png" alt></p>
 </li>
 </ul>
 <h1 id="2、Dubbo"><a href="#2、Dubbo" class="headerlink" title="2、Dubbo"></a>2、Dubbo</h1><h2 id="2-1-简述"><a href="#2-1-简述" class="headerlink" title="2.1 简述"></a>2.1 简述</h2><p>​    <code>Apache Dubbo (incubating)</code> 是一款高性能、轻量级的开源<strong>Java RPC</strong>框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。</p>
 <p>官网：<a href="http://dubbo.apache.org/" target="_blank" rel="noopener">http://dubbo.apache.org/</a></p>
-<img src="/codeant/be60/5.png" title="5.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/5.png" alt></p>
 <p>​    <strong>服务提供者（Provider</strong> <strong>）</strong>：暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。</p>
 <p>​         <strong>服务消费者（Consumer</strong> <strong>）</strong>: 调用远程服务的服务消费方，服务消费者在启动时，向注册中心订阅自己所需的服务，服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。</p>
 <p>​         <strong>注册中心（Registry</strong> <strong>）</strong>：注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者（如：zookeeper）</p>
@@ -321,21 +323,21 @@ var _hmt = _hmt || [];
 <h3 id="2-2-2-工程架构"><a href="#2-2-2-工程架构" class="headerlink" title="2.2.2 工程架构"></a>2.2.2 工程架构</h3><p>根据 dubbo《服务化最佳实践》 </p>
 <h4 id="1、分包"><a href="#1、分包" class="headerlink" title="1、分包"></a>1、分包</h4><p>建议将服务接口，服务模型，服务异常等均放在 API 包中，因为服务模型及异常也是 API 的一部分，同时，这样做也符合分包原则：重用发布等价原则(REP)，共同重用原则(CRP)。</p>
 <p>如果需要，也可以考虑在 API 包中放置一份 spring 的引用配置，这样使用方，只需在 spring 加载过程中引用此配置即可，配置建议放在模块的包目录下，以免冲突，如：com/alibaba/china/xxx/dubbo-reference.xml。</p>
-<img src="/codeant/be60/8.png" title="8.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/8.png" alt></p>
 <ul>
 <li><p>api包（服务接口，服务模型，服务异常等均放在 API 包）</p>
 <p>其中服务模型（entity）必须 <code>implements Serializable</code></p>
 </li>
 </ul>
-<img src="/codeant/be60/9.png" title="9.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/9.png" alt></p>
 <ul>
 <li>服务提供者包（用户服务模块）</li>
 </ul>
-<img src="/codeant/be60/10.png" title="10.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/10.png" alt></p>
 <ul>
 <li>消费者包（订单web模块）</li>
 </ul>
-<img src="/codeant/be60/11.png" title="11.png">
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/11.png" alt></p>
 <h4 id="2、粒度"><a href="#2、粒度" class="headerlink" title="2、粒度"></a>2、粒度</h4><p>服务接口尽可能大粒度，每个服务方法应代表一个功能，而不是某功能的一个步骤，否则将面临分布式事务问题，Dubbo 暂未提供分布式事务支持。</p>
 <p>服务接口建议以业务场景为单位划分，并对相近业务做抽象，防止接口数量爆炸。</p>
 <p>不建议使用过于抽象的通用接口，如：Map query(Map)，这样的接口没有明确语义，会给后期维护带来不便。</p>
@@ -389,11 +391,21 @@ var _hmt = _hmt || [];
 <h5 id="3-3-springboot"><a href="#3-3-springboot" class="headerlink" title="3.3 springboot"></a>3.3 springboot</h5><ul>
 <li><p>pom.xml</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/be60/12.png" alt><br>在前面配置提供者和消费者需要依赖</p>
+<p><code>com.alibaba.dubbo</code>, <code>com.101tec.zkclient</code>, <code>org.apache.curator.curator-framework</code></p>
+<p><code>dubbo-spring-boot-starter</code>中包含了这三个jar包</p>
+</li>
+<li><p>配置application.properties</p>
+<p>具体配置代表的含义在官网上的解释：<a href="http://dubbo.apache.org/zh-cn/docs/user/references/xml/introduction.html" target="_blank" rel="noopener">http://dubbo.apache.org/zh-cn/docs/user/references/xml/introduction.html</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">application.name就是服务名，不能跟别的dubbo提供端重复</span><br><span class="line">registry.protocol 是指定注册中心协议</span><br><span class="line">registry.address 是注册中心的地址加端口号</span><br><span class="line">protocol.name 是分布式固定是dubbo,不要改。</span><br><span class="line">base-package  注解方式要扫描的包</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提供者配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dubbo:</span></span><br><span class="line">    <span class="string">application.name:</span> <span class="string">user-service-provider</span></span><br><span class="line">    <span class="string">registry.address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:2181</span></span><br><span class="line">    <span class="string">registry.protocol:</span> <span class="string">zookeeper</span></span><br><span class="line"></span><br><span class="line">    <span class="string">protocol.name:</span> <span class="string">dubbo</span></span><br><span class="line">    <span class="string">protocol.port:</span> <span class="number">20883</span></span><br><span class="line"></span><br><span class="line">    <span class="string">monitor.protocol:</span> <span class="string">registry</span></span><br><span class="line">    <span class="string">scan.base-packages:</span> <span class="string">com.example.li.springboot_dubbo_1_userservice_provider_demo</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>消费者配置：</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% asset_img 12.png 12.png %&#125;</span><br><span class="line">  在前面配置提供者和消费者需要依赖</span><br><span class="line"></span><br><span class="line">  `com.alibaba.dubbo`, `com.101tec.zkclient`, `org.apache.curator.curator-framework`</span><br><span class="line"></span><br><span class="line">  `dubbo-spring-boot-starter`中包含了这三个jar包</span><br><span class="line"></span><br><span class="line">- 配置application.properties</span><br><span class="line"></span><br><span class="line">  具体配置代表的含义在官网上的解释：http://dubbo.apache.org/zh-cn/docs/user/references/xml/introduction.html</span><br><span class="line"></span><br><span class="line">​```xml</span><br><span class="line">application.name就是服务名，不能跟别的dubbo提供端重复</span><br><span class="line">registry.protocol 是指定注册中心协议</span><br><span class="line">registry.address 是注册中心的地址加端口号</span><br><span class="line">protocol.name 是分布式固定是dubbo,不要改。</span><br><span class="line">base-package  注解方式要扫描的包</span><br></pre></td></tr></table></figure>
-<p>提供者配置：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dubbo:</span></span><br><span class="line">    <span class="string">application.name:</span> <span class="string">user-service-provider</span></span><br><span class="line">    <span class="string">registry.address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:2181</span></span><br><span class="line">    <span class="string">registry.protocol:</span> <span class="string">zookeeper</span></span><br><span class="line"></span><br><span class="line">    <span class="string">protocol.name:</span> <span class="string">dubbo</span></span><br><span class="line">    <span class="string">protocol.port:</span> <span class="number">20883</span></span><br><span class="line"></span><br><span class="line">    <span class="string">monitor.protocol:</span> <span class="string">registry</span></span><br><span class="line">    <span class="string">scan.base-packages:</span> <span class="string">com.example.li.springboot_dubbo_1_userservice_provider_demo</span></span><br></pre></td></tr></table></figure></p>
-<p>消费者配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dubbo.application.name=order-service-consumer</span><br><span class="line">dubbo.registry.address=zookeeper://127.0.0.1:2181</span><br><span class="line">dubbo.monitor.protocol=registry</span><br><span class="line">dubbo.scan.base-package=com.example.li.springboot_dubbo_2_orderservice_consumer_demo</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dubbo.application.name=order-service-consumer</span><br><span class="line">dubbo.registry.address=zookeeper://127.0.0.1:2181</span><br><span class="line">dubbo.monitor.protocol=registry</span><br><span class="line">dubbo.scan.base-package=com.example.li.springboot_dubbo_2_orderservice_consumer_demo</span><br></pre></td></tr></table></figure>
 <ul>
 <li>dubbo注解<br>@Service、@Reference<br><strong>【如果没有在配置中写</strong> <strong>dubbo.scan.base-package,</strong> <strong>还需要在@SpringBootApplication使用@EnableDubbo</strong> <strong>注解】</strong></li>
 </ul>
@@ -792,11 +804,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,10 +828,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -829,6 +837,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -848,10 +860,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -860,11 +868,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -876,11 +880,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -893,10 +909,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">logging</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
               </li>
              
               <li class="article-tag-list-item">
