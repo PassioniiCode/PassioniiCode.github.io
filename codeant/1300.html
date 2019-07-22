@@ -9,22 +9,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>2019年上半年计划 | Code Ant&#39;s Blog</title>
+  <title>Java-nginx安装教程（centos7） | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2019上半年规划">
-<meta name="keywords" content="年度计划">
+  <meta name="keywords" content="java,nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019年上半年计划">
-<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/2511.html">
+<meta property="og:title" content="Java-nginx安装教程（centos7）">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/1300.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
-<meta property="og:description" content="2019上半年规划">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/2511/2019年度计划.png">
-<meta property="og:updated_time" content="2019-07-19T07:29:16.544Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1563729561649-622906a96d99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+<meta property="og:updated_time" content="2019-07-22T14:09:46.907Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019年上半年计划">
-<meta name="twitter:description" content="2019上半年规划">
-<meta name="twitter:image" content="https://lijinhongpassion.github.io/codeant/2511/2019年度计划.png">
+<meta name="twitter:title" content="Java-nginx安装教程（centos7）">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1563729561649-622906a96d99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -211,7 +208,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2019年上半年计划" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java-nginx安装教程（centos7）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -219,8 +216,8 @@ var _hmt = _hmt || [];
         
 		
         
-        <a href="/codeant/2511.html" class="archive-article-date">
-  	<time datetime="2019-06-30T05:02:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
+        <a href="/codeant/1300.html" class="archive-article-date">
+  	<time datetime="2019-07-22T14:06:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
 </a>
         
       </header>
@@ -230,24 +227,147 @@ var _hmt = _hmt || [];
 		<center><p>
   
     </p><h1 class="article-title_code_ant" itemprop="name">
-      2019年上半年计划
+      Java-nginx安装教程（centos7）
     </h1>
   
 <p></p></center>
 	
       
         <hr>
-<p><blockquote><strong>2019上半年规划</strong></blockquote><br><img src="/codeant/2511/2019年度计划.png" title="2019上半年规划"></p>
+<p><img src="https://images.unsplash.com/photo-1563729561649-622906a96d99?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
+<a id="more"></a>
+<center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
+
 <hr>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>官方网站：<a href="http://nginx.org/" target="_blank" rel="noopener">http://nginx.org/</a></p>
+<p>本文内容：nginx安装、启动、卸载</p>
+<p>系统：CentOS 7.6</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>下载地址（方式）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nginx</td>
+<td>1.160</td>
+<td>wget <a href="http://nginx.org/download/nginx-1.16.0.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.16.0.tar.gz</a></td>
+</tr>
+<tr>
+<td>PCRE</td>
+<td>第三方的开发包</td>
+<td>yum install -y pcre pcre-devel</td>
+</tr>
+<tr>
+<td>zlib</td>
+<td>第三方的开发包</td>
+<td>yum install -y zlib zlib-devel</td>
+</tr>
+<tr>
+<td>openssl</td>
+<td>第三方的开发包</td>
+<td>yum install -y openssl openssl-devel</td>
+</tr>
+</tbody>
+</table>
+<h2 id="磁盘目录"><a href="#磁盘目录" class="headerlink" title="磁盘目录"></a>磁盘目录</h2><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安装包备份位置</td>
+<td>/opt/</td>
+</tr>
+<tr>
+<td>压缩包解压位置</td>
+<td>/usr/local/nginx-1.16.0</td>
+</tr>
+<tr>
+<td>安装后nginx位置</td>
+<td>/usr/local/nginx1.16.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="编译环境"><a href="#编译环境" class="headerlink" title="编译环境"></a>编译环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 1、需要安装gcc的环境</span><br><span class="line">	yum install gcc-c++</span><br></pre></td></tr></table></figure>
+<h2 id="第三方开发包安装"><a href="#第三方开发包安装" class="headerlink" title="第三方开发包安装"></a>第三方开发包安装</h2><h4 id="PCRE"><a href="#PCRE" class="headerlink" title="PCRE"></a>PCRE</h4><p> PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式，所以需要在linux上安装pcre库。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y pcre pcre-devel</span><br></pre></td></tr></table></figure>
+<p>注：pcre-devel是使用pcre开发的一个二次开发库。nginx也需要此库。</p>
+<hr>
+<h4 id="zlib"><a href="#zlib" class="headerlink" title="zlib"></a>zlib</h4><p>zlib库提供了很多种压缩和解压缩的方式，nginx使用zlib对http包的内容进行gzip，所以需要在linux上安装zlib库。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y zlib zlib-devel</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="openssl"><a href="#openssl" class="headerlink" title="openssl"></a>openssl</h4><p> OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。</p>
+<p>nginx不仅支持http协议，还支持https（即在ssl协议上传输http），所以需要在linux安装openssl库。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y openssl openssl-devel</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 1、下载nginx</span><br><span class="line">	wget http://nginx.org/download/nginx-1.16.0.tar.gz</span><br><span class="line"><span class="meta">#</span> 2、解压</span><br><span class="line">	tar -zxvf nginx-1.16.0.tar.gz -C /usr/local/</span><br><span class="line"><span class="meta">#</span> 3、进入解压目录</span><br><span class="line">	cd /usr/local/nginx-1.16.0/</span><br><span class="line"><span class="meta">#</span> 4、使用configure命令创建makeFile文件</span><br><span class="line">        ./configure \</span><br><span class="line">    --prefix=/usr/local/nginx1.16.0 \</span><br><span class="line">    --pid-path=/var/run/nginx/nginx.pid \</span><br><span class="line">    --lock-path=/var/lock/nginx.lock \</span><br><span class="line">    --error-log-path=/var/log/nginx/error.log \</span><br><span class="line">    --http-log-path=/var/log/nginx/access.log \</span><br><span class="line">    --with-http_gzip_static_module \</span><br><span class="line">    --http-client-body-temp-path=/var/temp/nginx/client \</span><br><span class="line">    --http-proxy-temp-path=/var/temp/nginx/proxy \</span><br><span class="line">    --http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</span><br><span class="line">    --http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</span><br><span class="line">    --http-scgi-temp-path=/var/temp/nginx/scgi</span><br><span class="line"><span class="meta">#</span> 5、创建临时目录</span><br><span class="line"><span class="meta">#</span> 注意：启动nginx之前，上边将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录</span><br><span class="line">	mkdir -p /var/temp/nginx/fastcgi &amp;&amp; mkdir -p /var/temp/nginx/uwsgi &amp;&amp; mkdir -p /var/temp/nginx/scgi &amp;&amp; mkdir -p /var/temp/nginx/proxy &amp;&amp; mkdir -p /var/temp/nginx/client</span><br><span class="line"><span class="meta">#</span> 4、make 命令编译</span><br><span class="line">	make</span><br><span class="line"><span class="meta">#</span> 5、make install 命令安装</span><br><span class="line">	make install # 安装完成后会有 /usr/local/nginx1.16.0 文件目录，包含conf、html、sbin</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 1、进入/usr/local/nginx1.16.0/sbin目录</span><br><span class="line">	cd /usr/local/nginx1.16.0/sbin</span><br><span class="line"><span class="meta">#</span> 2、启动</span><br><span class="line">	./nginx</span><br><span class="line"><span class="meta">#</span> 3、关闭</span><br><span class="line">	./nginx -s stop</span><br><span class="line"><span class="meta">	#</span> 推荐使用quit</span><br><span class="line">	./nginx -s quit</span><br><span class="line"><span class="meta">#</span> 4、重启（刷新配置文件）</span><br><span class="line">	./nginx -s reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动成功，会开启master 和 worker两个进程</span><br><span class="line">[root@localhost sbin]# ps -aux | grep nginx</span><br><span class="line">root      12470  0.0  0.0  20556   620 ?        Ss   21:35   0:00 nginx: master process ./nginx</span><br><span class="line">nobody    12471  0.0  0.1  21008  1336 ?        S    21:35   0:00 nginx: worker process</span><br><span class="line">root      12496  0.0  0.0 112724   992 pts/0    S+   21:35   0:00 grep --color=auto nginx</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 启动成功，游览器输入ip，默认是80端口，返回文中出现Welcome to nginx!。注意：是否关闭防火墙</span><br><span class="line">[root@localhost sbin]# systemctl stop firewalld </span><br><span class="line">[root@localhost sbin]# curl 192.168.26.101</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Welcome to nginx!&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        width: 35em;</span><br><span class="line">        margin: 0 auto;</span><br><span class="line">        font-family: Tahoma, Verdana, Arial, sans-serif;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;For online documentation and support please refer to</span><br><span class="line">&lt;a href="http://nginx.org/"&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;</span><br><span class="line">Commercial support is available at</span><br><span class="line">&lt;a href="http://nginx.com/"&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="卸载nginx"><a href="#卸载nginx" class="headerlink" title="卸载nginx"></a>卸载nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 停止nginx服务</span><br><span class="line">	/usr/local/nginx1.16.0/sbin/nginx -s quit</span><br><span class="line"><span class="meta">#</span> 查找nginx相关文件</span><br><span class="line">	find / -name nginx*</span><br><span class="line"><span class="meta">#</span> 删除所有相关的文件</span><br><span class="line">	rm -rf 相关文件</span><br><span class="line"><span class="meta">#</span> 卸载第三方开发包</span><br><span class="line">	yum remove -y pcre pcre-devel zlib zlib-devel openssl openssl-devel</span><br></pre></td></tr></table></figure>
 
       
 		
 		
 		
 		
-		  <div hidden="hidden"></div>
+		  <div>
+			<blockquote>
+				<strong>本文作者：</strong>
+				
+				  Code Ant
+				
+				<br>
+				<strong>本文链接：</strong>
+				https://lijinhongpassion.github.io/codeant/1300.html
+				<br>
+				<strong>版权声明：</strong>
+				本作品采用
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+				进行许可。转载请注明出处！
+				
+			</blockquote>
+			
+			
+			<hr>
+				<center><strong>感谢有你，伴我成长。</strong></center>
+			<hr>
+		  </div>
 		
 		
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>一块就是对我最大的支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -258,13 +378,28 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">年度计划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -314,7 +449,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://qr.topscan.com/api.php?text=https://lijinhongpassion.github.io/codeant/2511.html" alt="微信分享二维码">
+      <img src="http://qr.topscan.com/api.php?text=https://lijinhongpassion.github.io/codeant/1300.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -328,18 +463,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/fb49.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/1231.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java-spring事务
+          2019年下半年计划
         
       </div>
     </a>
   
   
-    <a href="/codeant/6175.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java-JDBC事务&amp;mysql日志</div>
+    <a href="/codeant/b7d4.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java-Java环境搭建（CentOS7）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -366,7 +501,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘目录"><span class="toc-number">3.</span> <span class="toc-text">磁盘目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译环境"><span class="toc-number">4.</span> <span class="toc-text">编译环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方开发包安装"><span class="toc-number">5.</span> <span class="toc-text">第三方开发包安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PCRE"><span class="toc-number">5.0.1.</span> <span class="toc-text">PCRE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zlib"><span class="toc-number">5.0.2.</span> <span class="toc-text">zlib</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#openssl"><span class="toc-number">5.0.3.</span> <span class="toc-text">openssl</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx安装"><span class="toc-number">6.</span> <span class="toc-text">nginx安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动nginx"><span class="toc-number">7.</span> <span class="toc-text">启动nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#卸载nginx"><span class="toc-number">8.</span> <span class="toc-text">卸载nginx</span></a></li>
                     </div>
                 </span>
             </div>
@@ -376,6 +511,34 @@ var _hmt = _hmt || [];
 </aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<!--<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">-->
+<!--<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Mon Jul 22 2019 22:06:05 GMT+0800',
+  owner: 'LiJinHongPassion',
+  repo: 'LiJinHongPassion.github.io',
+  oauth: {
+    client_id: '5ad7ec70a25067e86139',
+    client_secret: '21a8b9052808acddd0734e828103e88beabd97c5',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
