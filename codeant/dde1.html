@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://lijinhongpassion.github.io/codeant/dde1.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/640.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/641.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/642.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/643.jpg">
-<meta property="og:updated_time" content="2019-08-22T12:55:29.591Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/640.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/641.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/642.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/643.jpg">
+<meta property="og:updated_time" content="2019-08-22T12:58:49.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-单点登陆（sso）之概念篇">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/640.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/640.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -211,7 +211,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java-新建博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java-单点登陆（sso）之概念篇" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -249,27 +249,27 @@ var _hmt = _hmt || [];
 </li>
 <li><p>session：所以我们就利用cookies（也就是session会话机制），当用户登陆该网址后，服务器端就将用户登录信息保存下来，，我们可以给session设置过期时间，每次用户请求服务器资源，就会去访问session是否过期等等，来达到一种有状态的协议；</p>
 </li>
-<li><p>session问题：session会话机制虽然解决了http无状态的问题，但是当服务集群的时候，每个tomcat产生的JSESSIONID不同，导致功能很受局限性，同时也给服务器增添了很大的压力，服务器端需要消耗资源来维护session；</p>
+<li><p>session问题：session会话机制虽然解决了http无状态的问题，但是当服务集群的时候，每个tomcat产生的JSESSIONID不同，不能跨域，导致功能很受局限性，同时也给服务器增添了很大的压力，服务器端需要消耗资源来维护session；</p>
 </li>
-<li><p>jwt：所以根据session会话机制的缺点，我们不能将认证信息保存在服务器；以此换一种思维，客户端可以向服务器发起认证，服务器颁发令牌给客户端，客户端拿到令牌保存下来，每次访问服务器的时候带上令牌，由服务器解密认证，这样服务器端就不需要保存认证信息，这种方式是jwt；有的伙伴觉得跟session差不了多少，但是session会话机制中服务器端是需要保存认证信息，每次访问都是需要去访问数据库的，与jwt方案相比，我认为一次解密操作比一次io操作更节省时间吧；</p>
+<li><p>jwt：所以根据session会话机制的缺点，我们不能将认证信息保存在服务器；以此换一种思维，客户端可以向服务器发起认证，服务器颁发令牌给客户端，客户端拿到令牌保存下来，每次访问服务器的时候带上令牌，由服务器解密认证，这样服务器端就不需要保存认证信息，这种方式是jwt；有的伙伴觉得跟session差不了多少，但是session会话机制中服务器端是需要保存认证信息，每次访问都是需要去访问数据库的，与jwt方案相比，我认为一次解密操作比一次io操作更节省时间吧，更重要的是session不能跨域；</p>
 </li>
 <li><p>sso：上面都还没提到单点登陆，有了jwt之后，我们能够进行跨域认证，为了保证用户访问安全页面的时候需要是认证过的用户，所以我们可以<strong>建立一个服务器专门来作为认证中心，只有认证中心能接受用户的用户名密码等安全信息，其他系统不提供登录入口，只接受认证中心的间接授权。间接授权通过令牌实现，sso认证中心验证用户的用户名密码没问题，创建授权令牌，在接下来的跳转过程中，授权令牌作为参数发送给各个子系统，子系统拿到令牌，即得到了授权，可以借此创建局部会话，局部会话登录方式与单系统的登录方式相同。</strong></p>
 </li>
 </ol>
 <h2 id="2-sso"><a href="#2-sso" class="headerlink" title="2. sso"></a>2. sso</h2><h4 id="2-1-登录"><a href="#2-1-登录" class="headerlink" title="2.1 登录"></a>2.1 登录</h4><p>   这个过程，也就是单点登录的原理，用下图说明</p>
-<p>   <img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/640.jpg" alt></p>
+<p>   <img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/640.jpg" alt></p>
 <p>下面对上图简要描述</p>
 <p>1、用户访问系统1的受保护资源，系统1发现用户未登录，跳转至sso认证中心，并将自己的地址作为参数；<br>2、sso认证中心发现用户未登录，将用户引导至登录页面；<br>3、用户输入用户名密码提交登录申请；<br>4、sso认证中心校验用户信息，创建用户与sso认证中心之间的会话，称为全局会话，同时创建授权令牌；<br>5、sso认证中心带着令牌跳转会最初的请求地址（系统1）；<br>6、系统1拿到令牌，去sso认证中心校验令牌是否有效；<br>7、sso认证中心校验令牌，返回有效，注册系统1；<br>8、系统1使用该令牌创建与用户的会话，称为局部会话，返回受保护资源；<br>9、用户访问系统2的受保护资源；<br>10、系统2发现用户未登录，跳转至sso认证中心，并将自己的地址作为参数；<br>11、sso认证中心发现用户已登录，跳转回系统2的地址，并附上令牌；<br>12、系统2拿到令牌，去sso认证中心校验令牌是否有效；<br>13、sso认证中心校验令牌，返回有效，注册系统2；<br>14、系统2使用该令牌创建与用户的局部会话，返回受保护资源。</p>
 <p>用户登录成功之后，会与sso认证中心及各个子系统建立会话，用户与sso认证中心建立的会话称为全局会话，用户与各个子系统建立的会话称为局部会话，局部会话建立之后，用户访问子系统受保护资源将不再通过sso认证中心，全局会话与局部会话有如下约束关系</p>
 <p>1、局部会话存在，全局会话一定存在；<br>2、全局会话存在，局部会话不一定存在；<br>3、全局会话销毁，局部会话必须销毁。</p>
 <p>你可以通过博客园、百度、csdn、淘宝等网站的登录过程加深对单点登录的理解，注意观察登录过程中的跳转url与参数</p>
 <h4 id="2-2-注销"><a href="#2-2-注销" class="headerlink" title="2.2 注销"></a>2.2 注销</h4><p>单点登录自然也要单点注销，在一个子系统中注销，所有子系统的会话都将被销毁，用下面的图来说明</p>
-<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/641.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/641.jpg" alt></p>
 <p>sso认证中心一直监听全局会话的状态，一旦全局会话销毁，监听器将通知所有注册系统执行注销操作</p>
 <p>下面对上图简要说明</p>
 <p>1、用户向系统1发起注销请求；<br>2、系统1根据用户与系统1建立的会话id拿到令牌，向sso认证中心发起注销请求；<br>3、sso认证中心校验令牌有效，销毁全局会话，同时取出所有用此令牌注册的系统地址；<br>4、sso认证中心向所有注册系统发起注销请求；<br>5、各注册系统接收sso认证中心的注销请求，销毁局部会话；<br>6、sso认证中心引导用户至登录页面。</p>
 <h4 id="2-3-部署"><a href="#2-3-部署" class="headerlink" title="2.3 部署"></a>2.3 部署</h4><p>单点登录涉及sso认证中心与众子系统，子系统与sso认证中心需要通信以交换令牌、校验令牌及发起注销请求，因而子系统必须集成sso的客户端，sso认证中心则是sso服务端，整个单点登录过程实质是sso客户端与服务端通信的过程，用下图描述</p>
-<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/642.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/642.jpg" alt></p>
 <p>sso认证中心与sso客户端通信方式有多种，这里以简单好用的httpClient为例，web service、rpc、restful api都可以。</p>
 <h2 id="3-实现"><a href="#3-实现" class="headerlink" title="3.实现"></a>3.实现</h2><p><strong>sso-client</strong></p>
 <p>1、拦截子系统未登录用户请求，跳转至sso认证中心；<br>2、接收并存储sso认证中心发送的令牌；<br>3、与sso-server通信，校验令牌的有效性；<br>4、建立局部会话；<br>5、拦截用户注销请求，向sso认证中心发送注销请求；<br>6、接收sso认证中心发出的注销请求，销毁局部会话。<br>　　<br><strong>sso-server</strong></p>
@@ -295,7 +295,7 @@ var _hmt = _hmt || [];
 <p>用户在sso认证中心登录成功后，sso-server创建授权令牌并存储该令牌，所以，sso-server对令牌的校验就是去查找这个令牌是否存在以及是否过期，令牌校验成功后sso-server将发送校验请求的系统注册到sso认证中心（就是存储起来的意思）</p>
 <p>令牌与注册系统地址通常存储在key-value数据库（如redis）中，redis可以为key设置有效时间也就是令牌的有效期。redis运行在内存中，速度非常快，正好sso-server不需要持久化任何数据。</p>
 <p>令牌与注册系统地址可以用下图描述的结构存储在redis中，可能你会问，为什么要存储这些系统的地址？如果不存储，注销的时候就麻烦了，用户向sso认证中心提交注销请求，sso认证中心注销全局会话，但不知道哪些系统用此全局会话建立了自己的局部会话，也不知道要向哪些子系统发送注销请求注销局部会话</p>
-<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/61fc/643.jpg" alt></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dde1/643.jpg" alt></p>
 <p><strong>7、sso-client校验令牌成功创建局部会话</strong></p>
 <p>令牌校验成功后，sso-client将当前局部会话标记为“已登录”，修改LoginFilter.java，添加几行</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (verifyResult) &#123;</span><br><span class="line">    session.setAttribute(<span class="string">"isLogin"</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -664,7 +664,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,7 +676,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,10 +708,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -721,6 +717,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rss</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -740,14 +740,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">restful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -756,11 +748,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color3">restful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -769,6 +761,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,6 +784,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
               </li>
              
@@ -793,10 +797,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
               </li>
              
               <li class="article-tag-list-item">
