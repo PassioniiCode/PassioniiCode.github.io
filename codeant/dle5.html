@@ -22,7 +22,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/4.png">
-<meta property="og:updated_time" content="2019-08-23T13:46:05.401Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/7.png">
+<meta property="og:updated_time" content="2019-08-23T14:18:45.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-JustAuth第三方授权项目入门使用教程">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1556742205-e10c9486e506?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
@@ -266,6 +269,15 @@ var _hmt = _hmt || [];
 <p>记住id和secret</p>
 <p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/4.png" alt></p>
 <h4 id="4-3-使用JustAuth实现授权登陆"><a href="#4-3-使用JustAuth实现授权登陆" class="headerlink" title="4.3 使用JustAuth实现授权登陆"></a>4.3 使用<code>JustAuth</code>实现授权登陆</h4><p>下载官方的demo：<a href="https://gitee.com/yadong.zhang/JustAuth-demo" target="_blank" rel="noopener">https://gitee.com/yadong.zhang/JustAuth-demo</a></p>
+<p>流程：调用授权方法-&gt;确认授权-&gt;跳转回调url-&gt;返回授权信息</p>
+<p><strong>RestAuthController.java</strong></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/6.png" alt></p>
+<p><strong>RestAuthController.java</strong>中的<code>getAuthRequest(String source)</code></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/5.png" alt></p>
+<p><strong>RestAuthController.java</strong>中的<code>login(@PathVariable(&quot;source&quot;) String source, AuthCallback callback)</code></p>
+<p>授权成功后，调用回调地址，这里的回调地址设置的是login方法，authRequest.login(callback)会返回授权信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * oauth平台中配置的授权回调地址，以本项目为例，在创建github授权应用时的回调地址应为：http://127.0.0.1:8443/oauth/callback/github</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/callback/&#123;source&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">login</span><span class="params">(@PathVariable(<span class="string">"source"</span>)</span> String source, AuthCallback callback) </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"进入callback："</span> + source + <span class="string">" callback params："</span> + JSONObject.toJSONString(callback));</span><br><span class="line">        AuthRequest authRequest = getAuthRequest(source);</span><br><span class="line">        AuthResponse response = authRequest.login(callback);</span><br><span class="line">        System.out.println(JSONObject.toJSONString(response));</span><br><span class="line">        <span class="keyword">return</span> response;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle5/7.png" alt></p>
 <hr>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://gitee.com/yadong.zhang/JustAuth-demo" target="_blank" rel="noopener">https://gitee.com/yadong.zhang/JustAuth-demo</a>    JustAuth的springboot-demo</p>
 <p><a href="https://gitee.com/yadong.zhang/JustAuth" target="_blank" rel="noopener">https://gitee.com/yadong.zhang/JustAuth</a>    JustAuth的官方项目地址</p>
@@ -629,19 +641,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,19 +697,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rss</a>
+                <a href="javascript:void(0)" class="js-tag color3">example</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">example</a>
+                <a href="javascript:void(0)" class="js-tag color4">rss</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,6 +725,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">restful</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -725,15 +737,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">restful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color1">Yilia</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,15 +765,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日志</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">logging</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
               </li>
              
               <li class="article-tag-list-item">
