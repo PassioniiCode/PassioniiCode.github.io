@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://images.unsplash.com/photo-1567060896516-630537369350?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle3/1.png">
-<meta property="og:updated_time" content="2019-08-31T07:41:51.657Z">
+<meta property="og:updated_time" content="2019-08-31T08:15:14.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-由库存问题引发的思考">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1567060896516-630537369350?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -309,7 +309,9 @@ var _hmt = _hmt || [];
 <li>在tomcat服务器上将所有秒杀线程集中存放在一处服务器进行排队（队列）， 将线程有序化</li>
 </ol>
 <hr>
-<p><a href="https://github.com/LiJinHongPassion/LiJinHongPassion.github.io/raw/master/codeant/dle3/%E5%BA%93%E5%AD%98%E9%97%AE%E9%A2%98.mmap" target="_blank" rel="noopener">导图下载地址</a></p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://zhuanlan.zhihu.com/p/40211594" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/40211594</a> 面试必备之乐观锁与悲观锁</p>
+<p><a href="https://juejin.im/post/5b55b842f265da0f9e589e79#heading-11" target="_blank" rel="noopener">https://juejin.im/post/5b55b842f265da0f9e589e79#heading-11</a> 数据库两大神器【索引和锁】</p>
+<p>导图下载地址](<a href="https://github.com/LiJinHongPassion/LiJinHongPassion.github.io/raw/master/codeant/dle3/%E5%BA%93%E5%AD%98%E9%97%AE%E9%A2%98.mmap" target="_blank" rel="noopener">https://github.com/LiJinHongPassion/LiJinHongPassion.github.io/raw/master/codeant/dle3/%E5%BA%93%E5%AD%98%E9%97%AE%E9%A2%98.mmap</a>)</p>
 <p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle3/1.png" alt></p>
 
       
@@ -500,7 +502,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我"><span class="toc-number">1.</span> <span class="toc-text">我</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简述"><span class="toc-number">2.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库层面加锁"><span class="toc-number">3.</span> <span class="toc-text">数据库层面加锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#悲观锁"><span class="toc-number">3.0.1.</span> <span class="toc-text">悲观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-概念"><span class="toc-number">3.0.1.0.1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-实现（mysql中的悲观锁实现）"><span class="toc-number">3.0.1.0.2.</span> <span class="toc-text">2. 实现（mysql中的悲观锁实现）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乐观锁"><span class="toc-number">3.0.2.</span> <span class="toc-text">乐观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-概念-1"><span class="toc-number">3.0.2.0.1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-实现"><span class="toc-number">3.0.2.0.2.</span> <span class="toc-text">2. 实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-缺点"><span class="toc-number">3.0.2.0.3.</span> <span class="toc-text">3. 缺点</span></a></li></ol></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#应用场景"><span class="toc-number">3.0.3.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序加锁"><span class="toc-number">4.</span> <span class="toc-text">应用程序加锁</span></a></li>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我"><span class="toc-number">1.</span> <span class="toc-text">我</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简述"><span class="toc-number">2.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库层面加锁"><span class="toc-number">3.</span> <span class="toc-text">数据库层面加锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#悲观锁"><span class="toc-number">3.0.1.</span> <span class="toc-text">悲观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-概念"><span class="toc-number">3.0.1.0.1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-实现（mysql中的悲观锁实现）"><span class="toc-number">3.0.1.0.2.</span> <span class="toc-text">2. 实现（mysql中的悲观锁实现）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#乐观锁"><span class="toc-number">3.0.2.</span> <span class="toc-text">乐观锁</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-概念-1"><span class="toc-number">3.0.2.0.1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-实现"><span class="toc-number">3.0.2.0.2.</span> <span class="toc-text">2. 实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-缺点"><span class="toc-number">3.0.2.0.3.</span> <span class="toc-text">3. 缺点</span></a></li></ol></li></ol><li class="toc-item toc-level-4"><a class="toc-link" href="#应用场景"><span class="toc-number">3.0.3.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用程序加锁"><span class="toc-number">4.</span> <span class="toc-text">应用程序加锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">5.</span> <span class="toc-text">参考文章</span></a></li>
                     </div>
                 </span>
             </div>
@@ -674,11 +676,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,15 +688,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">caffeine</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,23 +708,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color1">guava</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">注解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -735,6 +725,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">锁</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,11 +800,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java面试</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,11 +836,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">security</a>
+                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+                <a href="javascript:void(0)" class="js-tag color4">security</a>
               </li>
              
               <li class="article-tag-list-item">
