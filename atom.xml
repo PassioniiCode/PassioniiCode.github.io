@@ -46,9 +46,9 @@
     <link href="https://lijinhongpassion.github.io/codeant/dle3.html"/>
     <id>https://lijinhongpassion.github.io/codeant/dle3.html</id>
     <published>2019-08-30T10:57:04.000Z</published>
-    <updated>2019-08-30T11:43:19.775Z</updated>
+    <updated>2019-08-31T07:41:51.657Z</updated>
     
-    <content type="html"><![CDATA[<hr><p><img src="https://images.unsplash.com/photo-1567060896516-630537369350?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p><a id="more"></a><center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  <hr><h2 id="我"><a href="#我" class="headerlink" title="我"></a>我</h2><p><strong>QQ：1755497577（备注：博客）</strong></p><p><strong>B站：code_ant（java相关培训视频）</strong></p><p><img src="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png" alt="微信搜索公众号：CodeAnt"></p><hr><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p><a href="https://github.com/LiJinHongPassion/LiJinHongPassion.github.io/raw/master/codeant/dle3/%E5%BA%93%E5%AD%98%E9%97%AE%E9%A2%98.mmap" target="_blank" rel="noopener">导图下载地址</a></p><p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle3/1.png" alt></p>]]></content>
+    <content type="html"><![CDATA[<hr><p><img src="https://images.unsplash.com/photo-1567060896516-630537369350?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p><a id="more"></a><center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  <hr><h2 id="我"><a href="#我" class="headerlink" title="我"></a>我</h2><p><strong>QQ：1755497577（备注：博客）</strong></p><p><strong>B站：code_ant（java相关培训视频）</strong></p><p><img src="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png" alt="微信搜索公众号：CodeAnt"></p><hr><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>最近自己在写一个小的电商网站，由此想到一个问题，淘宝是如何解决双十一高并发的情况下商品不超买；我的解决方案就是加锁。加锁方式可以从两个方面出发：</p><ul><li>数据库层面加锁</li><li>应用程序加锁</li></ul><hr><h2 id="数据库层面加锁"><a href="#数据库层面加锁" class="headerlink" title="数据库层面加锁"></a>数据库层面加锁</h2><p>我相信大家都对悲观锁和乐观锁的思想有所了解，在下面我也会花一点时间来参数悲观锁和乐观锁思想；</p><h4 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h4><h6 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h6><p>假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁（共享资源每次只给一个线程使用，其它线程阻塞，用完后再把资源转让给其它线程）。<strong>传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁</strong>。Java中synchronized和ReentrantLock等独占锁就是悲观锁思想的实现。</p><hr><h6 id="2-实现（mysql中的悲观锁实现）"><a href="#2-实现（mysql中的悲观锁实现）" class="headerlink" title="2. 实现（mysql中的悲观锁实现）"></a>2. 实现（mysql中的悲观锁实现）</h6><p>我会从MySQL的innodb引擎的表级锁和行级锁来解释悲观锁</p><p><em>innodb引擎的表级锁和行级锁是引擎自带锁，不需要我们手动实现</em></p><p><strong>行锁</strong></p><ul><li><p>读锁：读锁是共享的，多个客户可以同时读取同一个资源，但不允许其他客户修改。</p></li><li><p>写锁：写锁是排他的，写锁会阻塞其他的写锁和读锁。</p></li><li><p>注意：InnoDB只有通过索引条件检索数据才使用行级锁，否则，InnoDB将使用表锁</p></li></ul><p><strong>表锁</strong></p><ul><li><p>读读不阻塞：当前用户在读数据，其他的用户也在读数据，不会加锁</p></li><li><p>读写阻塞：当前用户在读数据，其他的用户不能修改当前用户读的数据，会加锁！</p></li><li><p>写写阻塞：当前用户在修改数据，其他的用户不能修改当前用户正在修改的数据，会加锁！</p></li></ul><p><strong>库存问题</strong></p><p>mysql的innodb引擎自带行锁与表锁，所以当多个线程同时下单的时候，其实是串行的，也就是一个线程执行完后再执行下一个线程，所以我们只需要从业务逻辑上判断只要商品的库存量大于0，我们就能够下单</p><p>update t_product set num = num -1 where product_id=? and num &gt; 0</p><hr><h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><h6 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1. 概念"></a>1. 概念</h6><p>假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用<strong>版本号机制和CAS算法</strong>实现。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。在Java中java.util.concurrent.atomic包下面的原子变量类就是使用了乐观锁的一种实现方式CAS实现的。</p><hr><h6 id="2-实现"><a href="#2-实现" class="headerlink" title="2. 实现"></a>2. 实现</h6><p><strong>版本号机制</strong></p><p>一般是在数据表中加上一个数据版本号version字段，表示数据被修改的次数，当数据被修改时，version值会加一。当线程A要更新数据值时，在读取数据的同时也会读取version值，在提交更新时，若刚才读取到的version值为当前数据库中的version值相等时才更新，否则重试更新操作，直到更新成功。</p><p><strong>CAS算法</strong></p><p>compare and swap（比较与交换），是一种有名的无锁算法。无锁编程，即不使用锁的情况下实现多线程之间的变量同步，也就是在没有线程被阻塞的情况下实现变量的同步，所以也叫非阻塞同步（Non-blocking Synchronization）。CAS算法涉及到三个操作数</p><ul><li><p>需要读写的内存值 V</p></li><li><p>进行比较的值 A</p></li><li><p>拟写入的新值 B</p></li></ul><p>当且仅当 V 的值等于 A时，CAS通过原子方式用新值B来更新V的值，否则不会执行任何操作（比较和替换是一个原子操作）。一般情况下是一个自旋操作，即不断的重试。</p><hr><h6 id="3-缺点"><a href="#3-缺点" class="headerlink" title="3. 缺点"></a>3. 缺点</h6><p><strong>ABA问题</strong></p><p>如果一个变量V初次读取的时候是A值，并且在准备赋值的时候检查到它仍然是A值，那我们就能说明它的值没有被其他线程修改过了吗？很明显是不能的，因为在这段时间它的值可能被改为其他值，然后又改回A，那CAS操作就会误认为它从来没有被修改过。这个问题被称为CAS操作的 </p><hr><h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>从上面对两种锁的介绍，我们知道两种锁各有优缺点，不可认为一种好于另一种，<strong>像乐观锁适用于写比较少的情况下（多读场景）</strong>，即冲突真的很少发生的时候，这样可以省去了锁的开销，加大了系统的整个吞吐量。但如果是多写的情况，一般会经常产生冲突，这就会导致上层应用会不断的进行retry，这样反倒是降低了性能，所以一般<strong>多写的场景下用悲观锁就比较合适</strong>。</p><hr><h2 id="应用程序加锁"><a href="#应用程序加锁" class="headerlink" title="应用程序加锁"></a>应用程序加锁</h2><p>关于此方面还有待学习，根据我自己的想法，我大致理清了一个思路</p><p>对于大型的秒杀系统，有多个mysql数据库集群和tomcat集群；</p><p>秒杀商品时，线程瞬间并发量高，数据库的IO操作十分耗时，系统吞吐量不高，无法保证多个mysql中的数据一致性；</p><p>解决思路：</p><ol><li>提前将秒杀商品库存、商品信息等存放于redis（因为mysql的IO耗时过长，redis的IO操作更为省时）</li><li>首先可以通过nginx限流（限定请求线程数）</li><li>在tomcat服务器上将所有秒杀线程集中存放在一处服务器进行排队（队列）， 将线程有序化</li></ol><hr><p><a href="https://github.com/LiJinHongPassion/LiJinHongPassion.github.io/raw/master/codeant/dle3/%E5%BA%93%E5%AD%98%E9%97%AE%E9%A2%98.mmap" target="_blank" rel="noopener">导图下载地址</a></p><p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle3/1.png" alt></p>]]></content>
     
     <summary type="html">
     
@@ -89,9 +89,9 @@
     
       <category term="springboot" scheme="https://lijinhongpassion.github.io/tags/springboot/"/>
     
-      <category term="caffeine" scheme="https://lijinhongpassion.github.io/tags/caffeine/"/>
-    
       <category term="cache" scheme="https://lijinhongpassion.github.io/tags/cache/"/>
+    
+      <category term="caffeine" scheme="https://lijinhongpassion.github.io/tags/caffeine/"/>
     
   </entry>
   
@@ -118,9 +118,9 @@
     
       <category term="springboot" scheme="https://lijinhongpassion.github.io/tags/springboot/"/>
     
-      <category term="cache" scheme="https://lijinhongpassion.github.io/tags/cache/"/>
-    
       <category term="guava" scheme="https://lijinhongpassion.github.io/tags/guava/"/>
+    
+      <category term="cache" scheme="https://lijinhongpassion.github.io/tags/cache/"/>
     
   </entry>
   
