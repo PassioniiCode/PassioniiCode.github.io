@@ -9,19 +9,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>Java-RESTful 设计指南 | Code Ant&#39;s Blog</title>
+  <title>Java-Java版本的小爬虫demo | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="java,restful">
+  <meta name="keywords" content="java,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java-RESTful 设计指南">
-<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/db66.html">
+<meta property="og:title" content="Java-Java版本的小爬虫demo">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/dle2.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://foter.com/photos/394/black-and-white-image-of-mobile-phone-and-notebook.jpg">
-<meta property="og:updated_time" content="2019-08-02T18:21:43.455Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1567492623339-d5dfb6325ea3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle2/1.png">
+<meta property="og:updated_time" content="2019-09-03T14:00:31.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java-RESTful 设计指南">
-<meta name="twitter:image" content="https://foter.com/photos/394/black-and-white-image-of-mobile-phone-and-notebook.jpg">
+<meta name="twitter:title" content="Java-Java版本的小爬虫demo">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1567492623339-d5dfb6325ea3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -208,7 +210,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java-RESTful-设计指南" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java-Java版本的小爬虫demo" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -216,8 +218,8 @@ var _hmt = _hmt || [];
         
 		
         
-        <a href="/codeant/db66.html" class="archive-article-date">
-  	<time datetime="2019-08-02T08:33:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
+        <a href="/codeant/dle2.html" class="archive-article-date">
+  	<time datetime="2019-09-03T13:24:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
 </a>
         
       </header>
@@ -227,69 +229,47 @@ var _hmt = _hmt || [];
 		<center><p>
   
     </p><h1 class="article-title_code_ant" itemprop="name">
-      Java-RESTful 设计指南
+      Java-Java版本的小爬虫demo
     </h1>
   
 <p></p></center>
 	
       
         <hr>
-<p><img src="https://foter.com/photos/394/black-and-white-image-of-mobile-phone-and-notebook.jpg" alt></p>
+<p><img src="https://images.unsplash.com/photo-1567492623339-d5dfb6325ea3?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" alt></p>
 <a id="more"></a>
 <center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
-<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>REST,即Representational State Transfer的缩写，翻译过来就是”表现层状态转化”。</p>
+<h2 id="我"><a href="#我" class="headerlink" title="我"></a>我</h2><p><strong>QQ：1755497577（备注：博客）</strong></p>
+<p><strong>B站：code_ant（java相关培训视频）</strong></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png" alt="微信搜索公众号：CodeAnt"></p>
+<hr>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>java版本的小爬虫，爬取的流程如下：</p>
 <ul>
-<li><strong>Resource</strong>（资源） ：对象的单个实例。例如，一只动物。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。你可以用一个URI（统一资源定位符）指向它，每种资源对应一个特定的URI。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或独一无二的识别符。</li>
-<li><strong>集合</strong>：对象的集合。例如，动物。</li>
-<li><strong>第三方</strong>：使用我们接口的开发者</li>
-<li><strong>表现层（Representation）</strong>：”资源”是一种信息实体，它可以有多种外在表现形式。我们把”资源”具体呈现出来的形式，叫做它的”表现层”（Representation）。</li>
-<li><strong>状态转化（State Transfer）</strong> 访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生”状态转化”（State Transfer）。而这种转化是建立在表现层之上的，所以就是”表现层状态转化”。</li>
+<li>登录Boss直聘</li>
+<li>获取返回的cookies，以及请求头</li>
+<li>运用http-client库模拟游览器请求，获取html，数据结构为字符串</li>
+<li>利用jsoup库解析html</li>
 </ul>
-<p>综合上面的解释，我们总结一下什么是RESTful架构：</p>
-<p>　（1）每一个URI代表一种资源；<br>　（2）客户端和服务器之间，传递这种资源的某种表现层；<br>　（3）客户端通过HTTP动词(GET,POST等等)，对服务器端资源进行操作，实现”表现层状态转化”。</p>
-<h2 id="REST接口规范"><a href="#REST接口规范" class="headerlink" title="REST接口规范"></a>REST接口规范</h2><h4 id="1、动作"><a href="#1、动作" class="headerlink" title="1、动作"></a>1、动作</h4><ul>
-<li>GET （SELECT）：从服务器检索特定资源，或资源列表。</li>
-<li>POST （CREATE）：在服务器上创建一个新的资源。</li>
-<li>PUT （UPDATE）：更新服务器上的资源（客户端提供更新后的整个资源）。</li>
-<li>PATCH （UPDATE）：更新服务器上的资源（客户端提供更改的属性，可以看做作是部分更新）。</li>
-<li>DELETE （DELETE）：从服务器删除资源。</li>
-</ul>
-<h4 id="2、路径（接口命名）"><a href="#2、路径（接口命名）" class="headerlink" title="2、路径（接口命名）"></a>2、路径（接口命名）</h4><p>路径又称”终点”（endpoint），表示API的具体网址。</p>
-<p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。</p>
-<p>举例来说，有一个API提供动物园（zoo）的信息，还包括各种动物和雇员的信息，则它的路径应该设计成下面这样。</p>
-<p>接口尽量使用名词，禁止使用动词，下面是一些例子。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET         /zoos：列出所有动物园</span><br><span class="line">POST        /zoos：新建一个动物园</span><br><span class="line">GET         /zoos/ID：获取某个指定动物园的信息</span><br><span class="line">PUT         /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）</span><br><span class="line">PATCH       /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）</span><br><span class="line">DELETE      /zoos/ID：删除某个动物园</span><br><span class="line">GET         /zoos/ID/animals：列出某个指定动物园的所有动物</span><br><span class="line">DELETE      /zoos/ID/animals/ID：删除某个指定动物园的指定动物</span><br></pre></td></tr></table></figure>
-<p>反例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/getAllCars/createNewCar/deleteAllRedCars</span><br></pre></td></tr></table></figure>
-<p>再比如，某个URI是/posts/show/1，其中show是动词，这个URI就设计错了，正确的写法应该是/posts/1，然后用GET方法表示show。</p>
-<p>如果某些动作是HTTP动词表示不了的，你就应该把动作做成一种资源。比如网上汇款，从账户1向账户2汇款500元，错误的URI是：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /accounts/1/transfer/500/to/2</span><br></pre></td></tr></table></figure></p>
-<p>正确的写法是把动词transfer改成名词transaction，资源不能是动词，但是可以是一种服务：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/transaction</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: 127.0.0.1</span><br><span class="line">from=1&amp;to=2&amp;amount=500.00</span><br></pre></td></tr></table></figure></p>
-<p>理清资源的层次结构，比如业务针对的范围是学校，那么学校会是一级资源(/school)，老师(/school/teachers)，学生(/school/students)就是二级资源。</p>
-<h4 id="3、版本（Versioning）"><a href="#3、版本（Versioning）" class="headerlink" title="3、版本（Versioning）"></a>3、版本（Versioning）</h4><p>应该将API的版本号放入URL。如：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">https://api.example.com/v1/</span></span><br></pre></td></tr></table></figure>
-<p>另一种做法是，将版本号放在HTTP头信息中，但不如放入URL方便和直观。Github采用这种做法。</p>
-<h4 id="4、过滤信息（Filtering）"><a href="#4、过滤信息（Filtering）" class="headerlink" title="4、过滤信息（Filtering）"></a>4、过滤信息（Filtering）</h4><p>如果记录数量很多，服务器不可能都将它们返回给用户。API应该提供参数，过滤返回结果。下面是一些常见的参数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?limit=<span class="number">10</span>：指定返回记录的数量</span><br><span class="line">?offset=<span class="number">10</span>：指定返回记录的开始位置。</span><br><span class="line">?page_number=<span class="number">2</span>&amp;page_size=<span class="number">100</span>：指定第几页，以及每页的记录数。</span><br><span class="line">?sortby=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。</span><br><span class="line">?animal_type_id=<span class="number">1</span>：指定筛选条件参数的设计允许存在冗余，即允许API路径和URL参数偶尔有重复。比如，GET /zoo/ID/animals 与 GET /animals?zoo_id=ID 的含义是相同的。</span><br></pre></td></tr></table></figure>
-<h4 id="5、状态码（Status-Codes）"><a href="#5、状态码（Status-Codes）" class="headerlink" title="5、状态码（Status Codes）"></a>5、状态码（Status Codes）</h4><p>状态码范围</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1xx 信息，请求收到，继续处理。范围保留用于底层HTTP的东西，你很可能永远也用不到。</span><br><span class="line">2xx 成功，行为被成功地接受、理解和采纳</span><br><span class="line">3xx 重定向，为了完成请求，必须进一步执行的动作</span><br><span class="line">4xx 客户端错误，请求包含语法错误或者请求无法实现。范围保留用于响应客户端做出的错误，例如。他们提供不良数据或要求不存在的东西。这些请求应该是幂等的，而不是更改服务器的状态。</span><br><span class="line">5xx 范围的状态码是保留给服务器端错误用的。这些错误常常是从底层的函数抛出来的，甚至开发人员也通常没法处理，发送这类状态码的目的以确保客户端获得某种响应。当收到5xx响应时，客户端不可能知道服务器的状态，所以这类状态码是要尽可能的避免。复制代码</span><br></pre></td></tr></table></figure>
-<p>服务器向用户返回的状态码和提示信息，常见的有以下一些（方括号中是该状态码对应的HTTP动词）。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。</span><br><span class="line">201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。</span><br><span class="line">202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）</span><br><span class="line">204 NO CONTENT - [DELETE]：用户删除数据成功。</span><br><span class="line">400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。</span><br><span class="line">401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。</span><br><span class="line">403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。</span><br><span class="line">404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。</span><br><span class="line">406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</span><br><span class="line">410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。</span><br><span class="line">422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。</span><br><span class="line">500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。</span><br><span class="line">502 网关错误503 Service Unavailable504 网关超时</span><br></pre></td></tr></table></figure>
-<h2 id="HATEOAS"><a href="#HATEOAS" class="headerlink" title="HATEOAS"></a>HATEOAS</h2><p>上面是RESTful API最基本的东西，也是我们平时开发过程中最容易实践到的。实际上，RESTful API最好做到Hypermedia，即返回结果中提供链接，连向其他API方法，使得用户不查文档，也知道下一步应该做什么。</p>
-<p>比如，当用户向api.example.com的根目录发出请求，会得到这样一个文档。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"link"</span>:</span><br><span class="line">	&#123;  </span><br><span class="line">        <span class="attr">"rel"</span>:   <span class="string">"collection https://www.example.com/zoos"</span>,</span><br><span class="line">       <span class="attr">"href"</span>:  <span class="string">"https://api.example.com/zoos"</span>,  </span><br><span class="line">       <span class="attr">"title"</span>: <span class="string">"List of zoos"</span>,  </span><br><span class="line">       <span class="attr">"type"</span>:  <span class="string">"application/vnd.yourformat+json"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码表示，文档中有一个link属性，用户读取这个属性就知道下一步该调用什么API了。rel表示这个API与当前网址的关系（collection关系，并给出该collection的网址），href表示API的路径，title表示API的标题，type表示返回类型Hypermedia API的设计被称为HATEOAS。</p>
-<p>在Spring 中有一个叫做HATEOAS的API 库，通过它我们可以更轻松的创建除符合 HATEOAS 设计的API。</p>
-<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><ul>
-<li><p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html（阮一峰，这篇文章大部分内容来源）" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/restful_api.html（阮一峰，这篇文章大部分内容来源）</a></p>
-</li>
-<li><p><a href="https://www.baeldung.com/spring-hateoas-tutorial" target="_blank" rel="noopener">https://www.baeldung.com/spring-hateoas-tutorial</a> (RestFul API Tutorial)</p>
-</li>
-<li><p><a href="https://aisensiy.github.io/2017/06/04/spring-boot-and-hateoas/" target="_blank" rel="noopener">https://aisensiy.github.io/2017/06/04/spring-boot-and-hateoas/</a> (Spring中使用HATEOAS)</p>
-</li>
-<li><p><a href="https://spring.io/guides/tutorials/bookmarks/" target="_blank" rel="noopener">https://spring.io/guides/tutorials/bookmarks/</a> (Building REST services with Spring)</p>
-</li>
+<p>完事！！！</p>
+<p>demo地址：<a href="https://github.com/LiJinHongPassion/springboot/tree/master/springboot_crawler_demo" target="_blank" rel="noopener">https://github.com/LiJinHongPassion/springboot/tree/master/springboot_crawler_demo</a></p>
+<hr>
+<h2 id="入门教程"><a href="#入门教程" class="headerlink" title="入门教程"></a>入门教程</h2><h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--http请求库--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.kevinsawicki<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>http-request<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--解析html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jsoup<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jsoup<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.11.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="CrawlerUtil-java"><a href="#CrawlerUtil-java" class="headerlink" title="CrawlerUtil.java"></a>CrawlerUtil.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.github.kevinsawicki.http.HttpRequest;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.Jsoup;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.nodes.Document;</span><br><span class="line"><span class="keyword">import</span> org.jsoup.select.Elements;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 描述：Boss直聘 -- 小爬虫</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 官网github：https://github.com/kevinsawicki/http-request</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 参考：https://blog.csdn.net/u011910290/article/details/75364917</span></span><br><span class="line"><span class="comment"> *      https://blog.csdn.net/zhanglei500038/article/details/74858395    jsoup</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 乱码问题：https://blog.csdn.net/mycar001/article/details/78391028</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LJH</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019/9/3-17,53</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@QQ</span> 1755497577</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CrawlerUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 描述: 获取整个html</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LJH-1755497577 2019/9/3 19:02</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> java.lang.String</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getData</span><span class="params">(String url)</span></span>&#123;</span><br><span class="line">        <span class="comment">//设置请求头</span></span><br><span class="line">        Map&lt;String,String&gt; headers = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        headers.put(<span class="string">"accept"</span>, <span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3"</span>);</span><br><span class="line">        <span class="comment">//解决乱码</span></span><br><span class="line">        <span class="comment">//headers.put("accept-encoding", "gzip, deflate, br");</span></span><br><span class="line">        headers.put(<span class="string">"accept-language"</span>, <span class="string">"zh-CN,zh;q=0.9"</span>);</span><br><span class="line">        headers.put(<span class="string">"cookie"</span>, <span class="string">"lastCity=101040100; _uab_collina=155989425705358786428292; _bl_uid=ejj1ezbR49w72poUUr06qa8iy55n; __c=1567474454; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1565361209,1566378390,1566981114,1567474455; __l=l=%2Fwww.zhipin.com%2F&amp;r=https%3A%2F%2Fwww.baidu.com%2Fs%3Fie%3DUTF-8%26wd%3Dboss%25E7%259B%25B4%25E8%2581%2598&amp;friend_source=0&amp;friend_source=0; __zp_stoken__=c688fL0GhqXlN%2FYY%2F2ydR1HFd8NS%2B8oaaNAjTZSdiGKLVMq%2BPk1q%2FaMCVkpzfOn1kk38E6u8nCHUaLXH2leUN3NrhA%3D%3D; __a=50395184.1559894257.1566981114.1567474454.68.6.4.68; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1567475125"</span>);</span><br><span class="line">        headers.put(<span class="string">"referer"</span>, <span class="string">"https,//www.zhipin.com/c101040100-p100101/?page=2&amp;ka=page-2"</span>);</span><br><span class="line">        headers.put(<span class="string">"upgrade-insecure-requests"</span>, <span class="string">"1"</span>);</span><br><span class="line">        headers.put(<span class="string">"user-agent"</span>, <span class="string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//get方法与之类似</span></span><br><span class="line">        String content = HttpRequest.post(url)</span><br><span class="line">                <span class="comment">//设置请求头</span></span><br><span class="line">                .headers(headers)</span><br><span class="line">                .body();</span><br><span class="line"></span><br><span class="line"><span class="comment">//        System.out.println(content);</span></span><br><span class="line">         <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 描述: 解析html</span></span><br><span class="line"><span class="comment">     *      利用jsoup工具解析html</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LJH-1755497577 2019/9/3 19:58</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">analysisData</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Document doc = Jsoup.parse(data);</span><br><span class="line">        Elements rows = doc.select(<span class="string">"div[class=job-list]"</span>).get(<span class="number">0</span>).select(<span class="string">"ul"</span>);</span><br><span class="line">        <span class="keyword">if</span> (rows.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">"没有结果"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; rows.get(<span class="number">0</span>).select(<span class="string">"li"</span>).size(); i++)&#123;</span><br><span class="line">                String addr = rows.get(<span class="number">0</span>).select(<span class="string">"li"</span>).get(i).select(<span class="string">"div"</span>).get(<span class="number">0</span>).select(<span class="string">"div"</span>).get(<span class="number">0</span>)</span><br><span class="line">                        .select(<span class="string">"p"</span>).get(<span class="number">0</span>).text();</span><br><span class="line">                String jobName = rows.get(<span class="number">0</span>).select(<span class="string">"li"</span>).get(i).select(<span class="string">"div"</span>).get(<span class="number">0</span>).select(<span class="string">"div"</span>).get(<span class="number">0</span>)</span><br><span class="line">                        .select(<span class="string">"h3"</span>).get(<span class="number">0</span>).select(<span class="string">"a"</span>).get(<span class="number">0</span>).select(<span class="string">"div"</span>).get(<span class="number">0</span>).text();</span><br><span class="line">                String jobMoney = rows.get(<span class="number">0</span>).select(<span class="string">"li"</span>).get(i).select(<span class="string">"div"</span>).get(<span class="number">0</span>).select(<span class="string">"div"</span>).get(<span class="number">0</span>)</span><br><span class="line">                        .select(<span class="string">"h3"</span>).get(<span class="number">0</span>).select(<span class="string">"a"</span>).get(<span class="number">0</span>).select(<span class="string">"span"</span>).get(<span class="number">0</span>).text();</span><br><span class="line"></span><br><span class="line">                System.out.println(<span class="string">"--------------------------- 查询结果 ---------------------------"</span>);</span><br><span class="line">                System.out.println(<span class="string">"工作名:"</span> + jobName);</span><br><span class="line">                System.out.println(<span class="string">"工薪:"</span> + jobMoney);</span><br><span class="line">                System.out.println(<span class="string">"地址:"</span> + addr);</span><br><span class="line">                System.out.println(<span class="string">"-----------------------------------------------------------------"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//测试执行</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        getData("https://www.zhipin.com/c101040100-p100101/?page=2&amp;ka=page-2");</span></span><br><span class="line">        analysisData(getData(<span class="string">"https://www.zhipin.com/c101040100-p100101/?page=2&amp;ka=page-2"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="方法：getData-String-url"><a href="#方法：getData-String-url" class="headerlink" title="方法：getData(String url)"></a>方法：getData(String url)</h6><p>在获取html的时候，因为请求头设置的原因</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'accept-encoding':'gzip, deflate, br'</span><br></pre></td></tr></table></figure>
+<p>浏览器对于从服务器中返回的对应的gzip压缩的网页，会自动解压缩，所以，其request的时候，添加对应的头，表明自己接受压缩后的数据。</p>
+<p>而此代码中，如果也添加此头信息，结果就是，返回的压缩后的数据，没有解码，而将压缩后的数据当做普通的html文本来处理，当前显示出来的内容，是乱码了。</p>
+<h6 id="方法：analysisData-String-data"><a href="#方法：analysisData-String-data" class="headerlink" title="方法：analysisData(String data)"></a>方法：analysisData(String data)</h6><p>解析html用的是jsoup，根据指定元素名获取指定节点</p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dle2/1.png" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Elements rows = doc.select(<span class="string">"div[class=job-list]"</span>).get(<span class="number">0</span>).select(<span class="string">"ul"</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h2><ul>
+<li>httpclient官网github：<a href="https://github.com/kevinsawicki/http-request" target="_blank" rel="noopener">https://github.com/kevinsawicki/http-request</a></li>
+<li>httpclient参考：<a href="https://blog.csdn.net/u011910290/article/details/75364917" target="_blank" rel="noopener">https://blog.csdn.net/u011910290/article/details/75364917</a></li>
+<li>jsoup使用：<a href="https://blog.csdn.net/zhanglei500038/article/details/74858395" target="_blank" rel="noopener">https://blog.csdn.net/zhanglei500038/article/details/74858395</a>    </li>
+<li>乱码问题：<a href="https://blog.csdn.net/mycar001/article/details/78391028" target="_blank" rel="noopener">https://blog.csdn.net/mycar001/article/details/78391028</a></li>
 </ul>
 
       
@@ -305,7 +285,7 @@ var _hmt = _hmt || [];
 				
 				<br>
 				<strong>本文链接：</strong>
-				https://lijinhongpassion.github.io/codeant/db66.html
+				https://lijinhongpassion.github.io/codeant/dle2.html
 				<br>
 				<strong>版权声明：</strong>
 				本作品采用
@@ -361,7 +341,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">restful</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -428,7 +408,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://qr.topscan.com/api.php?text=https://lijinhongpassion.github.io/codeant/db66.html" alt="微信分享二维码">
+      <img src="http://qr.topscan.com/api.php?text=https://lijinhongpassion.github.io/codeant/dle2.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -442,18 +422,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/48d8.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/1231.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java-easypoi简单使用
+          2019年下半年计划
         
       </div>
     </a>
   
   
-    <a href="/codeant/4a16.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL-锁（转载）</div>
+    <a href="/codeant/b32c.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python-爬虫小demo（Boss直聘）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -480,7 +460,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简述"><span class="toc-number">1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#REST接口规范"><span class="toc-number">2.</span> <span class="toc-text">REST接口规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、动作"><span class="toc-number">2.0.1.</span> <span class="toc-text">1、动作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、路径（接口命名）"><span class="toc-number">2.0.2.</span> <span class="toc-text">2、路径（接口命名）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、版本（Versioning）"><span class="toc-number">2.0.3.</span> <span class="toc-text">3、版本（Versioning）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、过滤信息（Filtering）"><span class="toc-number">2.0.4.</span> <span class="toc-text">4、过滤信息（Filtering）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、状态码（Status-Codes）"><span class="toc-number">2.0.5.</span> <span class="toc-text">5、状态码（Status Codes）</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#HATEOAS"><span class="toc-number">3.</span> <span class="toc-text">HATEOAS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文章"><span class="toc-number">4.</span> <span class="toc-text">参考文章</span></a></li>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我"><span class="toc-number">1.</span> <span class="toc-text">我</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简述"><span class="toc-number">2.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#入门教程"><span class="toc-number">3.</span> <span class="toc-text">入门教程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#依赖"><span class="toc-number">3.0.1.</span> <span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CrawlerUtil-java"><span class="toc-number">3.0.2.</span> <span class="toc-text">CrawlerUtil.java</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#方法：getData-String-url"><span class="toc-number">3.0.2.0.1.</span> <span class="toc-text">方法：getData(String url)</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#方法：analysisData-String-data"><span class="toc-number">3.0.2.0.2.</span> <span class="toc-text">方法：analysisData(String data)</span></a></li></ol></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#参考地址"><span class="toc-number">4.</span> <span class="toc-text">参考地址</span></a></li>
                     </div>
                 </span>
             </div>
@@ -507,7 +487,7 @@ var _hmt = _hmt || [];
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: 'Fri Aug 02 2019 16:33:48 GMT+0800',
+  id: 'Tue Sep 03 2019 21:24:39 GMT+0800',
   owner: 'LiJinHongPassion',
   repo: 'LiJinHongPassion.github.io',
   oauth: {
