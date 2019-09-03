@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png">
-<meta property="og:updated_time" content="2019-09-03T04:58:28.353Z">
+<meta property="og:updated_time" content="2019-09-03T05:01:29.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python-爬虫小demo（Boss直聘）">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1562886812-41775a01195d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80">
@@ -260,7 +260,10 @@ var _hmt = _hmt || [];
 <li>分析数据</li>
 <li>保存数据</li>
 </ul>
+<p>main.py</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 直聘网招聘信息爬虫demo</span><br><span class="line"></span><br><span class="line">from lxml import etree</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">import Info</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> url = "https://www.zhipin.com/c101040100-p100101/?ka=sel-city-101040100"  # 接口地址</span><br><span class="line">url = "https://www.zhipin.com/c101040100-p100101/"  # 接口地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 消息头数据</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',</span><br><span class="line">    'accept-encoding': 'gzip, deflate, br',</span><br><span class="line">    'accept-language': 'zh-CN,zh;q=0.9',</span><br><span class="line">    'cookie': 'lastCity=101040100; _uab_collina=155989425705358786428292; _bl_uid=ejj1ezbR49w72poUUr06qa8iy55n; __c=1567474454; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1565361209,1566378390,1566981114,1567474455; __l=l=%2Fwww.zhipin.com%2F&amp;r=https%3A%2F%2Fwww.baidu.com%2Fs%3Fie%3DUTF-8%26wd%3Dboss%25E7%259B%25B4%25E8%2581%2598&amp;friend_source=0&amp;friend_source=0; __zp_stoken__=c688fL0GhqXlN%2FYY%2F2ydR1HFd8NS%2B8oaaNAjTZSdiGKLVMq%2BPk1q%2FaMCVkpzfOn1kk38E6u8nCHUaLXH2leUN3NrhA%3D%3D; __a=50395184.1559894257.1566981114.1567474454.68.6.4.68; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1567475125',</span><br><span class="line">    # 'referer': 'https://www.zhipin.com/c101040100-p100101/',</span><br><span class="line">    'referer': 'https://www.zhipin.com/c101040100-p100101/?page=2&amp;ka=page-2',</span><br><span class="line">    'upgrade-insecure-requests': '1',</span><br><span class="line">    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">payload = &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 获取html</span><br><span class="line">def getData(data_url, data_headers, data_payload):</span><br><span class="line">    r = requests.get(data_url, json=data_payload, headers=data_headers, verify=False)</span><br><span class="line">    s = str(r.content, 'utf8')</span><br><span class="line">    # print(s)</span><br><span class="line">    return s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 分析数据</span><br><span class="line"><span class="meta">#</span> 教程:https://www.cnblogs.com/lei0213/p/7506130.html</span><br><span class="line">def analysisData(data='', xpath_str_f='', xpath_str_b=''):</span><br><span class="line">    html = etree.HTML(data)</span><br><span class="line">    values = []</span><br><span class="line">    try:</span><br><span class="line">        for n in range(1, 20):</span><br><span class="line">            x = xpath_str_f + str(n) + xpath_str_b</span><br><span class="line">            if x == '' or x.__len__() == 0 :</span><br><span class="line">                break</span><br><span class="line">            values.append(html.xpath(x))</span><br><span class="line">    except Exception:</span><br><span class="line">        pass</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    # for i in values:</span><br><span class="line">    #     print(i[0].text)</span><br><span class="line">    return values</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 爬取一页的数据并打印</span><br><span class="line">def getOnePage(page_url):</span><br><span class="line">    r = getData(page_url, headers, payload)</span><br><span class="line">    names = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/h3/a/div[1]')</span><br><span class="line">    moneys = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/h3/a/span')</span><br><span class="line">    companyNames = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[2]/div/h3/a')</span><br><span class="line">    addrs = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/p')</span><br><span class="line">    companyStatuss = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[2]/div/p')</span><br><span class="line"></span><br><span class="line">    infos = ''</span><br><span class="line">    print(names.__len__())</span><br><span class="line">    for i in range(1, names.__len__()):</span><br><span class="line">        info = Info.Info(names[i][0].text,</span><br><span class="line">                         moneys[i][0].text,</span><br><span class="line">                         companyNames[i][0].text,</span><br><span class="line">                         addrs[i][0].text,</span><br><span class="line">                         companyStatuss[i][0].text,)</span><br><span class="line"></span><br><span class="line">        if info == 'None' or info == None:</span><br><span class="line">            continue</span><br><span class="line">        # infos = infos + info.tostring()</span><br><span class="line">        print(info.tostring())</span><br><span class="line">    return infos</span><br><span class="line"></span><br><span class="line">for i in range(2, 4):</span><br><span class="line">    temp = url + '?page=' + str(i) + '&amp;ka=page-' + str(i)</span><br><span class="line">    print(temp)</span><br><span class="line">    getOnePage(temp)</span><br></pre></td></tr></table></figure>
+<p>Info.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Info</span>:</span></span><br><span class="line">    name = <span class="string">''</span></span><br><span class="line">    money = <span class="string">''</span></span><br><span class="line">    companyName = <span class="string">''</span></span><br><span class="line">    addr = <span class="string">''</span></span><br><span class="line">    companyStatus = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, money, companyName, addr, companyStatus)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.money = money</span><br><span class="line">        self.companyName = companyName</span><br><span class="line">        self.companyStatus = companyStatus</span><br><span class="line">        self.addr = addr</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tostring</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"name："</span> + self.name</span><br><span class="line">              + <span class="string">"\tmoney："</span> + self.money</span><br><span class="line">              + <span class="string">"\tcompanyName："</span> + self.companyName</span><br><span class="line">              + <span class="string">"\taddr："</span> + self.addr</span><br><span class="line">              + <span class="string">"\tcompanyStatus："</span> + self.companyStatus + <span class="string">"\n"</span></span><br><span class="line">              )</span><br></pre></td></tr></table></figure>
 
       
 		
@@ -624,15 +627,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,10 +663,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
@@ -676,11 +679,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">注解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color2">锁</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,14 +719,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
               </li>
              
@@ -732,7 +731,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,6 +740,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,11 +795,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+                <a href="javascript:void(0)" class="js-tag color4">security</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">security</a>
+                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
               </li>
              
               <li class="article-tag-list-item">
