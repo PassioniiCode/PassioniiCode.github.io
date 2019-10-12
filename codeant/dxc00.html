@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dxc00/设置线程优先级.bmp">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dxc00/抢占式调度.bmp">
 <meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dxc00/sync.png">
-<meta property="og:updated_time" content="2019-10-12T07:37:52.584Z">
+<meta property="og:updated_time" content="2019-10-12T07:49:51.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-Thread00之多线程知识准备">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1556740714-a8395b3bf30f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
@@ -250,7 +250,9 @@ var _hmt = _hmt || [];
 <p><strong>B站：code_ant（java相关培训视频）</strong></p>
 <p><img src="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png" alt="微信搜索公众号：CodeAnt"></p>
 <hr>
-<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><h2 id="后期学习目录"><a href="#后期学习目录" class="headerlink" title="后期学习目录"></a>后期学习目录</h2><p>thread01：创建线程<br>thread02：线程安全（同步问题）<br>thread03：线程状态<br>thread04：四种线程池<br>thread05：自定义线程池</p>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>之前对多线程一直有排斥心理，每一次学一点点就放弃了，最近狠下心来从新学习，顺便做一个笔记，供大家参考一下。</p>
+<p>demo：<a href="https://github.com/LiJinHongPassion/ThreadTest" target="_blank" rel="noopener">https://github.com/LiJinHongPassion/ThreadTest</a></p>
+<h2 id="后期学习目录"><a href="#后期学习目录" class="headerlink" title="后期学习目录"></a>后期学习目录</h2><p>thread01：<a href="https://lijinhongpassion.github.io/codeant/dxc01.html">创建线程</a><br>thread02：<a href="https://lijinhongpassion.github.io/codeant/dxc02.html">线程安全（同步问题）</a><br>thread03：<a href="https://lijinhongpassion.github.io/codeant/dxc03.html">线程状态</a><br>thread04：<a href="https://lijinhongpassion.github.io/codeant/dxc04.html">四种线程池</a><br>thread05：<a href="https://lijinhongpassion.github.io/codeant/dxc05.html">自定义线程池</a></p>
 <h2 id="提前了解"><a href="#提前了解" class="headerlink" title="提前了解"></a>提前了解</h2><h4 id="1-并发与并行"><a href="#1-并发与并行" class="headerlink" title="1 并发与并行"></a>1 并发与并行</h4><ul>
 <li><strong>并发</strong>：指两个或多个事件在<strong>同一个时间段内</strong>发生。</li>
 <li><strong>并行</strong>：指两个或多个事件在<strong>同一时刻</strong>发生（同时发生）。</li>
@@ -448,11 +450,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/1231.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/dxc01.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2019年下半年计划
+          Java-Thread01之创建线程
         
       </div>
     </a>
@@ -644,7 +646,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color1">Springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">stomp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,15 +666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Springboot</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">websocket</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">stomp</a>
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,15 +686,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">guava</a>
+                <a href="javascript:void(0)" class="js-tag color4">caffeine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,7 +698,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">caffeine</a>
+                <a href="javascript:void(0)" class="js-tag color1">guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,11 +710,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssm</a>
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,11 +734,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">锁</a>
+                <a href="javascript:void(0)" class="js-tag color3">注解</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">注解</a>
+                <a href="javascript:void(0)" class="js-tag color2">锁</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,11 +754,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,15 +774,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
+                <a href="javascript:void(0)" class="js-tag color4">justauth</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">restful</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">justauth</a>
               </li>
              
               <li class="article-tag-list-item">
