@@ -9,18 +9,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>Code Ant&#39;s Blog</title>
+  <title>Java-Thread04之四种线程池 | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="千里之堤，溃于蚁穴">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Code Ant&#39;s Blog">
-<meta property="og:url" content="https://lijinhongpassion.github.io/page/6/index.html">
+  <meta name="keywords" content="java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-Thread04之四种线程池">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/dxc04.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
-<meta property="og:description" content="千里之堤，溃于蚁穴">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dxc04/threadpool.png">
+<meta property="og:updated_time" content="2019-10-12T08:30:22.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Code Ant&#39;s Blog">
-<meta name="twitter:description" content="千里之堤，溃于蚁穴">
+<meta name="twitter:title" content="Java-Thread04之四种线程池">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -207,9 +210,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-读书笔记-深入理解Java虚拟机之内存模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Java-Thread04之四种线程池" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -217,8 +218,8 @@ var _hmt = _hmt || [];
         
 		
         
-        <a href="/codeant/d0e0.html" class="archive-article-date">
-  	<time datetime="2019-06-04T07:39:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
+        <a href="/codeant/dxc04.html" class="archive-article-date">
+  	<time datetime="2019-10-12T08:05:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-12</time>
 </a>
         
       </header>
@@ -227,24 +228,129 @@ var _hmt = _hmt || [];
 		
 		<center><p>
   
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/d0e0.html">读书笔记-深入理解Java虚拟机之内存模型</a>
+    </p><h1 class="article-title_code_ant" itemprop="name">
+      Java-Thread04之四种线程池
     </h1>
   
 <p></p></center>
 	
       
         <hr>
-<p><img src="https://images.unsplash.com/photo-1559526324-c1f275fbfa32?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
-        
+<p><img src="https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
+<a id="more"></a>
+<center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
+
+<hr>
+<h2 id="我"><a href="#我" class="headerlink" title="我"></a>我</h2><p><strong>QQ：1755497577（备注：博客）</strong></p>
+<p><strong>B站：code_ant（java相关培训视频）</strong></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png" alt="微信搜索公众号：CodeAnt"></p>
+<hr>
+<h2 id="简述-四种线程池"><a href="#简述-四种线程池" class="headerlink" title="简述 - 四种线程池"></a>简述 - 四种线程池</h2><p>demo：<a href="https://github.com/LiJinHongPassion/ThreadTest" target="_blank" rel="noopener">https://github.com/LiJinHongPassion/ThreadTest</a></p>
+<ol>
+<li><p>线程池的概念：</p>
+<p> 线程池就是首先创建一些线程，它们的集合称为线程池。使用线程池可以很好地提高性能，线程池在系统启动时即创建大量空闲的线程，程序将一个任务传给线程池，线程池就会启动一条线程来执行这个任务，执行结束以后，该线程并不会死亡，而是再次返回线程池中成为空闲状态，等待执行下一个任务。</p>
+</li>
+<li><p>线程池的工作机制</p>
+<p> 2.1 在线程池的编程模式下，任务是提交给整个线程池，而不是直接提交给某个线程，线程池在拿到任务后，就在内部寻找是否有空闲的线程，如果有，则将任务交给某个空闲的线程。</p>
+<p> 2.1 一个线程同时只能执行一个任务，但可以同时向一个线程池提交多个任务。</p>
+</li>
+<li><p><strong>使用线程池的原因：</strong></p>
+<p> 多线程运行时间，系统不断的启动和关闭新线程，成本非常高，会过渡消耗系统资源，以及过渡切换线程的危险，从而可能导致系统资源的崩溃。这时，线程池就是最好的选择了。</p>
+</li>
+<li><p>线程池的组成</p>
+<ol>
+<li>线程池管理器：用于创建并管理线程池</li>
+<li>工作线程：线程池中的线程</li>
+<li>任务接口：每个任务必须实现的接口，用于工作线程调度其运行</li>
+<li>任务队列：用于存放待处理的任务，提供一种缓冲机制</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>Java 里面线程池的顶级接口是 Executor，但是严格意义上讲 Executor 并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是 ExecutorService。</p>
+<ol>
+<li>线程池的返回值ExecutorService简介：<br> ExecutorService是Java提供的用于管理线程池的类。该类的两个作用：控制线程数量和重用线程</li>
+<li>具体的4种常用的线程池：（返回值都是ExecutorService）<ul>
+<li>newCachedThreadPool</li>
+<li>newFixedThreadPool</li>
+<li>newScheduledThreadPool</li>
+<li>newSingleThreadExecutor<br><img src="https://raw.githubusercontent.com/LiJinHongPassion/LiJinHongPassion.github.io/master/codeant/dxc04/threadpool.png" alt></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="newCachedThreadPool"><a href="#newCachedThreadPool" class="headerlink" title="newCachedThreadPool"></a>newCachedThreadPool</h2><p>创建一个可根据需要创建新线程的线程池，但是在以前构造的线程可用时将<strong>重用</strong>它们。<br>对于执行很多短期异步任务的程序而言，这些线程池通常可提高程序性能。<strong>调用 execute 将重用以前构造的线程（如果线程可用）。如果现有线程没有可用的，则创建一个新线程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。</strong>因此，长时间保持空闲的线程池不会使用任何资源。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">pool01</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个可缓存线程池</span></span><br><span class="line">        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//sleep可明显看到使用的是线程池里面以前的线程，没有创建新的线程</span></span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            cachedThreadPool.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="comment">//打印正在执行的缓存线程信息</span></span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">"正在被执行"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭线程池</span></span><br><span class="line">        cachedThreadPool.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>线程池为无限大，当执行当前任务时上一个任务已经完成，会复用执行上一个任务的线程，而不用每次新建线程</p>
+<p><strong>执行结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br></pre></td></tr></table></figure></p>
+<h2 id="newFixedThreadPool"><a href="#newFixedThreadPool" class="headerlink" title="newFixedThreadPool"></a>newFixedThreadPool</h2><p>创建一个<strong>可重用固定线程数的线程池</strong>，以共享的无界队列方式来运行这些线程。<br>在任意点，在大多数 nThreads 线程会处于处理任务的活动状态。如果在所有线程处于活动状态时提交附加任务，则在有可用线程之前，附加任务将在队列中等待。如果在关闭前的执行期间由于失败而导致任何线程终止，那么一个新线程将代替它执行后续的任务（如果需要）。在某个线程被显式地关闭之前，池中的线程将一直存在。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">pool02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个可重用固定个数的线程池</span></span><br><span class="line">        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            fixedThreadPool.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="comment">//打印正在执行的缓存线程信息</span></span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + <span class="string">"正在被执行"</span>);</span><br><span class="line">                        Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭线程池</span></span><br><span class="line">        fixedThreadPool.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因为线程池大小为3，每个任务输出打印结果后sleep 2秒，所以每两秒打印3个结果。<br>定长线程池的大小最好根据系统资源进行设置。如Runtime.getRuntime().availableProcessors()</p>
+<p><strong>执行结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-2正在被执行</span><br><span class="line">pool-1-thread-3正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-3正在被执行</span><br><span class="line">pool-1-thread-2正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br><span class="line">pool-1-thread-3正在被执行</span><br><span class="line">pool-1-thread-2正在被执行</span><br><span class="line">pool-1-thread-1正在被执行</span><br></pre></td></tr></table></figure></p>
+<h2 id="newScheduledThreadPool"><a href="#newScheduledThreadPool" class="headerlink" title="newScheduledThreadPool"></a>newScheduledThreadPool</h2><p>创建一个定长线程池，<strong>支持定时及周期性任务执行</strong><br>ScheduledExecutorService</p>
+<ul>
+<li>schedule(Runnable, long, TimeUnit) – 延时执行（只执行一次）</li>
+<li>schedule(Callable<v>, long, TimeUnit) – 延时执行</v></li>
+<li>scheduleAtFixedRate(Runnable ,long ,long ,TimeUnit) – 周期执行</li>
+<li>scheduleWithFixedDelay(Runnable ,long ,long ,TimeUnit) – 周期执行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">pool03</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ScheduledExecutorService scheduledThreadPool= Executors.newScheduledThreadPool(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 描述：延时执行（只执行一次）</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@author</span> LJH-1755497577 2019/10/12 13:35</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> command 执行线程</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> delay 延时</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> unit 计时单位</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        scheduledThreadPool.schedule(<span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"延迟三秒执行"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">3</span>, TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 描述：周期执行</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@author</span> LJH-1755497577 2019/10/12 13:35</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> command 执行线程</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> initialDelay 初始化延时</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> period 两次开始执行最小间隔时间</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> unit 计时单位</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        scheduledThreadPool.scheduleAtFixedRate(<span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"延迟 1 秒后每三秒执行一次"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,<span class="number">1</span>,<span class="number">3</span>,TimeUnit.SECONDS);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 描述：周期执行</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@author</span> LJH-1755497577 2019/10/12 13:35</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> command 执行线程</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> initialDelay 初始化延时</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> period 前一次执行结束到下一次执行开始的间隔时间（间隔执行延迟时间）</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> unit 计时单位</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        scheduledThreadPool.scheduleWithFixedDelay(<span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"延迟 1 秒后每上一个线程执行完成后，间隔3秒，开始下一次线程执行"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,<span class="number">1</span>,<span class="number">3</span>,TimeUnit.SECONDS);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//关闭线程池</span></span><br><span class="line">        scheduledThreadPool.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="newSingleThreadExecutor"><a href="#newSingleThreadExecutor" class="headerlink" title="newSingleThreadExecutor"></a>newSingleThreadExecutor</h2><p>创建一个单线程化的线程池（这个线程池只有一个线程），它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。这个线程池可以在线程死后（或发生异常时）重新启动一个线程来替代原来的线程继续执行下去！<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">pool04</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个单线程化的线程池</span></span><br><span class="line">        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> index = i;</span><br><span class="line">            singleThreadExecutor.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="comment">//结果依次输出，相当于顺序执行各个任务</span></span><br><span class="line">                        System.out.println(Thread.currentThread().getName() + <span class="string">"正在被执行,打印的值是:"</span> + index);</span><br><span class="line">                        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭线程池</span></span><br><span class="line">        singleThreadExecutor.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>执行结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pool-1-thread-1正在被执行,打印的值是:0</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:1</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:2</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:3</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:4</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:5</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:6</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:7</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:8</span><br><span class="line">pool-1-thread-1正在被执行,打印的值是:9</span><br></pre></td></tr></table></figure></p>
+
       
 		
 		
 		
 		
-		  <div hidden="hidden"></div>
+		  <div>
+			<blockquote>
+				<strong>本文作者：</strong>
+				
+				  Code Ant
+				
+				<br>
+				<strong>本文链接：</strong>
+				https://lijinhongpassion.github.io/codeant/dxc04.html
+				<br>
+				<strong>版权声明：</strong>
+				本作品采用
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+				进行许可。转载请注明出处！
+				
+			</blockquote>
+			
+			
+			<hr>
+				<center><strong>感谢有你，伴我成长。</strong></center>
+			<hr>
+		  </div>
 		
 		
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>一块就是对我最大的支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -259,7 +365,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
         		</li>
       		
 		</ul>
@@ -271,7 +377,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        			<a href="/categories/多线程//" class="article-tag-list-link color4">多线程</a>
         		</li>
       		
 		</ul>
@@ -279,16 +385,84 @@ var _hmt = _hmt || [];
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/d0e0.html">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://qr.topscan.com/api.php?text=https://lijinhongpassion.github.io/codeant/dxc04.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/codeant/dxc05.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java-Thread05之自定义线程池
+        
+      </div>
+    </a>
+  
+  
+    <a href="/codeant/dxc03.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java-Thread03之多线程线程状态</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -303,740 +477,50 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-实现springbootdemo部署到docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-	  
-        
-		
-        
-        <a href="/codeant/daba.html" class="archive-article-date">
-  	<time datetime="2019-05-21T05:22:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-		
-		<center><p>
-  
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/daba.html">Java-实现springbootdemo部署到docker</a>
-    </h1>
-  
-<p></p></center>
-	
-      
-        <hr>
-<p><img src="https://images.unsplash.com/photo-1542558817211-17b8e8699cc9?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
-        
-      
-		
-		
-		
-		
-		  <div hidden="hidden"></div>
-		
-		
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/daba.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我"><span class="toc-number">1.</span> <span class="toc-text">我</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简述-四种线程池"><span class="toc-number">2.</span> <span class="toc-text">简述 - 四种线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#newCachedThreadPool"><span class="toc-number">3.</span> <span class="toc-text">newCachedThreadPool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#newFixedThreadPool"><span class="toc-number">4.</span> <span class="toc-text">newFixedThreadPool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#newScheduledThreadPool"><span class="toc-number">5.</span> <span class="toc-text">newScheduledThreadPool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#newSingleThreadExecutor"><span class="toc-number">6.</span> <span class="toc-text">newSingleThreadExecutor</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-Java-Springboot-websocket-stomp实现消息功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-	  
-        
-		
-        
-        <a href="/codeant/9210.html" class="archive-article-date">
-  	<time datetime="2019-05-18T08:54:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-		
-		<center><p>
-  
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/9210.html">Java-Springboot+websocket+stomp实现消息功能</a>
-    </h1>
-  
-<p></p></center>
-	
-      
-        <hr>
-<p><img src="https://images.unsplash.com/photo-1556909172-89cf0b24ff02?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80" alt></p>
-        
-      
-		
-		
-		
-		
-		  <div hidden="hidden"></div>
-		
-		
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Springboot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">websocket</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stomp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/9210.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-dubbo高可用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-	  
-        
-		
-        
-        <a href="/codeant/eb26.html" class="archive-article-date">
-  	<time datetime="2019-04-22T12:12:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-		
-		<center><p>
-  
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/eb26.html">Java-dubbo高可用</a>
-    </h1>
-  
-<p></p></center>
-	
-      
-        <hr>
-<p><img src="https://images.unsplash.com/photo-1555626906-087b9f27e451?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
-        
-      
-		
-		
-		
-		
-		  <div hidden="hidden"></div>
-		
-		
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/eb26.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-dubbo的简单使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-	  
-        
-		
-        
-        <a href="/codeant/be60.html" class="archive-article-date">
-  	<time datetime="2019-04-22T10:30:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-		
-		<center><p>
-  
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/be60.html">Java-dubbo的简单使用</a>
-    </h1>
-  
-<p></p></center>
-	
-      
-        <hr>
-<p><img src="https://images.unsplash.com/photo-1509716159367-0180b75063d0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
-        
-      
-		
-		
-		
-		
-		  <div hidden="hidden"></div>
-		
-		
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/be60.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-springmvc异常处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-	  
-        
-		
-        
-        <a href="/codeant/ce37.html" class="archive-article-date">
-  	<time datetime="2019-04-15T11:51:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-		
-		<center><p>
-  
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/ce37.html">Java-springmvc异常处理</a>
-    </h1>
-  
-<p></p></center>
-	
-      
-        <hr>
-<p><img src="https://images.unsplash.com/photo-1554658615-500836630c96?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1053&amp;q=80" alt></p>
-        
-      
-		
-		
-		
-		
-		  <div hidden="hidden"></div>
-		
-		
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">异常</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/ce37.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-日志框架类别-配置-使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-	  
-        
-		
-        
-        <a href="/codeant/573a.html" class="archive-article-date">
-  	<time datetime="2019-04-12T04:41:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-		
-		<center><p>
-  
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/573a.html">Java-日志框架类别&amp;配置&amp;使用</a>
-    </h1>
-  
-<p></p></center>
-	
-      
-        <hr>
-<p><img src="https://images.unsplash.com/photo-1554618501-4aa45b49ecfb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
-        
-      
-		
-		
-		
-		
-		  <div hidden="hidden"></div>
-		
-		
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">logging</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/573a.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-读书笔记-图解HTTP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-	  
-        
-		
-        
-        <a href="/codeant/c29a.html" class="archive-article-date">
-  	<time datetime="2019-04-10T13:34:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-		
-		<center><p>
-  
-    </p><h1 itemprop="name">
-      <a class="article-title_code_ant" href="/codeant/c29a.html">读书笔记-图解HTTP</a>
-    </h1>
-  
-<p></p></center>
-	
-      
-        <hr>
-<p><img src="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
-        
-      
-		
-		
-		
-		
-		  <div hidden="hidden"></div>
-		
-		
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/http//" class="article-tag-list-link color5">http</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/codeant/c29a.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<!--<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">-->
+<!--<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'Sat Oct 12 2019 16:05:44 GMT+0800',
+  owner: 'LiJinHongPassion',
+  repo: 'LiJinHongPassion.github.io',
+  oauth: {
+    client_id: '5ad7ec70a25067e86139',
+    client_secret: '21a8b9052808acddd0734e828103e88beabd97c5',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1069,8 +553,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
