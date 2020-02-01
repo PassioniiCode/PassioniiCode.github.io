@@ -248,7 +248,7 @@ var _hmt = _hmt || [];
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><h4 id="python环境"><a href="#python环境" class="headerlink" title="python环境"></a>python环境</h4><p>先介绍以下python的安装教程吧，我习惯于在windows上开发，所以讲一下windows和liunx的环境安装，针对Mac OS系统的安装自行百度。</p>
 <h5 id="windows-10"><a href="#windows-10" class="headerlink" title="windows 10"></a>windows 10</h5><p>进入官网，<a href="https://www.python.org/downloads/windows/；选择稳定版本的windowsx86-64" target="_blank" rel="noopener">https://www.python.org/downloads/windows/；选择稳定版本的windowsx86-64</a> executable installer；下载打开后，<strong>选择自动配置环境变量</strong></p>
 <p>over，就是这么简单（这相当于是java中的jdk安装）</p>
-<h5 id="centos-7-x"><a href="#centos-7-x" class="headerlink" title="centos 7.x"></a>centos 7.x</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> py环境安装</span><br><span class="line"><span class="meta">#</span> 执行项目使用python3 xxx.py</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 安装依赖库（因为没有这些依赖库可能在源代码构件安装时因为缺失底层依赖库而失败）。</span><br><span class="line">yum -y install wget gcc zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz</span><br><span class="line">tar -xvf Python-3.7.4.tar</span><br><span class="line"></span><br><span class="line">cd Python-3.7.4</span><br><span class="line">./configure --prefix=/usr/local/python37 --enable-optimizations</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 环境变量</span><br><span class="line">cd ~</span><br><span class="line"><span class="meta">cat&gt;</span>.bash_profile&lt;&lt;EOF</span><br><span class="line">export PATH=$PATH:/usr/local/python37/bin</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">source .bash_profile</span><br><span class="line"></span><br><span class="line">echo "---------------测试------------------"</span><br><span class="line">python3 --version</span><br></pre></td></tr></table></figure>
+<h5 id="centos-7-x"><a href="#centos-7-x" class="headerlink" title="centos 7.x"></a>centos 7.x</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> py环境安装</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 执行项目使用python3 xxx.py</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装依赖库（因为没有这些依赖库可能在源代码构件安装时因为缺失底层依赖库而失败）。</span></span><br><span class="line">yum -y install wget gcc zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz</span><br><span class="line">tar -xvf Python-3.7.4.tar</span><br><span class="line"></span><br><span class="line">cd Python-3.7.4</span><br><span class="line">./configure --prefix=/usr/local/python37 --enable-optimizations</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 环境变量</span></span><br><span class="line">cd ~</span><br><span class="line"><span class="meta">cat&gt;</span><span class="bash">.bash_profile&lt;&lt;EOF</span></span><br><span class="line">export PATH=$PATH:/usr/local/python37/bin</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">source .bash_profile</span><br><span class="line"></span><br><span class="line">echo "---------------测试------------------"</span><br><span class="line">python3 --version</span><br></pre></td></tr></table></figure>
 <hr>
 <h4 id="python编辑器"><a href="#python编辑器" class="headerlink" title="python编辑器"></a>python编辑器</h4><p>等同于Java开发工具idea，idea也可以用于python开发，这里我是用的是pycharm，安装可参考可参考：<a href="https://www.runoob.com/w3cnote/pycharm-windows-install.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/pycharm-windows-install.html</a></p>
 <hr>
@@ -261,7 +261,7 @@ var _hmt = _hmt || [];
 <li>保存数据</li>
 </ul>
 <p>main.py</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 直聘网招聘信息爬虫demo</span><br><span class="line"></span><br><span class="line">from lxml import etree</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">import Info</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> url = "https://www.zhipin.com/c101040100-p100101/?ka=sel-city-101040100"  # 接口地址</span><br><span class="line">url = "https://www.zhipin.com/c101040100-p100101/"  # 接口地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 消息头数据</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',</span><br><span class="line">    'accept-encoding': 'gzip, deflate, br',</span><br><span class="line">    'accept-language': 'zh-CN,zh;q=0.9',</span><br><span class="line">    'cookie': 'lastCity=101040100; _uab_collina=155989425705358786428292; _bl_uid=ejj1ezbR49w72poUUr06qa8iy55n; __c=1567474454; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1565361209,1566378390,1566981114,1567474455; __l=l=%2Fwww.zhipin.com%2F&amp;r=https%3A%2F%2Fwww.baidu.com%2Fs%3Fie%3DUTF-8%26wd%3Dboss%25E7%259B%25B4%25E8%2581%2598&amp;friend_source=0&amp;friend_source=0; __zp_stoken__=c688fL0GhqXlN%2FYY%2F2ydR1HFd8NS%2B8oaaNAjTZSdiGKLVMq%2BPk1q%2FaMCVkpzfOn1kk38E6u8nCHUaLXH2leUN3NrhA%3D%3D; __a=50395184.1559894257.1566981114.1567474454.68.6.4.68; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1567475125',</span><br><span class="line">    # 'referer': 'https://www.zhipin.com/c101040100-p100101/',</span><br><span class="line">    'referer': 'https://www.zhipin.com/c101040100-p100101/?page=2&amp;ka=page-2',</span><br><span class="line">    'upgrade-insecure-requests': '1',</span><br><span class="line">    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">payload = &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 获取html</span><br><span class="line">def getData(data_url, data_headers, data_payload):</span><br><span class="line">    r = requests.get(data_url, json=data_payload, headers=data_headers, verify=False)</span><br><span class="line">    s = str(r.content, 'utf8')</span><br><span class="line">    # print(s)</span><br><span class="line">    return s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 分析数据</span><br><span class="line"><span class="meta">#</span> 教程:https://www.cnblogs.com/lei0213/p/7506130.html</span><br><span class="line">def analysisData(data='', xpath_str_f='', xpath_str_b=''):</span><br><span class="line">    html = etree.HTML(data)</span><br><span class="line">    values = []</span><br><span class="line">    try:</span><br><span class="line">        for n in range(1, 20):</span><br><span class="line">            x = xpath_str_f + str(n) + xpath_str_b</span><br><span class="line">            if x == '' or x.__len__() == 0 :</span><br><span class="line">                break</span><br><span class="line">            values.append(html.xpath(x))</span><br><span class="line">    except Exception:</span><br><span class="line">        pass</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    # for i in values:</span><br><span class="line">    #     print(i[0].text)</span><br><span class="line">    return values</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 爬取一页的数据并打印</span><br><span class="line">def getOnePage(page_url):</span><br><span class="line">    r = getData(page_url, headers, payload)</span><br><span class="line">    names = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/h3/a/div[1]')</span><br><span class="line">    moneys = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/h3/a/span')</span><br><span class="line">    companyNames = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[2]/div/h3/a')</span><br><span class="line">    addrs = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/p')</span><br><span class="line">    companyStatuss = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[2]/div/p')</span><br><span class="line"></span><br><span class="line">    infos = ''</span><br><span class="line">    print(names.__len__())</span><br><span class="line">    for i in range(1, names.__len__()):</span><br><span class="line">        info = Info.Info(names[i][0].text,</span><br><span class="line">                         moneys[i][0].text,</span><br><span class="line">                         companyNames[i][0].text,</span><br><span class="line">                         addrs[i][0].text,</span><br><span class="line">                         companyStatuss[i][0].text,)</span><br><span class="line"></span><br><span class="line">        if info == 'None' or info == None:</span><br><span class="line">            continue</span><br><span class="line">        # infos = infos + info.tostring()</span><br><span class="line">        print(info.tostring())</span><br><span class="line">    return infos</span><br><span class="line"></span><br><span class="line">for i in range(2, 4):</span><br><span class="line">    temp = url + '?page=' + str(i) + '&amp;ka=page-' + str(i)</span><br><span class="line">    print(temp)</span><br><span class="line">    getOnePage(temp)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 直聘网招聘信息爬虫demo</span></span><br><span class="line"></span><br><span class="line">from lxml import etree</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">import Info</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> url = <span class="string">"https://www.zhipin.com/c101040100-p100101/?ka=sel-city-101040100"</span>  <span class="comment"># 接口地址</span></span></span><br><span class="line">url = "https://www.zhipin.com/c101040100-p100101/"  # 接口地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 消息头数据</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',</span><br><span class="line">    'accept-encoding': 'gzip, deflate, br',</span><br><span class="line">    'accept-language': 'zh-CN,zh;q=0.9',</span><br><span class="line">    'cookie': 'lastCity=101040100; _uab_collina=155989425705358786428292; _bl_uid=ejj1ezbR49w72poUUr06qa8iy55n; __c=1567474454; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1565361209,1566378390,1566981114,1567474455; __l=l=%2Fwww.zhipin.com%2F&amp;r=https%3A%2F%2Fwww.baidu.com%2Fs%3Fie%3DUTF-8%26wd%3Dboss%25E7%259B%25B4%25E8%2581%2598&amp;friend_source=0&amp;friend_source=0; __zp_stoken__=c688fL0GhqXlN%2FYY%2F2ydR1HFd8NS%2B8oaaNAjTZSdiGKLVMq%2BPk1q%2FaMCVkpzfOn1kk38E6u8nCHUaLXH2leUN3NrhA%3D%3D; __a=50395184.1559894257.1566981114.1567474454.68.6.4.68; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1567475125',</span><br><span class="line">    # 'referer': 'https://www.zhipin.com/c101040100-p100101/',</span><br><span class="line">    'referer': 'https://www.zhipin.com/c101040100-p100101/?page=2&amp;ka=page-2',</span><br><span class="line">    'upgrade-insecure-requests': '1',</span><br><span class="line">    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36'</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">payload = &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 获取html</span></span><br><span class="line">def getData(data_url, data_headers, data_payload):</span><br><span class="line">    r = requests.get(data_url, json=data_payload, headers=data_headers, verify=False)</span><br><span class="line">    s = str(r.content, 'utf8')</span><br><span class="line">    # print(s)</span><br><span class="line">    return s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 分析数据</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 教程:https://www.cnblogs.com/lei0213/p/7506130.html</span></span><br><span class="line">def analysisData(data='', xpath_str_f='', xpath_str_b=''):</span><br><span class="line">    html = etree.HTML(data)</span><br><span class="line">    values = []</span><br><span class="line">    try:</span><br><span class="line">        for n in range(1, 20):</span><br><span class="line">            x = xpath_str_f + str(n) + xpath_str_b</span><br><span class="line">            if x == '' or x.__len__() == 0 :</span><br><span class="line">                break</span><br><span class="line">            values.append(html.xpath(x))</span><br><span class="line">    except Exception:</span><br><span class="line">        pass</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line">    # for i in values:</span><br><span class="line">    #     print(i[0].text)</span><br><span class="line">    return values</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 爬取一页的数据并打印</span></span><br><span class="line">def getOnePage(page_url):</span><br><span class="line">    r = getData(page_url, headers, payload)</span><br><span class="line">    names = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/h3/a/div[1]')</span><br><span class="line">    moneys = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/h3/a/span')</span><br><span class="line">    companyNames = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[2]/div/h3/a')</span><br><span class="line">    addrs = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[1]/p')</span><br><span class="line">    companyStatuss = analysisData(r, '//*[@id="main"]/div/div[2]/ul/li[', ']/div/div[2]/div/p')</span><br><span class="line"></span><br><span class="line">    infos = ''</span><br><span class="line">    print(names.__len__())</span><br><span class="line">    for i in range(1, names.__len__()):</span><br><span class="line">        info = Info.Info(names[i][0].text,</span><br><span class="line">                         moneys[i][0].text,</span><br><span class="line">                         companyNames[i][0].text,</span><br><span class="line">                         addrs[i][0].text,</span><br><span class="line">                         companyStatuss[i][0].text,)</span><br><span class="line"></span><br><span class="line">        if info == 'None' or info == None:</span><br><span class="line">            continue</span><br><span class="line">        # infos = infos + info.tostring()</span><br><span class="line">        print(info.tostring())</span><br><span class="line">    return infos</span><br><span class="line"></span><br><span class="line">for i in range(2, 4):</span><br><span class="line">    temp = url + '?page=' + str(i) + '&amp;ka=page-' + str(i)</span><br><span class="line">    print(temp)</span><br><span class="line">    getOnePage(temp)</span><br></pre></td></tr></table></figure>
 <p>Info.py</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Info</span>:</span></span><br><span class="line">    name = <span class="string">''</span></span><br><span class="line">    money = <span class="string">''</span></span><br><span class="line">    companyName = <span class="string">''</span></span><br><span class="line">    addr = <span class="string">''</span></span><br><span class="line">    companyStatus = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, money, companyName, addr, companyStatus)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.money = money</span><br><span class="line">        self.companyName = companyName</span><br><span class="line">        self.companyStatus = companyStatus</span><br><span class="line">        self.addr = addr</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tostring</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"name："</span> + self.name</span><br><span class="line">              + <span class="string">"\tmoney："</span> + self.money</span><br><span class="line">              + <span class="string">"\tcompanyName："</span> + self.companyName</span><br><span class="line">              + <span class="string">"\taddr："</span> + self.addr</span><br><span class="line">              + <span class="string">"\tcompanyStatus："</span> + self.companyStatus + <span class="string">"\n"</span></span><br><span class="line">              )</span><br></pre></td></tr></table></figure>
 
@@ -502,7 +502,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Code Ant
+    		&copy; 2020 Code Ant
     	</div>
 		
 		<div class="footer-left">
@@ -607,15 +607,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">aop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,7 +631,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,31 +643,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">caffeine</a>
+                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+                <a href="javascript:void(0)" class="js-tag color4">justauth</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jsp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">restful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,7 +667,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jsp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">guava</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">caffeine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -683,15 +699,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集群</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">app</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">hbuilder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mui</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">sso</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -703,11 +743,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color1">neo4j</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,31 +763,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">neo4j</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdbc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">fastdfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">justauth</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">restful</a>
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,10 +787,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">事务</a>
               </li>
              
@@ -787,6 +803,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">poi</a>
               </li>
              
@@ -796,10 +816,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">security</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shiro</a>
               </li>
              
               <li class="article-tag-list-item">
