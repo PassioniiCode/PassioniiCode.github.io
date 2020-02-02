@@ -490,9 +490,9 @@
     
       <category term="springboot" scheme="https://lijinhongpassion.github.io/tags/springboot/"/>
     
-      <category term="cache" scheme="https://lijinhongpassion.github.io/tags/cache/"/>
-    
       <category term="caffeine" scheme="https://lijinhongpassion.github.io/tags/caffeine/"/>
+    
+      <category term="cache" scheme="https://lijinhongpassion.github.io/tags/cache/"/>
     
   </entry>
   
@@ -519,9 +519,9 @@
     
       <category term="springboot" scheme="https://lijinhongpassion.github.io/tags/springboot/"/>
     
-      <category term="guava" scheme="https://lijinhongpassion.github.io/tags/guava/"/>
-    
       <category term="cache" scheme="https://lijinhongpassion.github.io/tags/cache/"/>
+    
+      <category term="guava" scheme="https://lijinhongpassion.github.io/tags/guava/"/>
     
   </entry>
   
