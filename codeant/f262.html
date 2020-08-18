@@ -9,25 +9,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://lijinhongpassion.github.io">
-  <title>读书笔记-图解HTTP | Code Ant&#39;s Blog</title>
+  <title>Redis-利用Redis的原子操作-Incr实现秒杀 | Code Ant&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="http">
+  <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读书笔记-图解HTTP">
-<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/c29a.html">
+<meta property="og:title" content="Redis-利用Redis的原子操作-Incr实现秒杀">
+<meta property="og:url" content="https://lijinhongpassion.github.io/codeant/f262.html">
 <meta property="og:site_name" content="Code Ant&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/1.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/2.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/3.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/4.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/5.png">
-<meta property="og:image" content="https://lijinhongpassion.github.io/codeant/c29a/6.png">
-<meta property="og:updated_time" content="2019-06-04T08:16:56.187Z">
+<meta property="og:image" content="https://images.unsplash.com/photo-1582079302063-33d56135e4e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+<meta property="og:image" content="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png">
+<meta property="og:updated_time" content="2020-08-18T10:53:10.361Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读书笔记-图解HTTP">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+<meta name="twitter:title" content="Redis-利用Redis的原子操作-Incr实现秒杀">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1582079302063-33d56135e4e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
   
     <link rel="alternative" href="/atom.xml" title="Code Ant&#39;s Blog" type="application/atom+xml">
   
@@ -226,7 +221,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-读书笔记-图解HTTP" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Redis-利用Redis的原子操作-Incr实现秒杀" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -234,8 +229,8 @@ var _hmt = _hmt || [];
         
 		
         
-        <a href="/codeant/c29a.html" class="archive-article-date">
-  	<time datetime="2019-04-10T13:34:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
+        <a href="/codeant/f262.html" class="archive-article-date">
+  	<time datetime="2020-08-18T10:51:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
 </a>
         
       </header>
@@ -245,700 +240,152 @@ var _hmt = _hmt || [];
 		<center><p>
   
     </p><h1 class="article-title_code_ant" itemprop="name">
-      读书笔记-图解HTTP
+      Redis-利用Redis的原子操作-Incr实现秒杀
     </h1>
   
 <p></p></center>
 	
       
         <hr>
-<p><img src="https://images.unsplash.com/photo-1553531768-a0f91bcfbd3e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
+<p><img src="https://images.unsplash.com/photo-1582079302063-33d56135e4e9?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt></p>
 <a id="more"></a>
 <center><br><br>​    <span id="m_name"></span><br><br>​    <audio id="m_url_id" controls> <source src> <source src="horse.ogg" type="audio/ogg"> Your browser does not support this audio format.<br><br>​    </audio><br><br></center>  
 
 <hr>
-<h1 id="1-HTTP状态码"><a href="#1-HTTP状态码" class="headerlink" title="1 HTTP状态码"></a>1 HTTP状态码</h1><table>
-<thead>
-<tr>
-<th>分类</th>
-<th>分类描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1**</td>
-<td>信息，服务器收到请求，需要请求者继续执行操作</td>
-</tr>
-<tr>
-<td>2**</td>
-<td>成功，操作被成功接收并处理</td>
-</tr>
-<tr>
-<td>3**</td>
-<td>重定向，需要进一步的操作以完成请求</td>
-</tr>
-<tr>
-<td>4**</td>
-<td>客户端错误，请求包含语法错误或无法完成请求</td>
-</tr>
-<tr>
-<td>5**</td>
-<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>状态码</th>
-<th style="text-align:left">状态码英文名称</th>
-<th>中文描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100</td>
-<td style="text-align:left">Continue</td>
-<td>继续。客户端应继续其请求</td>
-</tr>
-<tr>
-<td>101</td>
-<td style="text-align:left">Switching Protocols</td>
-<td>切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:left"></td>
-<td></td>
-</tr>
-<tr>
-<td>200</td>
-<td style="text-align:left">OK</td>
-<td>请求成功。一般用于GET与POST请求</td>
-</tr>
-<tr>
-<td>201</td>
-<td style="text-align:left">Created</td>
-<td>已创建。成功请求并创建了新的资源</td>
-</tr>
-<tr>
-<td>202</td>
-<td style="text-align:left">Accepted</td>
-<td>已接受。已经接受请求，但未处理完成</td>
-</tr>
-<tr>
-<td>203</td>
-<td style="text-align:left">Non-Authoritative Information</td>
-<td>非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本</td>
-</tr>
-<tr>
-<td>204</td>
-<td style="text-align:left">No Content</td>
-<td>无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档</td>
-</tr>
-<tr>
-<td>205</td>
-<td style="text-align:left">Reset Content</td>
-<td>重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域</td>
-</tr>
-<tr>
-<td>206</td>
-<td style="text-align:left">Partial Content</td>
-<td>部分内容。服务器成功处理了部分GET请求</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:left"></td>
-<td></td>
-</tr>
-<tr>
-<td>300</td>
-<td style="text-align:left">Multiple Choices</td>
-<td>多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择</td>
-</tr>
-<tr>
-<td><strong>301</strong></td>
-<td style="text-align:left">Moved Permanently</td>
-<td>永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
-</tr>
-<tr>
-<td><strong>302</strong></td>
-<td style="text-align:left">Found</td>
-<td>临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
-</tr>
-<tr>
-<td>303</td>
-<td style="text-align:left">See Other</td>
-<td>查看其它地址。与301类似。使用GET和POST请求查看</td>
-</tr>
-<tr>
-<td>304</td>
-<td style="text-align:left">Not Modified</td>
-<td>未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源</td>
-</tr>
-<tr>
-<td>305</td>
-<td style="text-align:left">Use Proxy</td>
-<td>使用代理。所请求的资源必须通过代理访问</td>
-</tr>
-<tr>
-<td>306</td>
-<td style="text-align:left">Unused</td>
-<td>已经被废弃的HTTP状态码</td>
-</tr>
-<tr>
-<td>307</td>
-<td style="text-align:left">Temporary Redirect</td>
-<td>临时重定向。与302类似。使用GET请求重定向</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:left"></td>
-<td></td>
-</tr>
-<tr>
-<td>400</td>
-<td style="text-align:left">Bad Request</td>
-<td>客户端请求的语法错误，服务器无法理解</td>
-</tr>
-<tr>
-<td>401</td>
-<td style="text-align:left">Unauthorized</td>
-<td>请求要求用户的身份认证</td>
-</tr>
-<tr>
-<td>402</td>
-<td style="text-align:left">Payment Required</td>
-<td>保留，将来使用</td>
-</tr>
-<tr>
-<td>403</td>
-<td style="text-align:left">Forbidden</td>
-<td>服务器理解请求客户端的请求，但是拒绝执行此请求</td>
-</tr>
-<tr>
-<td>404</td>
-<td style="text-align:left">Not Found</td>
-<td>服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置”您所请求的资源无法找到”的个性页面</td>
-</tr>
-<tr>
-<td>405</td>
-<td style="text-align:left">Method Not Allowed</td>
-<td>客户端请求中的方法被禁止</td>
-</tr>
-<tr>
-<td>406</td>
-<td style="text-align:left">Not Acceptable</td>
-<td>服务器无法根据客户端请求的内容特性完成请求</td>
-</tr>
-<tr>
-<td>407</td>
-<td style="text-align:left">Proxy Authentication Required</td>
-<td>请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权</td>
-</tr>
-<tr>
-<td>408</td>
-<td style="text-align:left">Request Time-out</td>
-<td>服务器等待客户端发送的请求时间过长，超时</td>
-</tr>
-<tr>
-<td>409</td>
-<td style="text-align:left">Conflict</td>
-<td>服务器完成客户端的PUT请求是可能返回此代码，服务器处理请求时发生了冲突</td>
-</tr>
-<tr>
-<td>410</td>
-<td style="text-align:left">Gone</td>
-<td>客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置</td>
-</tr>
-<tr>
-<td>411</td>
-<td style="text-align:left">Length Required</td>
-<td>服务器无法处理客户端发送的不带Content-Length的请求信息</td>
-</tr>
-<tr>
-<td>412</td>
-<td style="text-align:left">Precondition Failed</td>
-<td>客户端请求信息的先决条件错误</td>
-</tr>
-<tr>
-<td>413</td>
-<td style="text-align:left">Request Entity Too Large</td>
-<td>由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息</td>
-</tr>
-<tr>
-<td>414</td>
-<td style="text-align:left">Request-URI Too Large</td>
-<td>请求的URI过长（URI通常为网址），服务器无法处理</td>
-</tr>
-<tr>
-<td>415</td>
-<td style="text-align:left">Unsupported Media Type</td>
-<td>服务器无法处理请求附带的媒体格式</td>
-</tr>
-<tr>
-<td>416</td>
-<td style="text-align:left">Requested range not satisfiable</td>
-<td>客户端请求的范围无效</td>
-</tr>
-<tr>
-<td>417</td>
-<td style="text-align:left">Expectation Failed</td>
-<td>服务器无法满足Expect的请求头信息</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align:left"></td>
-<td></td>
-</tr>
-<tr>
-<td>500</td>
-<td style="text-align:left">Internal Server Error</td>
-<td>服务器内部错误，无法完成请求</td>
-</tr>
-<tr>
-<td>501</td>
-<td style="text-align:left">Not Implemented</td>
-<td>服务器不支持请求的功能，无法完成请求</td>
-</tr>
-<tr>
-<td>502</td>
-<td style="text-align:left">Bad Gateway</td>
-<td>作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应</td>
-</tr>
-<tr>
-<td>503</td>
-<td style="text-align:left">Service Unavailable</td>
-<td>由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中</td>
-</tr>
-<tr>
-<td>504</td>
-<td style="text-align:left">Gateway Time-out</td>
-<td>充当网关或代理的服务器，未及时从远端服务器获取请求</td>
-</tr>
-<tr>
-<td>505</td>
-<td style="text-align:left">HTTP Version not supported</td>
-<td>服务器不支持请求的HTTP协议的版本，无法完成处理</td>
-</tr>
-</tbody>
-</table>
-<p><strong>301与302</strong></p>
-<ul>
-<li>301：永久跳转，客户端发送请求访问‘/test’的资源，游览器接收到后，因为‘/test’资源路径改变，返回301并设置响应首部字段’Location’:’/newtest’，告诉客户端在下次访问‘/test’的时候，<strong>在客户端直接更改为’/newtest’</strong></li>
-<li>302：临时跳转,客户端发送请求访问‘/test’的资源，游览器接收到后，因为‘/test’资源路径改变，返回302并设置响应首部字段’Location’:’/newtest’，告诉客户端临时跳转到’/newtest’；客户端在下次访问‘/test’资源还是会重复上面的操作，并不会在客户端直接更改访问资源的路径</li>
-</ul>
-<h1 id="2-HTTP结构"><a href="#2-HTTP结构" class="headerlink" title="2 HTTP结构"></a>2 HTTP结构</h1><img src="/codeant/c29a/1.png" title="1.png">
-<h1 id="3-HTTP首部"><a href="#3-HTTP首部" class="headerlink" title="3 HTTP首部"></a>3 HTTP首部</h1><p><strong>1. 通用首部字段</strong>–9</p>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Cache-Control</strong></td>
-<td>控制缓存的行为</td>
-</tr>
-<tr>
-<td>Connection</td>
-<td>逐跳首部、连接的管理</td>
-</tr>
-<tr>
-<td>Date</td>
-<td>创建报文的日期时间</td>
-</tr>
-<tr>
-<td>Program</td>
-<td>报文指令</td>
-</tr>
-<tr>
-<td>Trailer</td>
-<td>报文末端的首部一览</td>
-</tr>
-<tr>
-<td>Transfer-Encoding</td>
-<td>指定报文主体的传输编码方式</td>
-</tr>
-<tr>
-<td>Upgrade</td>
-<td>升级为其他协议</td>
-</tr>
-<tr>
-<td>Via</td>
-<td>代理服务器的相关信息</td>
-</tr>
-<tr>
-<td>Warning</td>
-<td>错误通知</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Cache-Control：</strong></p>
-<p>粗体指令为常用指令</p>
-<ul>
-<li>可缓存性<ul>
-<li><strong>public：</strong>表明其他用户也可以利用缓存</li>
-<li><strong>private：</strong>缓存服务器会对该特定用户提供资源缓存服务，<strong>对于其他用户发来的请求，缓存服务器则不会返回缓存</strong></li>
-<li><strong>no-Cache</strong>（不缓存过期的资源）：<ul>
-<li>客户端：客户端发送的请求中包含no-cache指令，表示客户端不会接收缓存过的响应，则中间的缓存服务器（例如nginx服务器）必须将请求转发给源服务器</li>
-<li>服务器端：若是服务器端返回的响应中包含no-cache指令（response.setHeader(……)），那么缓存服务器（例如nginx）就不能对资源进行缓存；<strong>并且在以后都不会再对缓存服务器请求中提出的资源有效性进行确认，且禁止其对响应的资源进行缓存</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<h2 id="我"><a href="#我" class="headerlink" title="我"></a>我</h2><p><strong>QQ：1755497577（备注：博客）</strong></p>
+<p><strong>B站：code_ant（java相关培训视频）</strong></p>
+<p><img src="https://raw.githubusercontent.com/LiJinHongPassion/springboot/master/wechat.png" alt="微信搜索公众号：CodeAnt"></p>
 <hr>
-<ul>
-<li>缓存期限和认证<ul>
-<li>s-maxage：该指令和max-age相同，不同点是s-maxage只适用于供对为用户使用的公共缓存服务器（<strong>也就是说只有在代理服务器才会生效</strong>），max-age是在<strong>客户端生效</strong>；使用该指令过后，会忽略对Expires首部字段和max-age指令的处理；eg : Cache-Control:s-maxage=604800（单位秒）</li>
-<li><strong>max-age：</strong>缓存在未过期的时间内是访问的客户端本地的缓存，当缓存过期后才会访问服务器；eg : Cache-Control:max-age=604800（单位秒）</li>
-<li>max-stale：只能由客户端发起请求；客户端对过期的请求接收；eg:Cache-Control:max-stale=604800（<strong>资源过期时间在指定时间内，才会被客户端接收</strong>）； Cache-Control:max-stale（不设置参数表示不论资源过期多久，都接收）</li>
-</ul>
-</li>
-</ul>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><blockquote>
+<p>如果你对redis的CRUD操作还不是很熟悉, 可以去阅读<a href="https://github.com/LiJinHongPassion/springboot/tree/master/springboot-redis-demo" target="_blank" rel="noopener">springboot_redis_demo</a>：springboot整合redis数据库利用redistemplate实现CRUD</p>
+</blockquote>
+<blockquote>
+<p>该篇文章主要是对秒杀中redis的increment介绍, 关于其他秒杀相关可以查看参考文献, 他们已经描述得很全面了</p>
+<p>本文代码 : <a href="https://gitee.com/LiJinHongPassion/utils/tree/master/springboot-redis-incr-demo" target="_blank" rel="noopener">springboot-redis-incr-demo</a> </p>
+</blockquote>
 <hr>
-<ul>
-<li>重新验证<ul>
-<li>must-revalidate：这是用在客户端的；在设置了max-age的缓存资源过期后，那我们必须去源服务端重新获取资源，来验证这个缓存资源是否真的过期，而不能直接使用本地缓存；</li>
-<li>proxy-revalidate：要求<strong>所有的</strong>缓存服务器<strong>接收到客户端带有该指令请求</strong>，在返回响应之前，必须在此验证缓存的有效性。</li>
-</ul>
-</li>
-</ul>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><blockquote>
+<p><strong>环境: </strong>redis, mysql, jdk</p>
+</blockquote>
 <hr>
-<ul>
-<li><p>其他</p>
-<ul>
-<li><p>no-store（不缓存）：暗示请求（和对应的响应）或者响应中包含机密信息，该指令表示在本地存储不能缓存请求或者响应的任一部分</p>
-</li>
-<li><p>no-transform：表示无论在请求还是响应中，缓存都不能改变实体主体的媒体类型；这样做可防止缓存或代理压缩图片等类似操作。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Connection：</strong></p>
-<p>作用</p>
-<ul>
-<li>控制不再转发给代理首部字段</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: Connection: Upgeade    //表示首部字段中upgrade字段会被从http中删除后在转发</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>管理持久化连接</p>
-<ul>
-<li><p>close：当服务器端想明确断开连接时，则指定Connection的值为close</p>
-</li>
-<li><p>Keep-Alive：客户端发送请求给服务器时，服务器会像下图那样加上Keep-Alive首部字段和Connection首部字段后返回响应</p>
-<img src="/codeant/c29a/2.png" title="2.png">
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>2. 请求首部字段  </strong>–19  </p>
-<p>​                               </p>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Accept</strong></td>
-<td>用户代理可处理的媒体类型</td>
-</tr>
-<tr>
-<td>Accept-Charset</td>
-<td>优先的字符集</td>
-</tr>
-<tr>
-<td><strong>Accept-Encoding</strong></td>
-<td>优先的内容编码</td>
-</tr>
-<tr>
-<td><strong>Accept-Language</strong></td>
-<td>优先的语言（自然语言）</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>Web认证信息</td>
-</tr>
-<tr>
-<td>Expect</td>
-<td>期待服务器的特定行为</td>
-</tr>
-<tr>
-<td>From</td>
-<td>用户的电子邮箱地址</td>
-</tr>
-<tr>
-<td>Host</td>
-<td>请求资源所在的服务器</td>
-</tr>
-<tr>
-<td>If-Match</td>
-<td>比较实体标记（ETag）</td>
-</tr>
-<tr>
-<td>If-Modified-Since</td>
-<td>比较资源的更新时间</td>
-</tr>
-<tr>
-<td>If-None-Match</td>
-<td>比较实体标记（与If-Match相反）</td>
-</tr>
-<tr>
-<td>If-Range</td>
-<td>资源未更新时发送实体Byte的范围请求</td>
-</tr>
-<tr>
-<td>If-Unmodified-Since</td>
-<td>比较资源的更新时间（与If-Modified-Since相反）</td>
-</tr>
-<tr>
-<td>Max-Forwards</td>
-<td>最大传输逐跳数</td>
-</tr>
-<tr>
-<td>Proxy-Authorization</td>
-<td>代理服务器要求客户端的认证信息</td>
-</tr>
-<tr>
-<td>Range</td>
-<td>实体的字节范围请求</td>
-</tr>
-<tr>
-<td>Referer</td>
-<td>对请求中的URI的原始获取方</td>
-</tr>
-<tr>
-<td>TE</td>
-<td>传输编码的优先级</td>
-</tr>
-<tr>
-<td><strong>User-Agent</strong></td>
-<td>HTTP客户端程序的信息</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Accept、Accept-Encoding、Accept-Language</strong>与实体类首部字段Content-Type、Content-Encoding、Content-Language相对应</p>
-<p>客户端发送请求首部字段Accept、Accept-Encoding、Accept-Language，服务器接收后在实体报文里面设置Content-Type、Content-Encoding、Content-Language与之对应响应客户端的请求</p>
-<p><strong>3.响应首部字段</strong>–9</p>
-<table>
-<thead>
-<tr>
-<th><strong>首部字段名</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Accept-Ranges</td>
-<td>是否接受字节范围请求</td>
-</tr>
-<tr>
-<td>Age</td>
-<td>推算资源创建经过时间</td>
-</tr>
-<tr>
-<td><strong>ETag</strong></td>
-<td>资源的匹配信息</td>
-</tr>
-<tr>
-<td>Location</td>
-<td>令客户端重定向至指定URI</td>
-</tr>
-<tr>
-<td>Proxy-Authenticate</td>
-<td>代理服务器对客户端的认证信息</td>
-</tr>
-<tr>
-<td>Retry-After</td>
-<td>对再次发起请求的时机要求</td>
-</tr>
-<tr>
-<td>Server</td>
-<td>HTTP服务器的安装信息</td>
-</tr>
-<tr>
-<td>Vary</td>
-<td>代理服务器缓存的管理信息</td>
-</tr>
-<tr>
-<td>WWW-Authenticate</td>
-<td>服务器对客户端的认证信息</td>
-</tr>
-</tbody>
-</table>
-<p><strong>ETag：</strong></p>
-<p>数据签名，它是一种可将资源以字符串形式做唯一性标识的方式。服务器端会为每份资源分配对应的ETag值。用ETag来标记唯一资源；</p>
-<p>配合if-Match或者if-Non-Match使用（比较实体标记（ETag）），这两个字段都是请求首部字段</p>
-<p>服务器获取到字段后对比ETag，判断是否返回一个新的资源</p>
-<p><strong>4. 实体首部字段  </strong>–10</p>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Allow</td>
-<td>资源可支持的HTTP方法</td>
-</tr>
-<tr>
-<td><strong>Content-Encoding</strong></td>
-<td>实体主体试用的编码方式</td>
-</tr>
-<tr>
-<td><strong>Content-Language</strong></td>
-<td>实体主体的自然语言</td>
-</tr>
-<tr>
-<td>Content-Length</td>
-<td>实体主体的大小（单位：字节）</td>
-</tr>
-<tr>
-<td>Content-Location</td>
-<td>替换对应资源的URI</td>
-</tr>
-<tr>
-<td>Content-MD5</td>
-<td>实体主体的报文摘要</td>
-</tr>
-<tr>
-<td>Content-Range</td>
-<td>实体主体的位置范围</td>
-</tr>
-<tr>
-<td><strong>Content-Type</strong></td>
-<td>实体主体的媒体类型</td>
-</tr>
-<tr>
-<td>Expires</td>
-<td>实体主体过期的日期时间</td>
-</tr>
-<tr>
-<td><strong>Last-Modified</strong></td>
-<td>资源的最后修改日期时间</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Last-Modified：</strong></p>
-<p>配合If-Modified-Since或者If-Unmodified-Since使用，比较资源的更新时间，这俩个字段是请求首部字段 </p>
-<p><strong>5、为Cookie服务的首部字段</strong></p>
-<table>
-<thead>
-<tr>
-<th>字段名</th>
-<th>说明</th>
-<th>首部类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Set-Cookie</td>
-<td>开始状态管理所使用的Cookie信息</td>
-<td>响应首部字段</td>
-</tr>
-<tr>
-<td>Cookie</td>
-<td>服务器接收到的Cookie信息</td>
-<td>请求首部字段</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p><strong>Set-Cookie字段</strong>的属性</p>
-<p>| 属性         | 说明                                                         |<br>| ———— | ———————————————————— |<br>| NAME=VALUE   | 赋予Cookie名称和值（必须项）eg:id = ‘1312’                   |<br>| expires=Date | Cookie的有效期（若是不明确有效期或者没有设置，则Cookie的有效期为游览器关闭为止） |<br>| path=PATH    | 将服务器上的文件目录作为Cookie的适用对象（若不指定则默认为文档所在的文件目录） |<br>| domain=域名  | 作为Cookie适用对象的域名（若不明确则默认为创建Cookie的服务器的域名） |<br>| Secure       | 仅在HTTPS安全通信时才会发送Cookie                            |<br>| HttpOnly     | 加以限制，使Cookie不能被javascript脚本访问                   |</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: Set-Cookie: id=&apos;123&apos;; HttpOnly</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Cookie</p>
-<p>当服务器通过set-cookie设置cookie信息返回响应给客户端，客户端接收到以后，就将响应首部字段中的set-cookie的cookie信息根据所设置的属性保存等；</p>
-<p>在下一次发送请求的时候根据属性要求将cookie信息写入请求首部字段cookie，再发送；</p>
-<p>客户端接收到多个cookie时，同样可以以多个cookie形式返回给服务器；</p>
-</li>
-</ul>
-<p><strong>6、其他首部字段</strong></p>
-<ul>
-<li>X-Frame_Options</li>
-<li>X-Xss_Protection</li>
-<li>DNT</li>
-<li>P3P</li>
-</ul>
-<h1 id="4-HTTPS"><a href="#4-HTTPS" class="headerlink" title="4 HTTPS"></a>4 HTTPS</h1><p>##<strong>1. HTTP缺点</strong></p>
-<ul>
-<li>明文通信（不加密），内容可能会被窃取</li>
-<li>不验证通信方的身份，身份可能会被伪装；例如cookie泄露，攻击者可利用cookie模拟用户操作</li>
-<li>无法证明报文完整性，内容可能被篡改</li>
-</ul>
-<p>所以HTTP是不安全的通信协议</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><blockquote>
+<p>多个线程同时修改同一条数据 , MySQL和Redis怎么保证不会出现线程安全</p>
+</blockquote>
+<p><strong>什么是原子性 ?</strong> </p>
+<blockquote>
+<blockquote>
+<p>参考: <a href="https://juejin.im/post/6844904080041574413" target="_blank" rel="noopener">https://juejin.im/post/6844904080041574413</a>     诡异的并发之原子性</p>
+</blockquote>
+<p><strong>一个或者多个操作在 CPU 执行的过程中不被中断的特性称为原子性 。</strong></p>
+<p><strong>数据库事务中 </strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 原子性概念是这样子的：事务被当做一个不可分割的整体，包含在其中的操作要么全部执行，要么全部不执行。且事务在执行过程中如果发生错误，会被回滚到事务开始前的状态，就像这个事务没有执行一样。（也就是说：事务要么被执行，要么一个都没被执行）</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>多线程并发中</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; 原子性概念是这样子的：</span><br><span class="line">&gt; </span><br><span class="line">&gt; 第一种理解：一个线程或进程在执行过程中，没有发生上下文切换。</span><br><span class="line">&gt; 上下文切换：指CPU从一个进程/线程切换到另外一个进程/线程(切换的前提就是获取CPU的使用权)。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 第二种理解：我们把一个线程中的一个或多个操作(不可分割的整体)，在CPU执行过程中不被中断的特性，称为原子性。(执行过程中，一旦发生中断，就会发生上下文切换)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>原子性是</strong>  拒绝<em>多线程操作</em>的,不论是多核还是单核,具有原子性的量 ,  <strong>同一时刻只能有一个线程来对它进行操作。</strong></p>
+</blockquote>
 <hr>
-<p>##<strong>2. HTTPS = HTTP + 加密 + 认证 + 完整性保护 = HTTP + SSL （或者TLS）</strong></p>
-<p><strong>解释：</strong>HTTP将通信接口部分用SSL或TLS协议代替</p>
-<p>HTTP通信过程：HTTP-&gt;TCP</p>
-<p>HTTPS通信过程：HTTP-&gt;SSL-&gt;TCP</p>
-<hr>
-<h2 id="3-怎么实现HTTP-加密-认证-完整性保护？"><a href="#3-怎么实现HTTP-加密-认证-完整性保护？" class="headerlink" title="3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？"></a><strong>3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？</strong></h2><ol>
-<li><p>加密方式</p>
-<ul>
-<li><p>对称密钥加密（也叫共享密钥加密）：加密和解密同用一个密钥</p>
-<p>问题：如何保证密钥在传输过程中不被窃取</p>
-<p>解决：利用 非对称密钥加密 传输 对称密钥加密中需要使用到的密钥</p>
+<h2 id="MySQL锁"><a href="#MySQL锁" class="headerlink" title="MySQL锁"></a>MySQL锁</h2><blockquote>
+<ol>
+<li><p>对于<code>UPDATE、DELETE、INSERT</code>语句，<strong>InnoDB</strong>会<strong>自动</strong>给涉及数据集加排他锁（X)</p>
 </li>
-<li><p>非对称密钥加密（也叫公开密钥加密）：私钥、公钥；发送方先用公钥对内容加密，接收方用自己的私钥进行解密；该方法解决了<strong>对称密钥加密方式</strong>存在的问题，因为即使发送方发送过来的信息在传输途中被窃取，因为攻击者没有私钥，所以无法解密</p>
-<p>问题：无法证明公钥就是真正的公钥，有可能被攻击者替换掉</p>
-<p>解决：使用 数字证书认证机构（CA） 和 相关机关 颁发的 公开密钥证书，在下面第三点会详细阐述</p>
-</li>
+<li><p><strong>InnoDB行锁和表锁都支持</strong>！</p>
+<ol>
+<li>表锁<ul>
+<li>开销小，加锁快；不会出现死锁；锁定力度大，发生锁冲突概率高，并发度最低</li>
 </ul>
-<p>非对称比对称处理速度更慢；</p>
 </li>
-<li><p>HTTPS加密方式<br>HTTPS采用混合加密制度，非对称密钥加密用于传输对称密钥加密使用的密钥，在之后就是使用对称密钥加密传输加密的报文，因为堆成密钥加密方式保证了密钥不会被窃取。</p>
-</li>
-<li><p>HTTPS使用证书</p>
-<ul>
-<li><p>证明公开密钥正确性的证书</p>
-<img src="/codeant/c29a/3.png" title="3.png">
-<img src="/codeant/c29a/4.png" title="4.png">
-</li>
-<li><p>证明组织真实性的EV SSL证书</p>
-</li>
-<li><p>用以确认客户端的客户端证书</p>
-<p>证明正在与服务器通信的客户端一直是预料之中的客户端。与服务器证书是一样的原理。</p>
-</li>
-<li><p>自认证机构颁发的自签名证书（无效）</p>
-</li>
+<li>行锁<ul>
+<li>开销大，加锁慢；会出现死锁；锁定粒度小，发生锁冲突的概率低，并发度高</li>
 </ul>
 </li>
 </ol>
-<hr>
-<h2 id="4-HTTPS安全通信流程"><a href="#4-HTTPS安全通信流程" class="headerlink" title="4. HTTPS安全通信流程"></a><strong>4. HTTPS安全通信流程</strong></h2><img src="/codeant/c29a/5.png" title="5.png">
-<h2 id="5-SSL速度"><a href="#5-SSL速度" class="headerlink" title="5. SSL速度"></a><strong>5. SSL速度</strong></h2><p>因为HTTPS与HTTP相比，增加了SSL，导致速度会慢2~100倍。</p>
-<p>SSL的慢：</p>
+</li>
+<li><p>InnoDB只有通过<strong>索引条件</strong>检索数据<strong>才使用行级锁</strong>，否则，InnoDB将使用<strong>表锁</strong></p>
+</li>
+<li><p><strong>表锁下又分为两种模式</strong>：</p>
 <ul>
-<li>通信慢（因为要协商准备加密组件等）</li>
-<li>小号CPU及内存等资源（加密解密操作）</li>
+<li><p>表读锁（Table Read Lock）</p>
+</li>
+<li><p>表写锁（Table Write Lock）</p>
+</li>
+<li><p>从下图可以清晰看到，在表读锁和表写锁的环境下：</p>
+</li>
 </ul>
-<p>改善方式：SSL加速器</p>
-<h2 id="6-为什么不一直使用HTTPS"><a href="#6-为什么不一直使用HTTPS" class="headerlink" title="6. 为什么不一直使用HTTPS"></a><strong>6. 为什么不一直使用HTTPS</strong></h2><ul>
-<li>消耗更多的服务器资源，导致单位时间内处理请求的数量减少</li>
-<li>节约购买证书的开销</li>
-</ul>
-<p>使用方式：如果是非敏感信息则使用HTTP通信，反之，包含个人敏感数据时使用HTTPS；在进行HTTPS通信时，所传输的数据不一定全部是敏感数据，所以可选择部分加密，以节约资源。</p>
-<h1 id="5-确认用户身份的认证"><a href="#5-确认用户身份的认证" class="headerlink" title="5 确认用户身份的认证"></a>5 确认用户身份的认证</h1><p>HTTP1.1使用的认证方式</p>
+<p>读读不阻塞，读写阻塞，写写阻塞</p>
 <ul>
-<li><del>BASIC认证（基本认证）</del>  <strong>不常用</strong></li>
-<li><del>DIGEST认证（摘要认证）</del>  <strong>不常用</strong></li>
-<li><del>SSL客户端认证</del>  （需要客户端导入证书以及证书需要费用，并未普及使用）</li>
-<li>FORMBASE认证（基于表单认证）</li>
+<li>读读不阻塞：当前用户在读数据，其他的用户也在读数据，不会加锁</li>
 </ul>
-<p>所以现在常用的是表单认证+cookie，使用cookie来管理session会话，并且为了防止XSS攻击，应在cookie里设置httponly属性，这样在js脚本里面就不能使用document.cookie</p>
-<img src="/codeant/c29a/6.png" title="6.png">
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><strong>[1]【日】上野 宣.图解HTTP[M].人民邮电出版社:北京,2014.05:1-165.</strong></p>
-<p><strong>[2]维基百科.HTTP标头字段列表[EB/OL].<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/List_of_HTTP_header_fields</a>.</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>读写阻塞：当前用户在读数据，其他的用户<strong>不能修改当前用户读的数据</strong>，会加锁！</p>
+<ul>
+<li>写写阻塞：当前用户在修改数据，其他的用户<strong>不能修改当前用户正在修改的数据</strong>，会加锁！</li>
+</ul>
+<ol start="5">
+<li><p>InnoDB实现了以下<strong>两种</strong>类型的行锁。</p>
+<ul>
+<li>共享锁（S锁）：允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁。<ul>
+<li>也叫做<strong>读锁</strong>：读锁是<strong>共享</strong>的，多个客户可以<strong>同时读取同一个</strong>资源，但<strong>不允许其他客户修改</strong>。</li>
+</ul>
+</li>
+<li>排他锁（X锁)：允许获得排他锁的事务更新数据，阻止其他事务取得相同数据集的共享读锁和排他写锁。<ul>
+<li>也叫做<strong>写锁</strong>：写锁是排他的，<strong>写锁会阻塞其他的写锁和读锁</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据库事务有不同的隔离级别，不同的隔离级别对锁的使用是不同的。MySQL默认使用的可重复读的隔离级别 , 可重复读会导致幻读 , 通过<strong>mvvc和gap锁解决了幻读</strong>( 参考: <a href="https://my.oschina.net/u/566591/blog/3162858?_from=gitee_rec" target="_blank" rel="noopener">https://my.oschina.net/u/566591/blog/3162858?_from=gitee_rec</a> )。<strong>其中mvvc是读写不阻塞的</strong></li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>结论 : </strong>MySQL对于<code>UPDATE、DELETE、INSERT</code>语句, <strong>都会加锁,</strong> <strong>导致其他的SQL语句阻塞( 也就是写写阻塞 ),</strong> 在高并发的情况下, <strong>虽然保证了数据安全</strong> , 但是数据库会承受大量的IO操作, 大量的操作就会阻塞, 可能会导致宕机等, 所以需要缓冲这些服务, 可以使用MQ来异步操作</p>
+</blockquote>
+<h2 id="Redis锁"><a href="#Redis锁" class="headerlink" title="Redis锁"></a>Redis锁</h2><blockquote>
+<p><strong>参考 : </strong><a href="https://www.cnblogs.com/fengff/p/10913492.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengff/p/10913492.html</a></p>
+</blockquote>
+<h5 id="命令INCR"><a href="#命令INCR" class="headerlink" title="命令INCR"></a>命令<code>INCR</code></h5><blockquote>
+<p><strong>Redis Incr 和 Redis Incrby命令是原子操作</strong></p>
+</blockquote>
+<ul>
+<li>Redis Incr 命令将 key 中储存的数字值增一，如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 INCR 操作。<ul>
+<li>Redis Incrby 命令将 key 中储存的数字加上指定的增量值，如果 key 不存在，那么 key 的值会先被初始化为 0 ，然后再执行 INCR 操作。</li>
+<li>在rspringboot中直接是调用<code>redisTemplate.opsForValue().increment(String.valueOf(key), -(long) num)</code>就可以了</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>适用场景 : 计数器，高并发生成订单号，秒杀类的业务逻辑等。</p>
+</blockquote>
+<p><strong>结合项目中的代码来讲: </strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> num 购买数量</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> key 购买的商品ID</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Transactional</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">buy1</span><span class="params">(<span class="keyword">int</span> num, <span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//1. 查询redis上的库存是否充足, 高并发情况下 检查库存 与 减少库存 不是原子性，  以 increment &gt; 0 为准      *</span></span><br><span class="line">       Integer redis_num = Integer.valueOf(</span><br><span class="line">               Objects.requireNonNull(</span><br><span class="line">                       redisTemplate.opsForValue().get(<span class="string">"1"</span>)</span><br><span class="line">               )</span><br><span class="line">       );</span><br><span class="line">       <span class="keyword">if</span> (redis_num &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="string">"库存不足!!"</span>;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 2.减少库存</span></span><br><span class="line">       <span class="keyword">long</span> value = redisTemplate.opsForValue().increment(String.valueOf(key), -(<span class="keyword">long</span>) num);</span><br><span class="line"></span><br><span class="line">       <span class="comment">// 库存充足 可以异步操作,即使反馈购买成功的信息,并异步处理 扣减mysql数据库并生成订单</span></span><br><span class="line">       <span class="keyword">if</span> (value &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="comment">// update 数据库中商品库存和订单系统下单，单的状态未待支付</span></span><br><span class="line">           <span class="comment">// 分开两个系统处理时，可以用LCN做分布式事务，但是也是有概率会订单系统的网络超时</span></span><br><span class="line">           <span class="comment">// 也可以使用最终一致性的方式，更新库存成功后，发送mq，等待订单创建生成回调。</span></span><br><span class="line">           <span class="keyword">boolean</span> res = productDao.update(num, key) == <span class="number">1</span>;</span><br><span class="line">           <span class="keyword">if</span> (res) &#123;</span><br><span class="line">               <span class="comment">//创建订单</span></span><br><span class="line">               <span class="comment">//createOrder(req);</span></span><br><span class="line">               <span class="comment">//记录购买日志</span></span><br><span class="line">               productLogDao.insert(<span class="keyword">new</span> CodeantProductLog( <span class="keyword">new</span> Date(), key, num ));</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">           <span class="keyword">return</span> <span class="string">"成功购买"</span>;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="comment">//恢复扣减的redis库存</span></span><br><span class="line">           redisTemplate.opsForValue().increment(String.valueOf(key), (<span class="keyword">long</span>) num);</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"redis库存不够"</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><code>long value = redisTemplate.opsForValue().increment(String.valueOf(key), -(long) num);</code>在并发情况下是线程安全的 , 因为<code>increment</code>方法调用的是<code>Incrby</code>命令, <code>Incrby</code>是原子操作 ; 多线程的情况下 , 因为是原子操作 , 就只能有一个线程对Key进行修改 , 其他线程修改不了。</p>
+<h5 id="锁SETNX"><a href="#锁SETNX" class="headerlink" title="锁SETNX"></a>锁<code>SETNX</code></h5><blockquote>
+<p>使用<code>!SETNX</code>加锁 , 官方文档 : <a href="http://www.redis.cn/commands/setnx.html" target="_blank" rel="noopener">http://www.redis.cn/commands/setnx.html</a></p>
+</blockquote>
+<blockquote>
+<p>适用场景 : 分布式锁</p>
+</blockquote>
+<h5 id="锁SET"><a href="#锁SET" class="headerlink" title="锁SET"></a>锁<code>SET</code></h5><pre><code>&gt;官方不推荐用来做为锁
+&gt;
+&gt;官方文档 : http://www.redis.cn/commands/set.html
+</code></pre><hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><blockquote>
+<p>阅读顺序</p>
+<ol>
+<li><a href="https://www.zhihu.com/question/54895548/answer/923987542" target="_blank" rel="noopener">如何设计秒杀</a></li>
+<li><a href="https://blog.csdn.net/shendl/article/details/51092916?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">redis如何设计秒杀</a></li>
+<li><a href="https://mp.weixin.qq.com/s/cdnRmiUFJTIYJVMfgJJw_Q" target="_blank" rel="noopener">redis如何方式超买超卖( 如何扣减库存 )</a></li>
+<li><a href="https://copyfuture.com/blogs-details/20200510085548659corx8bjvdg9td64" target="_blank" rel="noopener">推荐使用redis原子操作+sql乐观锁实现</a></li>
+<li><a href="https://www.cnblogs.com/jiawen010/articles/11350125.html" target="_blank" rel="noopener">redis分布式锁</a></li>
+</ol>
+</blockquote>
 
       
 		
@@ -953,7 +400,7 @@ var _hmt = _hmt || [];
 				
 				<br>
 				<strong>本文链接：</strong>
-				https://lijinhongpassion.github.io/codeant/c29a.html
+				https://lijinhongpassion.github.io/codeant/f262.html
 				<br>
 				<strong>版权声明：</strong>
 				本作品采用
@@ -1005,7 +452,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -1017,7 +464,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/http//" class="article-tag-list-link color5">http</a>
+        			<a href="/categories/Redis//" class="article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
@@ -1072,7 +519,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://qr.topscan.com/api.php?text=https://lijinhongpassion.github.io/codeant/c29a.html" alt="微信分享二维码">
+      <img src="http://qr.topscan.com/api.php?text=https://lijinhongpassion.github.io/codeant/f262.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -1086,18 +533,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/codeant/573a.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/codeant/kcsj.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java-日志框架类别&amp;配置&amp;使用
+          代写课程/毕设（包售后、远程调试）
         
       </div>
     </a>
   
   
-    <a href="/codeant/c670.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">读书笔记-大型网站技术架构之负载均衡</div>
+    <a href="/codeant/8cb1.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java-为什么使用HashMap需要重写hashcode和equals方法？</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1124,7 +571,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HTTP状态码"><span class="toc-number">1.</span> <span class="toc-text">1 HTTP状态码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-HTTP结构"><span class="toc-number">2.</span> <span class="toc-text">2 HTTP结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-HTTP首部"><span class="toc-number">3.</span> <span class="toc-text">3 HTTP首部</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-HTTPS"><span class="toc-number">4.</span> <span class="toc-text">4 HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-怎么实现HTTP-加密-认证-完整性保护？"><span class="toc-number">4.1.</span> <span class="toc-text">3. 怎么实现HTTP + 加密 + 认证 + 完整性保护？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-HTTPS安全通信流程"><span class="toc-number">4.2.</span> <span class="toc-text">4. HTTPS安全通信流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-SSL速度"><span class="toc-number">4.3.</span> <span class="toc-text">5. SSL速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-为什么不一直使用HTTPS"><span class="toc-number">4.4.</span> <span class="toc-text">6. 为什么不一直使用HTTPS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-确认用户身份的认证"><span class="toc-number">5.</span> <span class="toc-text">5 确认用户身份的认证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#我"><span class="toc-number">1.</span> <span class="toc-text">我</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前提"><span class="toc-number">2.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">3.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL锁"><span class="toc-number">5.</span> <span class="toc-text">MySQL锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis锁"><span class="toc-number">6.</span> <span class="toc-text">Redis锁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#命令INCR"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">命令INCR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#锁SETNX"><span class="toc-number">6.0.0.2.</span> <span class="toc-text">锁SETNX</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#锁SET"><span class="toc-number">6.0.0.3.</span> <span class="toc-text">锁SET</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li>
                     </div>
                 </span>
             </div>
@@ -1151,7 +598,7 @@ var _hmt = _hmt || [];
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: 'Wed Apr 10 2019 21:34:51 GMT+0800',
+  id: 'Tue Aug 18 2020 18:51:32 GMT+0800',
   owner: 'LiJinHongPassion',
   repo: 'LiJinHongPassion.github.io',
   oauth: {
